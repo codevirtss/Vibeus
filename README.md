@@ -48,7 +48,7 @@ buildscript {
 apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'
 ```
 
-## Using Bloc methid to authenticaticate Users
+## Using Bloc method to authenticaticate Users
 ```
 class AuthenticationBloc
     extends Bloc<AuthenticationEvent, AuthenticationState> {
