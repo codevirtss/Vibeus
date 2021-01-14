@@ -2,10 +2,9 @@
 Vibeus is a free dating app developed to connect our users all around the world without any subscription.
 The main motive of vibeus is to help users finding their perfect match without any subscription.
 
-```Pluguns Used in Vibeus
 
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
+## Plugins used o vibeus.
+```Pluguns Used in Vibeus
   cupertino_icons: ^1.0.0
   firebase_storage: ^3.1.5
   firebase_core: ^0.4.4+3
