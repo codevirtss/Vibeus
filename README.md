@@ -29,6 +29,23 @@ The main motive of vibeus is to help users finding their perfect match without a
   onesignal_flutter: ^2.6.2
   advance_pdf_viewer: ^1.2.1+2
   geolocator: ^5.3.1
+```
+
+## OneSignal in vibeus
+```
+buildscript {
+    repositories {
+        // ...
+        maven { url 'https://plugins.gradle.org/m2/' } // Gradle Plugin Portal
+    }
+    dependencies {
+        // ...
+        // OneSignal-Gradle-Plugin
+        classpath 'gradle.plugin.com.onesignal:onesignal-gradle-plugin:[0.12.6, 0.99.99]'
+    }
+}
+
+apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'
 
 
 ```
