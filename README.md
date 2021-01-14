@@ -112,7 +112,7 @@ class AuthenticationBloc
 }
 ```
 
-## Licens
+## License
 ```
 MIT License
 
