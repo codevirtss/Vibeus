@@ -1,6 +1,7 @@
 # vibeus
 
-A new Flutter project.
+Vibeus is a free dating app developed to connect our users all around the world 
+## WithOut any subscription
 
 ## Getting Started
 
