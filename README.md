@@ -1,4 +1,4 @@
-# vibeus
+# Vibeus
 Vibeus is a free dating app developed to connect our users all around the world without any subscription.
 The main motive of vibeus is to help users finding their perfect match without any subscription.
 
