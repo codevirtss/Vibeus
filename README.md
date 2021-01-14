@@ -30,7 +30,6 @@ The main motive of vibeus is to help users finding their perfect match without a
   advance_pdf_viewer: ^1.2.1+2
   geolocator: ^5.3.1
 ```
-
 ## OneSignal in vibeus
 ```
 buildscript {
