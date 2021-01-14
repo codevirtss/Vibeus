@@ -208,11 +208,3 @@ Widget addbottomsheet() {
     ),
   );
 }
-//   void takePhoto(ImageSource source) async {
-//   final PickedFile = await _picker.getImage(
-//     source: source,
-//   );
-//   setState(() {
-//     _imageFile = PickedFile;
-//   });
-// }
