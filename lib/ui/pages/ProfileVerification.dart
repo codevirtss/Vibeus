@@ -1,4 +1,4 @@
-import 'package:eva_icons_flutter/eva_icons_flutter.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:vibeus/ui/constants.dart';
@@ -15,6 +15,7 @@ class _ProfileSettingsState extends State<ProfileSettings> {
   String number;
   @override
   Widget build(BuildContext context) {
+    // ignore: unused_local_variable
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
@@ -106,6 +107,7 @@ class _ProfileSettingsState extends State<ProfileSettings> {
         print(credential);
       });
     };
+    // ignore: unused_local_variable
     final PhoneVerificationFailed verificationFailed =
         (AuthException exception) {
       setState(() {
@@ -210,6 +212,7 @@ class CustomDialogBox extends StatefulWidget {
 class _CustomDialogBoxState extends State<CustomDialogBox> {
   @override
   Widget build(BuildContext context) {
+    // ignore: unused_local_variable
     Size size = MediaQuery.of(context).size;
     return Dialog(
       shape: RoundedRectangleBorder(

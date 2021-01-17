@@ -34,6 +34,7 @@ class _ProfileFormState extends State<ProfileForm> {
   GeoPoint location;
   ProfileBloc _profileBloc;
 
+  // ignore: unused_element
   UserRepository get _userRepository => widget._userRepository;
 
   bool get isFilled =>

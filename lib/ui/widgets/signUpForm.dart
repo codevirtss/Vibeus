@@ -1,4 +1,4 @@
-import 'package:geolocator/geolocator.dart';
+
 import 'package:vibeus/bloc/authentication/authentication_bloc.dart';
 import 'package:vibeus/bloc/authentication/authentication_event.dart';
 import 'package:vibeus/bloc/signup/bloc.dart';
@@ -6,9 +6,10 @@ import 'package:vibeus/repositories/userRepository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../constants.dart';
+
 
 class SignUpForm extends StatefulWidget {
+  // ignore: unused_field
   final UserRepository _userRepository;
 
   SignUpForm({@required UserRepository userRepository})
@@ -123,6 +124,7 @@ class _SignUpFormState extends State<SignUpForm> {
                       padding: EdgeInsets.all(size.height * 0.02),
                       child: TextFormField(
                         controller: _emailController,
+                        // ignore: deprecated_member_use
                         autovalidate: true,
                         validator: (_) {
                           return !state.isEmailValid ? "Invalid Email" : null;
@@ -148,11 +150,12 @@ class _SignUpFormState extends State<SignUpForm> {
                         controller: _passwordController,
                         autocorrect: false,
                         obscureText: true,
+                        // ignore: deprecated_member_use
                         autovalidate: true,
                         validator: (_) {
                           return !state.isPasswordValid
                               ? "Invalid Password"
-                              : null;
+                             : null;
                         },
                         decoration: InputDecoration(
                           labelText: "Password",

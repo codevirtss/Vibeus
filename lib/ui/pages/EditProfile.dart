@@ -4,11 +4,10 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:vibeus/models/user.dart';
+
 import 'package:vibeus/repositories/userRepository.dart';
 import 'package:vibeus/ui/constants.dart';
 import 'package:vibeus/ui/widgets/gender.dart';
-import 'package:vibeus/ui/widgets/tabs.dart';
 
 class EditProile extends StatefulWidget {
   final String documentId;
@@ -24,10 +23,13 @@ class EditProile extends StatefulWidget {
 }
 
 class _EditProileState extends State<EditProile> {
+  // ignore: unused_field
   final TextEditingController _biocontroller = TextEditingController();
 
+  // ignore: unused_field
   final TextEditingController _igusernamecontroller = TextEditingController();
 
+  // ignore: unused_field
   bool _bioValid = true;
   File photo;
 
@@ -55,6 +57,7 @@ class _EditProileState extends State<EditProile> {
 
   @override
   Widget build(BuildContext context) {
+    // ignore: unused_local_variable
     Size size = MediaQuery.of(context).size;
     CollectionReference users = Firestore.instance.collection('users');
 
@@ -63,11 +66,9 @@ class _EditProileState extends State<EditProile> {
         builder:
             (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
           if (snapshot.hasError) {
-            return Scaffold(
-              body: Center(
-                child: CircularProgressIndicator(
-                  backgroundColor: Colors.black,
-                ),
+            return Center(
+              child: CircularProgressIndicator(
+                backgroundColor: Colors.black,
               ),
             );
           }
@@ -226,11 +227,9 @@ class _EditProileState extends State<EditProile> {
             );
           }
 
-          return Scaffold(
-            body: Center(
-              child: CircularProgressIndicator(
-                backgroundColor: Colors.black,
-              ),
+          return Center(
+            child: CircularProgressIndicator(
+              backgroundColor: Colors.black,
             ),
           );
         });
@@ -296,6 +295,7 @@ class _EditProileState extends State<EditProile> {
 
   imagefromcammera() async {
     Navigator.pop(context);
+    // ignore: deprecated_member_use
     File imageFile = await ImagePicker.pickImage(
         source: ImageSource.camera,
         maxHeight: 680,
@@ -308,6 +308,7 @@ class _EditProileState extends State<EditProile> {
 
   imagefromgallery() async {
     Navigator.pop(context);
+    // ignore: deprecated_member_use
     File imageFile = await ImagePicker.pickImage(
       source: ImageSource.gallery,
       imageQuality: 40,
@@ -339,21 +340,20 @@ class _UpdateNameState extends State<UpdateName> {
   @override
   Widget build(BuildContext context) {
     CollectionReference users = Firestore.instance.collection('users');
-    return Scaffold(
-      body: FutureBuilder(
+    return FutureBuilder(
         future: users.document(widget.userId).get(),
         builder:
             (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
           if (snapshot.hasError) {
-            return Scaffold(
-              body: Center(
+            return  Center(
                 child: CircularProgressIndicator(
                   backgroundColor: Colors.black,
                 ),
-              ),
+  
             );
           }
           if (snapshot.connectionState == ConnectionState.done) {
+            // ignore: unused_local_variable
             Map<String, dynamic> data = snapshot.data.data;
 
             return Scaffold(
@@ -434,15 +434,14 @@ you're known by: either your full name or nickname.
               ),
             );
           }
-          return Scaffold(
-            body: Center(
+          return  Center(
               child: CircularProgressIndicator(
                 backgroundColor: Colors.black,
               ),
-            ),
+        
           );
         },
-      ),
+
     );
   }
 
@@ -483,113 +482,105 @@ class _UpdateBioState extends State<UpdateBio> {
   @override
   Widget build(BuildContext context) {
     CollectionReference users = Firestore.instance.collection('users');
-    return Scaffold(
-      body: FutureBuilder(
-        future: users.document(widget.userId).get(),
-        builder:
-            (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
-          if (snapshot.hasError) {
-            return Scaffold(
-              body: Center(
-                child: CircularProgressIndicator(
-                  backgroundColor: Colors.black,
-                ),
+    return FutureBuilder(
+      future: users.document(widget.userId).get(),
+      builder:
+          (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+        if (snapshot.hasError) {
+          return Center(
+            child: CircularProgressIndicator(
+              backgroundColor: Colors.black,
+            ),
+          );
+        }
+        if (snapshot.connectionState == ConnectionState.done) {
+          // ignore: unused_local_variable
+          Map<String, dynamic> data = snapshot.data.data;
+          return Scaffold(
+            appBar: AppBar(
+              elevation: 0,
+              backgroundColor: backgroundColor,
+              iconTheme: IconThemeData(color: Colors.black),
+              title: Text(
+                "Update Bio",
+                style: TextStyle(color: Colors.black),
               ),
-            );
-          }
-          if (snapshot.connectionState == ConnectionState.done) {
-            Map<String, dynamic> data = snapshot.data.data;
-            return Scaffold(
-              appBar: AppBar(
-                elevation: 0,
-                backgroundColor: backgroundColor,
-                iconTheme: IconThemeData(color: Colors.black),
-                title: Text(
-                  "Update Bio",
-                  style: TextStyle(color: Colors.black),
+              centerTitle: true,
+            ),
+            body: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Form(
+                  key: _formKey,
+                  child: TextFormField(
+                    maxLines: 5,
+                    controller: _biocontroller,
+                    //   initialValue: "${data['name']}",
+                    validator: (val) => val.isEmpty ? 'Please Enter Bio' : null,
+                    autocorrect: false,
+                  ),
                 ),
-                centerTitle: true,
-              ),
-              body: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Form(
-                    key: _formKey,
-                    child: TextFormField(
-                      maxLines: 5,
-                      controller: _biocontroller,
-                      //   initialValue: "${data['name']}",
-                      validator: (val) =>
-                          val.isEmpty ? 'Please Enter Bio' : null,
-                      autocorrect: false,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text("""
+                SizedBox(
+                  height: 10,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text("""
 Help people to know about you by useing Vibeus Bio Feature.
 Write about you likes and dislikes
 Your Hobbies  and many more
               """),
-                  ),
-                  RaisedButton(
-                    color: Colors.red,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15.0),
-                        side: BorderSide(color: Colors.red)),
-                    onPressed: () async {
-                      if (_formKey.currentState.validate()) {
-                        await users
-                            .document(widget.userId)
-                            .updateData(({
-                              'bio': _biocontroller.text,
-                            }))
-                            .then((value) => print("User Updated"))
-                            .catchError((e) {
-                          print(e.toString());
-                        });
+                ),
+                RaisedButton(
+                  color: Colors.red,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                      side: BorderSide(color: Colors.red)),
+                  onPressed: () async {
+                    if (_formKey.currentState.validate()) {
+                      await users
+                          .document(widget.userId)
+                          .updateData(({
+                            'bio': _biocontroller.text,
+                          }))
+                          .then((value) => print("User Updated"))
+                          .catchError((e) {
+                        print(e.toString());
+                      });
 
-                        Navigator.pop(context);
-                        showSnackBar();
-                      } else {
-                        return Scaffold(
-                          body: Center(
-                            child: CircularProgressIndicator(
-                              backgroundColor: Colors.black,
-                            ),
-                          ),
-                        );
-                      }
-                    },
+                      Navigator.pop(context);
+                      showSnackBar();
+                    } else {
+                      return Center(
+                        child: CircularProgressIndicator(
+                          backgroundColor: Colors.black,
+                        ),
+                      );
+                    }
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          "Submit",
-                          style: TextStyle(
-                            color: Colors.white,
-                          ),
+                      child: Text(
+                        "Submit",
+                        style: TextStyle(
+                          color: Colors.white,
                         ),
                       ),
                     ),
-                  )
-                ],
-              ),
-            );
-          }
-          return Scaffold(
-            body: Center(
-              child: CircularProgressIndicator(
-                backgroundColor: Colors.black,
-              ),
+                  ),
+                )
+              ],
             ),
           );
-        },
-      ),
+        }
+        return Center(
+          child: CircularProgressIndicator(
+            backgroundColor: Colors.black,
+          ),
+        );
+      },
     );
   }
 
@@ -620,21 +611,19 @@ class _UpadatePrefrenceState extends State<UpadatePrefrence> {
     Size size = MediaQuery.of(context).size;
 
     CollectionReference users = Firestore.instance.collection('users');
-    return Scaffold(
-        body: FutureBuilder(
+    return FutureBuilder(
       future: users.document(widget.userId).get(),
       builder:
           (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
         if (snapshot.hasError) {
-          return Scaffold(
-            body: Center(
-              child: CircularProgressIndicator(
-                backgroundColor: Colors.black,
-              ),
+          return Center(
+            child: CircularProgressIndicator(
+              backgroundColor: Colors.black,
             ),
           );
         }
         if (snapshot.connectionState == ConnectionState.done) {
+          // ignore: unused_local_variable
           Map<String, dynamic> data = snapshot.data.data;
           return Scaffold(
             appBar: AppBar(
@@ -762,14 +751,12 @@ class _UpadatePrefrenceState extends State<UpadatePrefrence> {
           );
         }
 
-        return Scaffold(
-          body: Center(
-            child: CircularProgressIndicator(
-              backgroundColor: Colors.black,
-            ),
+        return Center(
+          child: CircularProgressIndicator(
+            backgroundColor: Colors.black,
           ),
         );
       },
-    ));
+    );
   }
 }

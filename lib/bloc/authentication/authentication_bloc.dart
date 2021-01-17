@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:vibeus/repositories/userRepository.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:vibeus/repositories/userRepository.dart';
+
 import './bloc.dart';
 
 class AuthenticationBloc

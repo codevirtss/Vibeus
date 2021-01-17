@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:vibeus/bloc/search/bloc.dart';
-import 'package:vibeus/bloc/search/search_bloc.dart';
+
 import 'package:vibeus/models/user.dart';
 import 'package:vibeus/ui/constants.dart';
 import 'package:vibeus/ui/pages/ViewPost.dart';
@@ -18,7 +17,8 @@ class ViewProfile extends StatefulWidget {
 
 class _ViewProfileState extends State<ViewProfile> {
   //final SearchRepository _searchRepository = SearchRepository();
-  SearchBloc _searchBloc;
+  // ignore: close_sinks
+  // ignore: unused_field
   User _user, _currentUser;
   
 
@@ -40,6 +40,7 @@ class _ViewProfileState extends State<ViewProfile> {
           ));
         }
         if (snapshot.connectionState == ConnectionState.done) {
+          // ignore: unused_local_variable
           Map<String, dynamic> data = snapshot.data.data;
           return Scaffold(
               appBar: AppBar(

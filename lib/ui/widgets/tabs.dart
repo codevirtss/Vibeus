@@ -13,6 +13,7 @@ User user; //yaha se le raha hai uesrs
 
 final userRefrence = Firestore.instance.collection("users");
 
+// ignore: must_be_immutable
 class Tabs extends StatefulWidget {
   UserRepository userRepository;
   final userId;
@@ -25,6 +26,7 @@ class Tabs extends StatefulWidget {
 }
 
 class _TabsState extends State<Tabs> {
+  // ignore: unused_field
   String _debugLabelString = "";
   int _page = 0;
 

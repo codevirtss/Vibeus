@@ -8,7 +8,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:uuid/uuid.dart';
 import 'package:vibeus/models/user.dart';
 import 'package:vibeus/ui/constants.dart';
-import 'package:path/path.dart' as Path;
 import 'package:path_provider/path_provider.dart';
 
 final StorageReference storageReference =
@@ -38,7 +37,6 @@ class _AddpostsState extends State<Addposts> {
   bool uploading = false;
   double val = 0;
 
-  List<File> _images = [];
   final picker = ImagePicker();
 
   takeimage(context) {
@@ -69,6 +67,7 @@ class _AddpostsState extends State<Addposts> {
 
   imagefromgallery() async {
     Navigator.pop(context);
+    // ignore: deprecated_member_use
     File imageFile = await ImagePicker.pickImage(
       source: ImageSource.gallery,
       imageQuality: 60,
@@ -82,6 +81,7 @@ class _AddpostsState extends State<Addposts> {
 
   imagefromcammera() async {
     Navigator.pop(context);
+    // ignore: deprecated_member_use
     File imageFile = await ImagePicker.pickImage(
         source: ImageSource.camera,
         maxHeight: 680,
@@ -213,6 +213,7 @@ class _AddpostsState extends State<Addposts> {
             ));
           }
           if (snapshot.connectionState == ConnectionState.done) {
+            // ignore: unused_local_variable
             Map<String, dynamic> data = snapshot.data.data;
             return Scaffold(
               appBar: AppBar(
@@ -328,6 +329,7 @@ class _AddpostsState extends State<Addposts> {
     List<Placemark> placemark = await Geolocator()
         .placemarkFromCoordinates(position.latitude, position.longitude);
     Placemark mPlaceMark = placemark[0];
+    // ignore: unused_local_variable
     String locationinfo =
         '${mPlaceMark.subThoroughfare} ${mPlaceMark.thoroughfare}, ${mPlaceMark.subLocality} ${mPlaceMark.locality}, ${mPlaceMark.subAdministrativeArea} ${mPlaceMark.administrativeArea}, ${mPlaceMark.postalCode} ${mPlaceMark.country}';
     String specificLocationinfo =

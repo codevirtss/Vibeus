@@ -5,7 +5,7 @@ import 'package:vibeus/bloc/authentication/authentication_event.dart';
 import 'package:vibeus/ui/constants.dart';
 import 'package:vibeus/ui/pages/ProfileVerification.dart';
 import 'package:vibeus/ui/pages/aboutsett.dart';
-import 'package:vibeus/ui/pages/notificationssett.dart';
+
 
 
 class Settings extends StatefulWidget {

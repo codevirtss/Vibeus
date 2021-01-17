@@ -16,6 +16,7 @@ import 'package:geolocator/geolocator.dart';
 
 import 'messaging.dart';
 
+// ignore: must_be_immutable
 class Matches extends StatefulWidget {
   final String userId;
   UserRepository userRepository;

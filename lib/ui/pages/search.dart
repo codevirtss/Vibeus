@@ -16,6 +16,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:geolocator/geolocator.dart';
 
+// ignore: must_be_immutable
 class Search extends StatefulWidget {
   final String userId;
   UserRepository userRepository;
@@ -284,6 +285,7 @@ class CustomDialogBox extends StatefulWidget {
 class _CustomDialogBoxState extends State<CustomDialogBox> {
   @override
   Widget build(BuildContext context) {
+        // ignore: unused_local_variable
         Size size = MediaQuery.of(context).size;
     return Dialog(
       shape: RoundedRectangleBorder(

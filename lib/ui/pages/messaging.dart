@@ -6,7 +6,7 @@ import 'package:vibeus/models/user.dart';
 import 'package:vibeus/repositories/messaging.dart';
 import 'package:vibeus/repositories/userRepository.dart';
 import 'package:vibeus/ui/constants.dart';
-import 'package:vibeus/ui/pages/ViewPost.dart';
+
 import 'package:vibeus/ui/pages/userprofile.dart';
 import 'package:vibeus/ui/widgets/message.dart';
 import 'package:vibeus/ui/widgets/photo.dart';
@@ -14,8 +14,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_linkify/flutter_linkify.dart';
 
+
+// ignore: must_be_immutable
 class Messaging extends StatefulWidget {
   final User currentUser, selectedUser;
   UserRepository userRepository;

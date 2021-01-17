@@ -1,9 +1,9 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:vibeus/models/user.dart';
+
 import 'package:vibeus/repositories/userRepository.dart';
-import 'package:vibeus/ui/widgets/tabs.dart';
+
 
 // ignore: must_be_immutable
 class Post extends StatefulWidget {

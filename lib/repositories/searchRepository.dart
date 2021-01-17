@@ -75,7 +75,7 @@ class SearchRepository {
 
   Future<User> viewUser(userId) async {
     User _user = User();
-    User currentUser = await getUserInterests(userId);
+   // User currentUser = await getUserInterests(userId);
 
     await _firestore.collection('users').getDocuments().then((users) {
       for (var user in users.documents) {

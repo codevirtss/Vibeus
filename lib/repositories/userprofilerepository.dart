@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:vibeus/models/user.dart';
+
 
 class UserProfileReppository {
   final Firestore _firestore;
@@ -11,7 +11,7 @@ class UserProfileReppository {
       : _firestore = firestore ?? Firestore.instance;
 
   Future getUsweInfo(userId) async {
-    User user = User();
+    //User user = User();
 
     await _firestore.collection('users').document(userId).get().then((user) {
      

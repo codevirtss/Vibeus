@@ -30,6 +30,7 @@ class UserProfile extends StatefulWidget {
 }
 
 class _UserProfileState extends State<UserProfile> {
+  // ignore: unused_field
   User _user, _currentUser;
   String currentUserUid;
   //ye use kar rah hu mai
@@ -127,6 +128,7 @@ class _UserProfileState extends State<UserProfile> {
 
   @override
   Widget build(BuildContext context) {
+    // ignore: unused_local_variable
     Size size = MediaQuery.of(context).size;
     CollectionReference users = Firestore.instance.collection('users');
 
@@ -158,6 +160,7 @@ class _UserProfileState extends State<UserProfile> {
   }
 
   Widget ownerProfilescreen() {
+    // ignore: unused_local_variable
     Size size = MediaQuery.of(context).size;
     CollectionReference users = Firestore.instance.collection('users');
 
@@ -333,6 +336,7 @@ ${data['bio']}""",
   }
 
   Widget userporfilescreen() {
+    // ignore: unused_local_variable
     Size size = MediaQuery.of(context).size;
     CollectionReference users = Firestore.instance.collection('users');
 

@@ -143,6 +143,7 @@ class _LoginFormState extends State<LoginForm> {
                       padding: EdgeInsets.all(size.height * 0.02),
                       child: TextFormField(
                         controller: _emailController,
+                        // ignore: deprecated_member_use
                         autovalidate: true,
                         validator: (_) {
                           return !state.isEmailValid ? "Invalid Email" : null;
@@ -168,6 +169,7 @@ class _LoginFormState extends State<LoginForm> {
                         controller: _passwordController,
                         autocorrect: false,
                         obscureText: true,
+                        // ignore: deprecated_member_use
                         autovalidate: true,
                         validator: (_) {
                           return !state.isPasswordValid
