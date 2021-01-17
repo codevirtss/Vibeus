@@ -66,8 +66,8 @@ android {
         applicationId "com.flutter.vibeus"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode flutterVersionCode.toInteger()
-        versionName flutterVersionName
+        versionCode 2
+        versionName "2.0.0"
         multiDexEnabled true
     }
        signingConfigs {
