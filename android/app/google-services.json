@@ -1,41 +1,41 @@
 {
   "project_info": {
-    "project_number": "434537108147",
-    "project_id": "vibeus-5af51",
-    "storage_bucket": "vibeus-5af51.appspot.com"
+    "project_number": "1039666732738",
+    "project_id": "vibeus-con",
+    "storage_bucket": "vibeus-con.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:434537108147:android:1bfb915a0752387dc616c6",
+        "mobilesdk_app_id": "1:1039666732738:android:75f5dc87c76c5030c2e55b",
         "android_client_info": {
-          "package_name": "com.rs.vibeus"
+          "package_name": "com.vibeu_con.vibeus"
         }
       },
       "oauth_client": [
         {
-          "client_id": "434537108147-h5r5pt5m622nkacltk6af8ga18sldann.apps.googleusercontent.com",
+          "client_id": "1039666732738-n2uraf3vchinlbiiudo81e2crui1a0gf.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.rs.vibeus",
+            "package_name": "com.vibeu_con.vibeus",
             "certificate_hash": "cf6c4d3cb6345f494a576939feed90f6afcdb43c"
           }
         },
         {
-          "client_id": "434537108147-kjt0ufdeu2f0eearcf1lasqcigr11i02.apps.googleusercontent.com",
+          "client_id": "1039666732738-kmhi4als0bu03oiagh9elpk2gf1idbrh.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBV7nr3vO1Q2dqHIw55uQoAkfqK2TeUVZs"
+          "current_key": "AIzaSyDlyTtgWc4a3q5xh-jEKVoHwN9v0mh4Zj4"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "434537108147-kjt0ufdeu2f0eearcf1lasqcigr11i02.apps.googleusercontent.com",
+              "client_id": "1039666732738-kmhi4als0bu03oiagh9elpk2gf1idbrh.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
