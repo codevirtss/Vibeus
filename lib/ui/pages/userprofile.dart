@@ -16,6 +16,7 @@ final userData = Firestore.instance.collection("user");
 CollectionReference collectionReference =
     Firestore.instance.collection('users');
 
+// ignore: must_be_immutable
 class UserProfile extends StatefulWidget {
   UserRepository userRepository;
 
@@ -291,7 +292,7 @@ ${data['bio']}""",
                 itemCount: snapshot.data.documents.length,
                 scrollDirection: Axis.vertical,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3,
+                  crossAxisCount: 2,
                 ),
                 itemBuilder: (contesxt, index) {
                   return Card(
