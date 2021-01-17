@@ -1,49 +1,42 @@
 {
   "project_info": {
-    "project_number": "63626663984",
-    "project_id": "vibeus-conn",
-    "storage_bucket": "vibeus-conn.appspot.com"
+    "project_number": "434537108147",
+    "project_id": "vibeus-5af51",
+    "storage_bucket": "vibeus-5af51.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:63626663984:android:99cbbca90a9617f4ec75f5",
+        "mobilesdk_app_id": "1:434537108147:android:1bfb915a0752387dc616c6",
         "android_client_info": {
-          "package_name": "com.plutter.vibeus"
+          "package_name": "com.rs.vibeus"
         }
       },
       "oauth_client": [
         {
-          "client_id": "63626663984-s9gfhl0uroh9ucqnrpuupqfgsiverqc7.apps.googleusercontent.com",
+          "client_id": "434537108147-h5r5pt5m622nkacltk6af8ga18sldann.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.plutter.vibeus",
+            "package_name": "com.rs.vibeus",
             "certificate_hash": "cf6c4d3cb6345f494a576939feed90f6afcdb43c"
           }
         },
         {
-          "client_id": "63626663984-70f1kdar6o5bli0q2muqgj82sectgcsb.apps.googleusercontent.com",
+          "client_id": "434537108147-kjt0ufdeu2f0eearcf1lasqcigr11i02.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDnqueLOYyA11sYdq1-Ktjm8_pyrfYDYn8"
+          "current_key": "AIzaSyBV7nr3vO1Q2dqHIw55uQoAkfqK2TeUVZs"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "63626663984-70f1kdar6o5bli0q2muqgj82sectgcsb.apps.googleusercontent.com",
+              "client_id": "434537108147-kjt0ufdeu2f0eearcf1lasqcigr11i02.apps.googleusercontent.com",
               "client_type": 3
-            },
-            {
-              "client_id": "63626663984-35hcu6nn02i3o3aofrks58u051cqraki.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.plutter.vibeus"
-              }
             }
           ]
         }

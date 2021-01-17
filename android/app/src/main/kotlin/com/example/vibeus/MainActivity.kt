@@ -1,4 +1,4 @@
-package com.plutter.vibeus
+package com.rs.vibeus
 
 import io.flutter.embedding.android.FlutterActivity
 
