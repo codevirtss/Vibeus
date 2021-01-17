@@ -295,7 +295,7 @@ ${data['bio']}""",
                 itemCount: snapshot.data.documents.length,
                 scrollDirection: Axis.vertical,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
+                  crossAxisCount: 3,
                 ),
                 itemBuilder: (contesxt, index) {
                   return Card(
