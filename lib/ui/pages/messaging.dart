@@ -15,7 +15,6 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
 // ignore: must_be_immutable
 class Messaging extends StatefulWidget {
   final User currentUser, selectedUser;
@@ -116,6 +115,27 @@ class _MessagingState extends State<Messaging> {
             ),
           ],
         ),
+        actions: [
+          IconButton(
+            icon: Icon(
+              Icons.video_call,
+              color: Colors.black,
+              size: 30,
+            ),
+            onPressed: () {},
+          ),
+          IconButton(
+            icon: Icon(
+              Icons.location_pin,
+              color: Colors.black,
+              size: 30,
+            ),
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => VibeusDate()));
+            },
+          )
+        ],
       ),
       body: BlocBuilder<MessagingBloc, MessagingState>(
         bloc: _messagingBloc,
@@ -269,6 +289,51 @@ class _MessagingState extends State<Messaging> {
           return Container();
         },
       ),
+    );
+  }
+}
+
+class VibeusDate extends StatefulWidget {
+  @override
+  _VibeusDateState createState() => _VibeusDateState();
+}
+
+class _VibeusDateState extends State<VibeusDate> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.black),
+        elevation: 0,
+        backgroundColor: backgroundColor,
+        centerTitle: true,
+        title: Text(
+          "Vibeus Date",
+          style: TextStyle(color: Colors.black),
+        ),
+        actions: [
+          IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.search,
+              ))
+        ],
+      ),
+      body: SingleChildScrollView(
+        child: ListView(
+          children: [
+            horizontalsuggestions(),
+          ],
+        ),
+      ),
+    );
+  }
+
+  horizontalsuggestions() {
+    return ListView.builder(
+      scrollDirection: Axis.horizontal,
+      
+
     );
   }
 }
