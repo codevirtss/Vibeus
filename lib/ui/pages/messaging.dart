@@ -6,7 +6,6 @@ import 'package:vibeus/models/user.dart';
 import 'package:vibeus/repositories/messaging.dart';
 import 'package:vibeus/repositories/userRepository.dart';
 import 'package:vibeus/ui/constants.dart';
-
 import 'package:vibeus/ui/pages/userprofile.dart';
 import 'package:vibeus/ui/widgets/message.dart';
 import 'package:vibeus/ui/widgets/photo.dart';
@@ -330,10 +329,8 @@ class _VibeusDateState extends State<VibeusDate> {
   }
 
   horizontalsuggestions() {
-    return ListView.builder(
-      scrollDirection: Axis.horizontal,
-      
-
+    return CircleAvatar(
+      radius: 10,
     );
   }
 }
