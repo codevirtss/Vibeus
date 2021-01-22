@@ -16,7 +16,6 @@ final userData = Firestore.instance.collection("user");
 CollectionReference collectionReference =
     Firestore.instance.collection('users');
 
-// ignore: must_be_immutable
 class UserProfile extends StatefulWidget {
   UserRepository userRepository;
 
@@ -30,10 +29,10 @@ class UserProfile extends StatefulWidget {
 }
 
 class _UserProfileState extends State<UserProfile> {
-  // ignore: unused_field
+
   User _user, _currentUser;
   String currentUserUid;
-  //ye use kar rah hu mai
+
   List postList = [];
 
   bool loading = false;
@@ -42,7 +41,7 @@ class _UserProfileState extends State<UserProfile> {
   creatButton() {
     bool ownProfile = currentUserUid == widget.userId;
 
-    // print(widget.userId);
+ 
 
     if (ownProfile) {
       return Scaffold(
@@ -93,10 +92,10 @@ class _UserProfileState extends State<UserProfile> {
                             )));
               }),
           body: ownerProfilescreen());
-      //return createProfileButton(() {}, "Edit Profile");
+    
     } else {
       return userporfilescreen();
-      //return createProfileButton(() {}, "Like");
+    
     }
   }
 
@@ -128,7 +127,7 @@ class _UserProfileState extends State<UserProfile> {
 
   @override
   Widget build(BuildContext context) {
-    // ignore: unused_local_variable
+   
     Size size = MediaQuery.of(context).size;
     CollectionReference users = Firestore.instance.collection('users');
 
@@ -144,7 +143,7 @@ class _UserProfileState extends State<UserProfile> {
         }
 
         if (snapshot.connectionState == ConnectionState.done) {
-          // Map<String, dynamic> data = snapshot.data.data;
+       
 
           return Scaffold(
             body: creatButton(),
@@ -160,7 +159,7 @@ class _UserProfileState extends State<UserProfile> {
   }
 
   Widget ownerProfilescreen() {
-    // ignore: unused_local_variable
+
     Size size = MediaQuery.of(context).size;
     CollectionReference users = Firestore.instance.collection('users');
 
@@ -225,12 +224,10 @@ ${data['bio']}""",
                           color: Colors.black, fontWeight: FontWeight.bold),
                       linkStyle: TextStyle(fontSize: 18, color: Colors.blue),
                     ),
-                    //     Divider(),
-                    //       createListAndGrid(),
-                    // this is for creating List Grid
+              
                     Divider(),
                     displayProfilePost(),
-                    //this is for userPost
+                  
                   ],
                 ),
               ),
@@ -336,7 +333,7 @@ ${data['bio']}""",
   }
 
   Widget userporfilescreen() {
-    // ignore: unused_local_variable
+ 
     Size size = MediaQuery.of(context).size;
     CollectionReference users = Firestore.instance.collection('users');
 
@@ -367,9 +364,9 @@ ${data['bio']}""",
                         Container(
                           height: MediaQuery.of(context).size.height * 0.48,
                           width: MediaQuery.of(context).size.width,
-                          // margin: EdgeInsets.only(left: 25),
+                  
                           decoration: BoxDecoration(
-                              //    borderRadius: BorderRadius.circular(10),
+                            
                               image: DecorationImage(
                                   image: NetworkImage("${data['photoUrl']}"),
                                   fit: BoxFit.cover)),
@@ -403,10 +400,7 @@ ${data['bio']}""",
                                   fontSize: 24,
                                   fontWeight: FontWeight.bold),
                             ),
-                            // Icon(
-                            //   Icons.verified,
-                            //   color: Colors.blue,
-                            // ),
+                          
                           ],
                         ),
                       ),
@@ -421,8 +415,7 @@ ${data['bio']}""",
                             color: Colors.black, fontWeight: FontWeight.bold),
                         linkStyle: TextStyle(fontSize: 15, color: Colors.blue),
                       ),
-                      // Divider(),
-                      // createListAndGrid(),
+                  
                       Divider(),
                       displayProfilePost(),
                     ],
@@ -442,43 +435,4 @@ ${data['bio']}""",
   }
 }
 
-class PostTile extends StatelessWidget {
-  final Post post;
 
-  PostTile({this.post});
-
-  clickedImage(BuildContext context) {
-    Navigator.of(context)
-        .push(MaterialPageRoute<bool>(builder: (BuildContext context) {
-      return Center(
-        child: Scaffold(
-            appBar: AppBar(
-              title: Text('Photo',
-                  style: TextStyle(
-                      color: Colors.black, fontWeight: FontWeight.bold)),
-              backgroundColor: Colors.white,
-            ),
-            body: ListView(
-              children: <Widget>[
-                Container(
-                  child: post,
-                ),
-              ],
-            )),
-      );
-    }));
-  }
-
-  Widget build(BuildContext context) {
-    return GestureDetector(
-        onTap: () => clickedImage(context),
-        child: Image.network(post.url, fit: BoxFit.cover));
-  }
-}
-
-void openProfile(BuildContext context, String userId) {
-  Navigator.of(context)
-      .push(MaterialPageRoute<bool>(builder: (BuildContext context) {
-    return UserProfile();
-  }));
-}
