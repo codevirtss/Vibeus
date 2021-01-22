@@ -18,7 +18,6 @@ CollectionReference collectionReference =
 
 // ignore: must_be_immutable
 class UserProfile extends StatefulWidget {
-  
   UserRepository userRepository;
 
   final String userId;
@@ -31,16 +30,14 @@ class UserProfile extends StatefulWidget {
 }
 
 class _UserProfileState extends State<UserProfile> {
-
   User _user, _currentUser;
   String currentUserUid;
 
   List postList = [];
 
   bool loading = false;
-  String postOrientation = "grid";
 
-    createprofile() {
+  createprofile() {
     bool ownProfile = currentUserUid == widget.userId;
     if (ownProfile) {
       return Scaffold(
@@ -91,10 +88,8 @@ class _UserProfileState extends State<UserProfile> {
                             )));
               }),
           body: ownerProfilescreen());
-    
     } else {
       return userporfilescreen();
-    
     }
   }
 
@@ -126,7 +121,6 @@ class _UserProfileState extends State<UserProfile> {
 
   @override
   Widget build(BuildContext context) {
-   
     Size size = MediaQuery.of(context).size;
     CollectionReference users = Firestore.instance.collection('users');
 
@@ -142,8 +136,6 @@ class _UserProfileState extends State<UserProfile> {
         }
 
         if (snapshot.connectionState == ConnectionState.done) {
-       
-
           return Scaffold(
             body: createprofile(),
           );
@@ -158,7 +150,6 @@ class _UserProfileState extends State<UserProfile> {
   }
 
   Widget ownerProfilescreen() {
-
     Size size = MediaQuery.of(context).size;
     CollectionReference users = Firestore.instance.collection('users');
 
@@ -223,10 +214,9 @@ ${data['bio']}""",
                           color: Colors.black, fontWeight: FontWeight.bold),
                       linkStyle: TextStyle(fontSize: 18, color: Colors.blue),
                     ),
-              
+
                     Divider(),
                     displayProfilePost(),
-                  
                   ],
                 ),
               ),
@@ -238,10 +228,6 @@ ${data['bio']}""",
           ));
         });
   }
-
- 
-
- 
 
   displayProfilePost() {
     return StreamBuilder<QuerySnapshot>(
@@ -310,7 +296,6 @@ ${data['bio']}""",
   }
 
   Widget userporfilescreen() {
- 
     Size size = MediaQuery.of(context).size;
     CollectionReference users = Firestore.instance.collection('users');
 
@@ -341,9 +326,7 @@ ${data['bio']}""",
                         Container(
                           height: MediaQuery.of(context).size.height * 0.48,
                           width: MediaQuery.of(context).size.width,
-                  
                           decoration: BoxDecoration(
-                            
                               image: DecorationImage(
                                   image: NetworkImage("${data['photoUrl']}"),
                                   fit: BoxFit.cover)),
@@ -377,7 +360,6 @@ ${data['bio']}""",
                                   fontSize: 24,
                                   fontWeight: FontWeight.bold),
                             ),
-                          
                           ],
                         ),
                       ),
@@ -392,7 +374,6 @@ ${data['bio']}""",
                             color: Colors.black, fontWeight: FontWeight.bold),
                         linkStyle: TextStyle(fontSize: 15, color: Colors.blue),
                       ),
-                  
                       Divider(),
                       displayProfilePost(),
                     ],
@@ -411,5 +392,3 @@ ${data['bio']}""",
     );
   }
 }
-
-
