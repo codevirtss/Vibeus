@@ -16,7 +16,9 @@ final userData = Firestore.instance.collection("user");
 CollectionReference collectionReference =
     Firestore.instance.collection('users');
 
+// ignore: must_be_immutable
 class UserProfile extends StatefulWidget {
+  
   UserRepository userRepository;
 
   final String userId;
@@ -38,11 +40,8 @@ class _UserProfileState extends State<UserProfile> {
   bool loading = false;
   String postOrientation = "grid";
 
-  creatButton() {
+    createprofile() {
     bool ownProfile = currentUserUid == widget.userId;
-
- 
-
     if (ownProfile) {
       return Scaffold(
           appBar: AppBar(
@@ -146,7 +145,7 @@ class _UserProfileState extends State<UserProfile> {
        
 
           return Scaffold(
-            body: creatButton(),
+            body: createprofile(),
           );
         }
 
@@ -240,31 +239,9 @@ ${data['bio']}""",
         });
   }
 
-  createListAndGrid() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        IconButton(
-            icon: Icon(
-              Icons.grid_on,
-              color: postOrientation == "grid" ? Colors.blue : Colors.black,
-            ),
-            onPressed: () => setOrientaion("grid")),
-        IconButton(
-            icon: Icon(
-              Icons.list,
-              color: postOrientation == "list" ? Colors.blue : Colors.black,
-            ),
-            onPressed: () => setOrientaion("list")),
-      ],
-    );
-  }
+ 
 
-  setOrientaion(String orientation) {
-    setState(() {
-      this.postOrientation = orientation;
-    });
-  }
+ 
 
   displayProfilePost() {
     return StreamBuilder<QuerySnapshot>(
