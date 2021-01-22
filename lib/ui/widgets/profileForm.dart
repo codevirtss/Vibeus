@@ -181,9 +181,7 @@ class _ProfileFormState extends State<ProfileForm> {
                             ),
                     ),
                   ),
-    
-                 
-                  textFieldWidget(_nameController, "Name", size, 1, "enter your name"),
+                textFieldWidget(_nameController, "Name", size, 1, "enter your name"),
                   textFieldWidget(_bioController, "Bio", size, 5,"Enter somting about you"),
                   GestureDetector(
                     onTap: () {
