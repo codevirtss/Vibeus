@@ -79,7 +79,8 @@ class _TabsState extends State<Tabs> {
     notifiyer();
     super.initState();
   }
-
+  
+  PageController controller = PageController();
   @override
   Widget build(BuildContext context) {
     List<Widget> pages = [
@@ -102,7 +103,20 @@ class _TabsState extends State<Tabs> {
         accentColor: Colors.white,
       ),
       child: Scaffold(
-      body: pages[_page],
+      body: PageView.builder(
+          itemCount: 4,
+            controller: controller,
+            onPageChanged: (page){
+              setState(() {
+                _page= page;
+              });
+            },
+            itemBuilder:(context,position){
+              return Container(
+                color: colors[position],
+                child:Center(child: text[position]),
+              );
+            }),
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: _page,
           items: [

@@ -30,7 +30,6 @@ class UserProfile extends StatefulWidget {
 }
 
 class _UserProfileState extends State<UserProfile> {
-  User _user, _currentUser;
   String currentUserUid;
 
   List postList = [];
