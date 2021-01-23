@@ -28,8 +28,8 @@ class Tabs extends StatefulWidget {
 }
 
 class _TabsState extends State<Tabs> {
-  var padding = EdgeInsets.symmetric(horizontal: 18,vertical: 5);
-  double gap =10;
+  var padding = EdgeInsets.symmetric(horizontal: 18, vertical: 5);
+  double gap = 10;
   // ignore: unused_field
   String _debugLabelString = "";
   int _page = 0;
@@ -120,9 +120,9 @@ class _TabsState extends State<Tabs> {
                 child: pages[position],
               );
             }),
-        bottomNavigationBar:SafeArea(
+        bottomNavigationBar: SafeArea(
           child: Container(
-            margin: EdgeInsets.symmetric(horizontal: 20,vertical: 5),
+            margin: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
             decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.all(Radius.circular(100)),
@@ -131,12 +131,11 @@ class _TabsState extends State<Tabs> {
                     spreadRadius: -10,
                     blurRadius: 60,
                     color: Colors.black.withOpacity(0.4),
-                    offset: Offset(0,25),
+                    offset: Offset(0, 25),
                   )
-                ]
-            ),
+                ]),
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 3,vertical: 3),
+              padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 3),
               child: GNav(
                 curve: Curves.fastOutSlowIn,
                 duration: Duration(milliseconds: 900),
@@ -187,9 +186,9 @@ class _TabsState extends State<Tabs> {
                   ),
                 ],
                 selectedIndex: _page,
-                onTabChange: (index){
+                onTabChange: (index) {
                   setState(() {
-                    _page =index;
+                    _page = index;
                   });
                   controller.jumpToPage(index);
                 },

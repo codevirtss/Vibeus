@@ -137,88 +137,73 @@ class _EditProileState extends State<EditProile> {
                     SizedBox(
                       height: 10,
                     ),
-                    Card(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: ListTile(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => UpdateName(
-                                          userId: widget.userId,
-                                        )));
-                          },
-                          title: Text(
-                            "Update Name",
-                            style: TextStyle(
-                                color: Colors.grey,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20),
-                          ),
-                          trailing: Icon(
-                            Icons.arrow_forward_ios,
+                    ListTile(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => UpdateName(
+                                      userId: widget.userId,
+                                    )));
+                      },
+                      title: Text(
+                        "Update Name",
+                        style: TextStyle(
                             color: Colors.grey,
-                          ),
-                        ),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20),
+                      ),
+                      trailing: Icon(
+                        Icons.arrow_forward_ios,
+                        color: Colors.grey,
                       ),
                     ),
                     SizedBox(
                       height: 10,
                     ),
-                    Card(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: ListTile(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => UpdateBio(
-                                          userId: widget.userId,
-                                        )));
-                          },
-                          title: Text(
-                            "Update Bio",
-                            style: TextStyle(
-                                color: Colors.grey,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20),
-                          ),
-                          trailing: Icon(
-                            Icons.arrow_forward_ios,
+                    ListTile(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => UpdateBio(
+                                      userId: widget.userId,
+                                    )));
+                      },
+                      title: Text(
+                        "Update Bio",
+                        style: TextStyle(
                             color: Colors.grey,
-                          ),
-                        ),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20),
+                      ),
+                      trailing: Icon(
+                        Icons.arrow_forward_ios,
+                        color: Colors.grey,
                       ),
                     ),
                     SizedBox(
                       height: 10,
                     ),
-                    Card(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: ListTile(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => UpadatePrefrence(
-                                          userId: widget.userId,
-                                        )));
-                          },
-                          title: Text(
-                            "Update Prefrences",
-                            style: TextStyle(
-                                color: Colors.grey,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20),
-                          ),
-                          trailing: Icon(
-                            Icons.arrow_forward_ios,
+                    ListTile(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => UpadatePrefrence(
+                                      userId: widget.userId,
+                                    )));
+                      },
+                      title: Text(
+                        "Update Prefrences",
+                        style: TextStyle(
                             color: Colors.grey,
-                          ),
-                        ),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20),
+                      ),
+                      trailing: Icon(
+                        Icons.arrow_forward_ios,
+                        color: Colors.grey,
                       ),
                     ),
                   ],
@@ -300,7 +285,8 @@ class _EditProileState extends State<EditProile> {
         source: ImageSource.camera,
         maxHeight: 680,
         maxWidth: 970,
-        imageQuality: 40);
+        imageQuality: 40
+        );
     setState(() {
       this.photo = imageFile;
     });

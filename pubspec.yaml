@@ -44,6 +44,8 @@ dependencies:
   google_maps_flutter: ^1.1.1
   google_nav_bar: ^3.0.0
   line_icons: ^0.2.0
+  # Emojies
+  emoji_picker: ^0.1.0
 
 
 

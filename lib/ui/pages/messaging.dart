@@ -1,4 +1,6 @@
 import 'dart:io';
+import 'package:emoji_picker/emoji_picker.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:vibeus/bloc/messaging/bloc.dart';
 import 'package:vibeus/bloc/messaging/messaging_bloc.dart';
 import 'package:vibeus/models/message.dart';
@@ -29,8 +31,11 @@ class _MessagingState extends State<Messaging> {
   User currentUser, selectedUser;
   TextEditingController _messageTextController = TextEditingController();
   MessagingRepository _messagingRepository = MessagingRepository();
+  FocusNode textFieldFocus = FocusNode();
   MessagingBloc _messagingBloc;
   bool isValid = false;
+  bool showEmojiPicker = false;
+  bool isWriting = false;
 
   @override
   void initState() {
@@ -69,6 +74,48 @@ class _MessagingState extends State<Messaging> {
       ),
     );
     _messageTextController.clear();
+  }
+
+  showKeyboard() => textFieldFocus.requestFocus();
+
+  hideKeyboard() => textFieldFocus.unfocus();
+
+  hideEmojiContainer() {
+    setState(() {
+      showEmojiPicker = false;
+    });
+  }
+
+  showEmojiContainer() {
+    setState(() {
+      showEmojiPicker = true;
+    });
+  }
+
+  Widget chatControls() {
+    setWritingTo(bool val) {
+      setState(() {
+        isWriting = val;
+      });
+    }
+  }
+
+  emojiContainer() {
+    return EmojiPicker(
+      bgColor: Color(0xff272c35),
+      indicatorColor: Colors.black,
+      rows: 3,
+      columns: 7,
+      onEmojiSelected: (emoji, category) {
+        setState(() {
+          isWriting = true;
+        });
+
+        _messageTextController.text = _messageTextController.text + emoji.emoji;
+      },
+      recommendKeywords: ["face", "happy", "party", "sad"],
+      numRecommended: 50,
+    );
   }
 
   @override
@@ -114,27 +161,27 @@ class _MessagingState extends State<Messaging> {
             ),
           ],
         ),
-        actions: [
-          IconButton(
-            icon: Icon(
-              Icons.video_call,
-              color: Colors.black,
-              size: 30,
-            ),
-            onPressed: () {},
-          ),
-          IconButton(
-            icon: Icon(
-              Icons.location_pin,
-              color: Colors.black,
-              size: 30,
-            ),
-            onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => VibeusDate()));
-            },
-          )
-        ],
+        // actions: [
+        //   IconButton(
+        //     icon: Icon(
+        //       Icons.video_call,
+        //       color: Colors.black,
+        //       size: 30,
+        //     ),
+        //     onPressed: () {},
+        //   ),
+        //   IconButton(
+        //     icon: Icon(
+        //       Icons.location_pin,
+        //       color: Colors.black,
+        //       size: 30,
+        //     ),
+        //     onPressed: () {
+        //       Navigator.push(context,
+        //           MaterialPageRoute(builder: (context) => VibeusDate()));
+        //     },
+        //   )
+        // ],
       ),
       body: BlocBuilder<MessagingBloc, MessagingState>(
         bloc: _messagingBloc,
@@ -174,8 +221,7 @@ class _MessagingState extends State<Messaging> {
                           children: <Widget>[
                             Expanded(
                               child: ListView.builder(
-                                //  keyboardDismissBehavior: ,
-                                //  reverse: true,
+                                // reverse: true,
                                 scrollDirection: Axis.vertical,
                                 itemBuilder: (BuildContext context, int index) {
                                   return MessageWidget(
@@ -186,7 +232,10 @@ class _MessagingState extends State<Messaging> {
                                 },
                                 itemCount: snapshot.data.documents.length,
                               ),
-                            )
+                            ),
+                            showEmojiPicker
+                                ? Container(child: emojiContainer())
+                                : Container(),
                           ],
                         ),
                       );
@@ -208,9 +257,8 @@ class _MessagingState extends State<Messaging> {
                   },
                 ),
                 Container(
-                  width: size.width,
-                  height: size.height * 0.06,
-                  color: backgroundColor,
+                  padding: EdgeInsets.all(10),
+                  color: Colors.redAccent,
                   child: Row(
                     children: <Widget>[
                       GestureDetector(
@@ -230,55 +278,125 @@ class _MessagingState extends State<Messaging> {
                             );
                           }
                         },
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: size.height * 0.005),
-                          child: Icon(
-                            Icons.add,
-                            color: Colors.black,
-                            size: size.height * 0.04,
+                        child: Container(
+                          padding: EdgeInsets.all(5),
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                                colors: [Color(0xff00b6f3), Color(0xff0184dc)],
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight),
+                            shape: BoxShape.circle,
                           ),
+                          child: Icon(Icons.add),
                         ),
                       ),
                       Expanded(
-                        child: Container(
-                          height: 50,
-                          decoration: BoxDecoration(
-                            color: Colors.white70,
-                            border: Border.all(
-                              color: Colors.black,
-                              width: 0.5,
-                            ),
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: Center(
-                            child: TextField(
+                        child: Stack(
+                          alignment: Alignment.centerRight,
+                          children: [
+                            TextField(
                               controller: _messageTextController,
-                              textInputAction: TextInputAction.send,
-                              maxLines: null,
-                              expands: true,
+                              focusNode: textFieldFocus,
+                              onTap: () => hideEmojiContainer(),
+                              style: TextStyle(
+                                color: Colors.black,
+                              ),
+                              onChanged: (val) {
+                                (val.length > 0 && val.trim() != "")
+                                    ? setWritingTo(true)
+                                    : setWritingTo(false);
+                              },
                               decoration: InputDecoration(
-                                  border: InputBorder.none,
-                                  hintText: 'Type a message'),
-                              textAlignVertical: TextAlignVertical.center,
-                              cursorColor: Colors.black,
-                              textCapitalization: TextCapitalization.sentences,
+                                hintText: "Type a message",
+                                hintStyle: TextStyle(color: Colors.black),
+                                border: OutlineInputBorder(
+                                    borderRadius: const BorderRadius.all(
+                                      const Radius.circular(50.0),
+                                    ),
+                                    borderSide: BorderSide.none),
+                                contentPadding: EdgeInsets.symmetric(
+                                    horizontal: 20, vertical: 5),
+                                filled: true,
+                                fillColor: Colors.white,
+                              ),
                             ),
-                          ),
+                            IconButton(
+                              splashColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onPressed: () {
+                                if (!showEmojiPicker) {
+                                  // keyboard is visible
+                                  hideKeyboard();
+                                  showEmojiContainer();
+                                } else {
+                                  //keyboard is hidden
+                                  showKeyboard();
+                                  hideEmojiContainer();
+                                }
+                              },
+                              icon: Icon(Icons.face),
+                            ),
+                          ],
                         ),
                       ),
-                      GestureDetector(
-                        onTap: isValid ? _onFormSubmitted : null,
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: size.height * 0.01),
-                          child: Icon(
-                            Icons.send,
-                            size: size.height * 0.04,
-                            color: isValid ? Colors.black : Colors.grey,
-                          ),
-                        ),
-                      )
+                      isWriting
+                          ? Container()
+                          : Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 10),
+                              child: Icon(Icons.record_voice_over),
+                            ),
+                      isWriting
+                          ? Container()
+                          : GestureDetector(
+                              child: Icon(Icons.camera_alt),
+                              onTap: () async {
+                                File photo = await ImagePicker.pickImage(
+                                    source: ImageSource.camera,
+                                    maxHeight: 680,
+                                    maxWidth: 970,
+                                    imageQuality: 40);
+                                     if (photo != null) {
+                            _messagingBloc.add(
+                              SendMessageEvent(
+                                message: Message(
+                                    text: null,
+                                    senderName: widget.currentUser.name,
+                                    senderId: widget.currentUser.uid,
+                                    photo: photo,
+                                    selectedUserId: widget.selectedUser.uid),
+                              ),
+                            );
+                          }
+                              }
+                              //  pickImage(source: ImageSource.camera),
+                              ),
+                      isWriting
+                          ? GestureDetector(
+                              onTap: isValid ? _onFormSubmitted : null,
+                              child: Container(
+                                decoration:
+                                    BoxDecoration(shape: BoxShape.circle),
+                                child: Container(
+                                  padding: EdgeInsets.all(5),
+                                  decoration: BoxDecoration(
+                                    gradient: LinearGradient(
+                                        colors: [
+                                          Color(0xff00b6f3),
+                                          Color(0xff0184dc)
+                                        ],
+                                        begin: Alignment.topLeft,
+                                        end: Alignment.bottomRight),
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: Transform(
+                                    child: Icon(Icons.send),
+                                    alignment: FractionalOffset.center,
+                                    transform: new Matrix4.identity()
+                                      ..rotateY(45 * 3.1415927 / 180),
+                                  ),
+                                ),
+                              ))
+                          : Container()
                     ],
                   ),
                 )
@@ -289,6 +407,12 @@ class _MessagingState extends State<Messaging> {
         },
       ),
     );
+  }
+
+  setWritingTo(bool val) {
+    setState(() {
+      isWriting = val;
+    });
   }
 }
 

@@ -65,19 +65,20 @@ class _MatchesState extends State<Matches> {
               backgroundColor: backgroundColor,
               centerTitle: true,
               title: Text(
-                "Notifications",
+                "Likes & Matches",
                 style: TextStyle(
                   fontSize: 20.0,
                 ),
               ),
             ),
             body: CustomScrollView(
+               scrollDirection: Axis.vertical,
               slivers: <Widget>[
                 SliverAppBar(
                   pinned: true,
                   backgroundColor: Colors.white,
                   title: Text(
-                    "Matched User",
+                    "Matches",
                     style: TextStyle(color: Colors.grey, fontSize: 20.0),
                   ),
                 ),
@@ -239,7 +240,7 @@ class _MatchesState extends State<Matches> {
                           childCount: user.length,
                         ),
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
+                          crossAxisCount: 4,
                         ),
                       );
                     } else {
@@ -250,10 +251,11 @@ class _MatchesState extends State<Matches> {
                   },
                 ),
                 SliverAppBar(
+
                   backgroundColor: Colors.white,
                   pinned: true,
                   title: Text(
-                    "Someone Likes You",
+                    "Likes",
                     style: TextStyle(color: Colors.grey, fontSize: 20),
                   ),
                 ),
@@ -461,7 +463,7 @@ class _MatchesState extends State<Matches> {
                           childCount: user.length,
                         ),
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2),
+                            crossAxisCount: 4),
                       );
                     } else
                       return SliverToBoxAdapter(

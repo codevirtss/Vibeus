@@ -1,5 +1,3 @@
-
-
 import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:vibeus/models/message.dart';
@@ -59,8 +57,8 @@ class _MessageWidgetState extends State<MessageWidget> {
                                   timeago.format(
                                     _message.timestamp.toDate(),
                                   ),
-                                ),
-                              )
+                                  // _message.text),
+                                ))
                             : Container(),
                         Padding(
                           padding: EdgeInsets.all(size.height * 0.01),
@@ -94,28 +92,19 @@ class _MessageWidgetState extends State<MessageWidget> {
                               padding: EdgeInsets.all(size.height * 0.01),
                               child: Linkify(
                                 onOpen: (link) async {
-                                   await launch(link.url);
+                                  await launch(link.url);
                                   print(link);
                                 },
                                 text: _message.text,
-                                style: TextStyle( color: _message.senderId ==
+                                style: TextStyle(
+                                    color: _message.senderId ==
                                             widget.currentUserId
                                         ? Colors.white
                                         : Colors.white),
                                 linkStyle: TextStyle(
-                                    fontSize: 20,
-                                    color:Colors.yellow),
+                                    fontSize: 20, color: Colors.yellow),
                               ),
                             ),
-                            // child: Text(
-                            //   _message.text,
-                            //   style: TextStyle(
-                            //     // fontSize: 20,
-                            // color: _message.senderId ==
-                            //         widget.currentUserId
-                            //     ? Colors.white
-                            //     : Colors.white),
-                            // ),
                           ),
                         ),
                         _message.senderId == widget.currentUserId
