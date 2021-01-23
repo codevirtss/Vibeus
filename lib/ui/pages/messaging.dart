@@ -258,7 +258,7 @@ class _MessagingState extends State<Messaging> {
                 ),
                 Container(
                   padding: EdgeInsets.all(10),
-                  color: Colors.redAccent,
+                  color: Colors.white,
                   child: Row(
                     children: <Widget>[
                       GestureDetector(
@@ -355,21 +355,20 @@ class _MessagingState extends State<Messaging> {
                                     maxHeight: 680,
                                     maxWidth: 970,
                                     imageQuality: 40);
-                                     if (photo != null) {
-                            _messagingBloc.add(
-                              SendMessageEvent(
-                                message: Message(
-                                    text: null,
-                                    senderName: widget.currentUser.name,
-                                    senderId: widget.currentUser.uid,
-                                    photo: photo,
-                                    selectedUserId: widget.selectedUser.uid),
-                              ),
-                            );
-                          }
-                              }
-                              //  pickImage(source: ImageSource.camera),
-                              ),
+                                if (photo != null) {
+                                  _messagingBloc.add(
+                                    SendMessageEvent(
+                                      message: Message(
+                                          text: null,
+                                          senderName: widget.currentUser.name,
+                                          senderId: widget.currentUser.uid,
+                                          photo: photo,
+                                          selectedUserId:
+                                              widget.selectedUser.uid),
+                                    ),
+                                  );
+                                }
+                              }),
                       isWriting
                           ? GestureDetector(
                               onTap: isValid ? _onFormSubmitted : null,

@@ -133,17 +133,15 @@ class _ProfileFormState extends State<ProfileForm> {
             scrollDirection: Axis.vertical,
             child: Container(
               color: backgroundColor,
+              height: size.height,
               width: size.width,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  SizedBox(
-                    height: 5,
-                  ),
                   Container(
                     width: size.width,
                     child: CircleAvatar(
-                      radius: 60,
+                      radius: 50,
                       backgroundColor: Colors.transparent,
                       child: photo == null
                           ? GestureDetector(
@@ -159,8 +157,7 @@ class _ProfileFormState extends State<ProfileForm> {
                                   });
                                 }
                               },
-                              child: new Image.asset(
-                                  "images/profile.png"),
+                              child: new Image.asset("images/profile.png"),
                             )
                           : GestureDetector(
                               onTap: () async {
@@ -175,21 +172,33 @@ class _ProfileFormState extends State<ProfileForm> {
                                 }
                               },
                               child: CircleAvatar(
-                                radius: 60,
+                                radius: 50,
                                 backgroundImage: FileImage(photo),
                               ),
                             ),
                     ),
                   ),
-                textFieldWidget(_nameController, "Name", size, 1, "enter your name"),
-                  textFieldWidget(_bioController, "Bio", size, 5,"Enter somting about you"),
+                    Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: Text("""
+This image will be used as your profile image"""),
+                  ),
+                  textFieldWidget(
+                      _nameController, "Name*", size, 1, "enter your name"),
+                  textFieldWidget(_bioController, "Bio*", size, 4,
+                      "Enter someting about you"),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text("""
+DOB wont be vissible on the screen"""),
+                  ),
                   GestureDetector(
                     onTap: () {
                       DatePicker.showDatePicker(
                         context,
                         showTitleActions: true,
                         minTime: DateTime(1900, 1, 1),
-                        maxTime: DateTime(DateTime.now().year -19, 12, 31),
+                        maxTime: DateTime(DateTime.now().year - 18, 12, 31),
                         onConfirm: (date) {
                           setState(() {
                             age = date;
@@ -209,14 +218,11 @@ class _ProfileFormState extends State<ProfileForm> {
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
-                          "Enter Birthday",
-                          style: TextStyle(color: Colors.black, fontSize: 20),
+                          "Enter Birthday*",
+                          style: TextStyle(color: Colors.black, fontSize: 18),
                         ),
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 10.0,
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -225,8 +231,8 @@ class _ProfileFormState extends State<ProfileForm> {
                         padding: EdgeInsets.symmetric(
                             horizontal: size.height * 0.02),
                         child: Text(
-                          "You Are",
-                          style: TextStyle(color: Colors.black, fontSize: 20),
+                          "You Are*",
+                          style: TextStyle(color: Colors.black, fontSize: 18),
                         ),
                       ),
                       Row(
@@ -267,7 +273,7 @@ class _ProfileFormState extends State<ProfileForm> {
                         padding: EdgeInsets.symmetric(
                             horizontal: size.height * 0.02),
                         child: Text(
-                          "Looking For",
+                          "Looking For*",
                           style: TextStyle(color: Colors.black, fontSize: 20),
                         ),
                       ),
@@ -343,22 +349,15 @@ class _ProfileFormState extends State<ProfileForm> {
 
 Widget textFieldWidget(controller, text, size, lines, hintText) {
   return Padding(
-    padding: EdgeInsets.all(size.height * 0.02),
+    padding: const EdgeInsets.all(8.0),
     child: TextField(
       controller: controller,
       maxLines: lines,
-      
       decoration: InputDecoration(
         labelText: text,
         hintText: hintText,
         labelStyle:
             TextStyle(color: Colors.black, fontSize: size.height * 0.03),
-        focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.black, width: 1.0),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.black, width: 1.0),
-        ),
       ),
     ),
   );
