@@ -103,20 +103,7 @@ class _TabsState extends State<Tabs> {
         accentColor: Colors.white,
       ),
       child: Scaffold(
-      body: PageView.builder(
-          itemCount: 4,
-            controller: controller,
-            onPageChanged: (page){
-              setState(() {
-                _page= page;
-              });
-            },
-            itemBuilder:(context,position){
-              return Container(
-                color: colors[position],
-                child:Center(child: text[position]),
-              );
-            }),
+      body: pages[_page],
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: _page,
           items: [
