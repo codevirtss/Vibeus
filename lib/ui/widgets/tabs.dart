@@ -1,4 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:line_icons/line_icons.dart';
 import 'package:vibeus/models/user.dart';
 import 'package:vibeus/repositories/userRepository.dart';
 import 'package:vibeus/ui/pages/matches.dart';
@@ -26,6 +28,8 @@ class Tabs extends StatefulWidget {
 }
 
 class _TabsState extends State<Tabs> {
+  var padding = EdgeInsets.symmetric(horizontal: 18,vertical: 5);
+  double gap =10;
   // ignore: unused_field
   String _debugLabelString = "";
   int _page = 0;
@@ -79,7 +83,7 @@ class _TabsState extends State<Tabs> {
     notifiyer();
     super.initState();
   }
-  
+
   PageController controller = PageController();
   @override
   Widget build(BuildContext context) {
@@ -103,68 +107,95 @@ class _TabsState extends State<Tabs> {
         accentColor: Colors.white,
       ),
       child: Scaffold(
-      body: pages[_page],
-        bottomNavigationBar: BottomNavigationBar(
-          currentIndex: _page,
-          items: [
-            BottomNavigationBarItem(
-              backgroundColor: Colors.white,
-              icon: Icon(
-                Icons.explore_outlined,
-                color: Colors.black,
-                size: 30.0,
-              ),
-              // ignore: deprecated_member_use
-              title: Text(
-                "Explore",
-                style: TextStyle(color: Colors.black),
+        body: PageView.builder(
+            itemCount: 4,
+            controller: controller,
+            onPageChanged: (page) {
+              setState(() {
+                _page = page;
+              });
+            },
+            itemBuilder: (context, position) {
+              return Container(
+                child: pages[position],
+              );
+            }),
+        bottomNavigationBar:SafeArea(
+          child: Container(
+            margin: EdgeInsets.symmetric(horizontal: 20,vertical: 5),
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.all(Radius.circular(100)),
+                boxShadow: [
+                  BoxShadow(
+                    spreadRadius: -10,
+                    blurRadius: 60,
+                    color: Colors.black.withOpacity(0.4),
+                    offset: Offset(0,25),
+                  )
+                ]
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 3,vertical: 3),
+              child: GNav(
+                curve: Curves.fastOutSlowIn,
+                duration: Duration(milliseconds: 900),
+                tabs: [
+                  GButton(
+                    gap: gap,
+                    icon: Icons.explore_outlined,
+                    iconColor: Colors.black,
+                    iconActiveColor: Colors.purple,
+                    text: 'Discover',
+                    textColor: Colors.purple,
+                    backgroundColor: Colors.purple.withOpacity(0.2),
+                    iconSize: 24,
+                    padding: padding,
+                  ),
+                  GButton(
+                    gap: gap,
+                    icon: LineIcons.heart_o,
+                    iconColor: Colors.black,
+                    iconActiveColor: Colors.pink,
+                    text: 'Like',
+                    textColor: Colors.pink,
+                    backgroundColor: Colors.pink.withOpacity(0.2),
+                    iconSize: 24,
+                    padding: padding,
+                  ),
+                  GButton(
+                    gap: gap,
+                    icon: Icons.chat_outlined,
+                    iconColor: Colors.black,
+                    iconActiveColor: Colors.grey,
+                    text: 'Chat',
+                    textColor: Colors.grey,
+                    backgroundColor: Colors.grey.withOpacity(0.2),
+                    iconSize: 24,
+                    padding: padding,
+                  ),
+                  GButton(
+                    gap: gap,
+                    icon: LineIcons.user,
+                    iconColor: Colors.black,
+                    iconActiveColor: Colors.teal,
+                    text: 'Home',
+                    textColor: Colors.teal,
+                    backgroundColor: Colors.teal.withOpacity(0.2),
+                    iconSize: 24,
+                    padding: padding,
+                  ),
+                ],
+                selectedIndex: _page,
+                onTabChange: (index){
+                  setState(() {
+                    _page =index;
+                  });
+                  controller.jumpToPage(index);
+                },
               ),
             ),
-            BottomNavigationBarItem(
-              backgroundColor: Colors.white,
-              icon: Icon(
-                Icons.notifications_outlined,
-                color: Colors.black,
-                size: 30.0,
-              ),
-              // ignore: deprecated_member_use
-              title: Text(
-                "Notifications",
-                style: TextStyle(color: Colors.black),
-              ),
-            ),
-            BottomNavigationBarItem(
-              backgroundColor: Colors.white,
-              icon: Icon(
-                Icons.chat_outlined,
-                color: Colors.black,
-                size: 30.0,
-              ),
-              // ignore: deprecated_member_use
-              title: Text(
-                "Chats",
-                style: TextStyle(color: Colors.black),
-              ),
-            ),
-            BottomNavigationBarItem(
-              backgroundColor: Colors.white,
-              icon: Icon(
-                Icons.account_circle_outlined,
-                color: Colors.black,
-                size: 30.0,
-              ),
-              // ignore: deprecated_member_use
-              title: Text(
-                "Profile",
-                style: TextStyle(color: Colors.black),
-              ),
-            ),
-          ],
-          onTap: (context) {
-            setState(() {
-              _page = context;
-            });
-          },
+          ),
         ),
       ),
     );
