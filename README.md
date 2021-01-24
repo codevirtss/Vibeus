@@ -29,6 +29,12 @@ The main motive of vibeus is to help users finding their perfect match without a
   onesignal_flutter: ^2.6.2
   advance_pdf_viewer: ^1.2.1+2
   geolocator: ^5.3.1
+  google_maps_flutter: ^1.1.1
+  google_nav_bar: ^3.0.0
+  line_icons: ^0.2.0
+  # Emojies
+  emoji_picker: ^0.1.0
+  carousel_slider: ^1.3.0
 ```
 ## OneSignal in vibeus
 ```

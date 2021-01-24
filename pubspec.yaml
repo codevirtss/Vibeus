@@ -64,10 +64,7 @@ flutter:
   assets:
       - images/profile.png
       - images/vibeuslogo.jpeg
-      - Pdf/PP.pdf
-      - Pdf/D.pdf
-      - Pdf/TC.pdf
-      - Pdf/CP.pdf
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
