@@ -202,16 +202,29 @@ class _UserProfileState extends State<UserProfile> {
                           fontSize: 18,
                           fontWeight: FontWeight.bold),
                     ),
-                    Linkify(
-                      onOpen: (link) async {
-                        await launch(link.url);
-                        print(link);
-                      },
-                      text: """
+                    Divider(),
+
+                    Container(
+                      alignment: Alignment.center,
+                     width: MediaQuery.of(context).size.width,
+                      child: Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: Linkify(
+                          onOpen: (link) async {
+                            await launch(link.url);
+                            print(link);
+                          },
+                          text: """
 ${data['bio']}""",
-                      style: TextStyle(
-                          color: Colors.black, fontWeight: FontWeight.bold),
-                      linkStyle: TextStyle(fontSize: 18, color: Colors.blue),
+                          style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold),
+                      linkStyle: TextStyle(
+                          fontSize: 18,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w500),
+                        ),
+                      ),
                     ),
 
                     Divider(),
@@ -243,10 +256,13 @@ ${data['bio']}""",
             return Padding(
               padding: const EdgeInsets.all(8.0),
               child: Center(
-                  child: Text(
+                  child: Padding(
+                    padding: const EdgeInsets.all(30.0),
+                    child: Text(
                 "No Vibe Yet",
-                style: TextStyle(color: Colors.black),
-              )),
+                style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+              ),
+                  )),
             );
           } else {
             return GridView.builder(
@@ -356,23 +372,34 @@ ${data['bio']}""",
                               "${data['name']},",
                               style: TextStyle(
                                   color: Colors.black,
-                                  fontSize: 24,
+                                  fontSize: 20,
                                   fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),
                       ),
-                      Linkify(
-                        onOpen: (link) async {
-                          await launch(link.url);
-                          print(link);
-                        },
-                        text: """
+                    Container(
+                      alignment: Alignment.centerLeft,
+                     width: MediaQuery.of(context).size.width,
+                      child: Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: Linkify(
+                          onOpen: (link) async {
+                            await launch(link.url);
+                            print(link);
+                          },
+                          text: """
 ${data['bio']}""",
-                        style: TextStyle(
-                            color: Colors.black, fontWeight: FontWeight.bold),
-                        linkStyle: TextStyle(fontSize: 15, color: Colors.blue),
+                          style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold),
+                      linkStyle: TextStyle(
+                          fontSize: 18,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w500),
+                        ),
                       ),
+                    ),
                       Divider(),
                       displayProfilePost(),
                     ],

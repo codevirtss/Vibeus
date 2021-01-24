@@ -130,7 +130,7 @@ class _SearchState extends State<Search> {
                 photo: _user.photo,
                 clipRadius: size.height * 0.02,
                 containerHeight: size.height * 0.3,
-                containerWidth: size.width * 0.9,
+                containerWidth: size.width * 0.95,
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
                   child: Column(
@@ -140,16 +140,7 @@ class _SearchState extends State<Search> {
                         height: size.height * 0.03,
                       ),
                       Row(
-                        // mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
-                          // IconButton(
-                          //   icon: Icon(
-                          //     Icons.verified,
-                          //     color: Colors.blue,
-                          //   ),
-                          //   onPressed: null,
-                          //   tooltip: "Vrified User",
-                          // ),
                           userGender(_user.gender),
                           Expanded(
                             child: Text(
@@ -285,8 +276,8 @@ class CustomDialogBox extends StatefulWidget {
 class _CustomDialogBoxState extends State<CustomDialogBox> {
   @override
   Widget build(BuildContext context) {
-        // ignore: unused_local_variable
-        Size size = MediaQuery.of(context).size;
+    // ignore: unused_local_variable
+    Size size = MediaQuery.of(context).size;
     return Dialog(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(Constants.padding),
@@ -298,7 +289,7 @@ class _CustomDialogBoxState extends State<CustomDialogBox> {
   }
 
   contentBox(context) {
-        Size size = MediaQuery.of(context).size;
+    Size size = MediaQuery.of(context).size;
     return Stack(
       children: <Widget>[
         Container(
@@ -357,8 +348,8 @@ class _CustomDialogBoxState extends State<CustomDialogBox> {
             child: ClipRRect(
                 borderRadius:
                     BorderRadius.all(Radius.circular(Constants.avatarRadius)),
-                child:iconWidget(EvaIcons.flash, () {},
-                                    size.height * 0.08, Colors.yellow)),
+                child: iconWidget(
+                    EvaIcons.flash, () {}, size.height * 0.08, Colors.yellow)),
           ),
         ),
       ],

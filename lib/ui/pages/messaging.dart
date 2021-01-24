@@ -334,21 +334,16 @@ class _MessagingState extends State<Messaging> {
                                   hideEmojiContainer();
                                 }
                               },
-                              icon: Icon(Icons.face),
+                              icon: Icon(Icons.face, size: 30,),
                             ),
                           ],
                         ),
                       ),
-                      isWriting
-                          ? Container()
-                          : Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 10),
-                              child: Icon(Icons.record_voice_over),
-                            ),
+                    
                       isWriting
                           ? Container()
                           : GestureDetector(
-                              child: Icon(Icons.camera_alt),
+                              child: Icon(Icons.camera_alt, size: 30,),
                               onTap: () async {
                                 File photo = await ImagePicker.pickImage(
                                     source: ImageSource.camera,

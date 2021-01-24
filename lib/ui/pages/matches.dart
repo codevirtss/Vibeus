@@ -72,7 +72,7 @@ class _MatchesState extends State<Matches> {
               ),
             ),
             body: CustomScrollView(
-               scrollDirection: Axis.vertical,
+              scrollDirection: Axis.vertical,
               slivers: <Widget>[
                 SliverAppBar(
                   pinned: true,
@@ -109,20 +109,19 @@ class _MatchesState extends State<Matches> {
                                     backgroundColor: Colors.transparent,
                                     child: profileWidget(
                                       photo: selectedUser.photo,
-                                      photoHeight: size.height,
+                                      photoHeight: size.height * 0.81,
                                       padding: size.height * 0.01,
-                                      photoWidth: size.width,
+                                      photoWidth: size.width * 0.95,
                                       clipRadius: size.height * 0.01,
-                                      containerWidth: size.width,
-                                      containerHeight: size.height * 0.2,
+                                      containerHeight: size.height * 0.3,
+                                      containerWidth: size.width * 0.95,
                                       child: Padding(
                                         padding: EdgeInsets.symmetric(
                                             horizontal: size.height * 0.02),
-                                        child: ListView(
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
                                           children: <Widget>[
-                                            SizedBox(
-                                              height: size.height * 0.02,
-                                            ),
                                             Row(
                                               children: <Widget>[
                                                 userGender(selectedUser.gender),
@@ -138,8 +137,7 @@ class _MatchesState extends State<Matches> {
                                                             .toString(),
                                                     style: TextStyle(
                                                         color: Colors.white,
-                                                        fontSize:
-                                                            size.height * 0.05),
+                                                        fontSize: 30),
                                                   ),
                                                 )
                                               ],
@@ -163,9 +161,7 @@ class _MatchesState extends State<Matches> {
                                                 )
                                               ],
                                             ),
-                                            SizedBox(
-                                              height: size.height * 0.01,
-                                            ),
+                                           
                                             Row(
                                               mainAxisAlignment:
                                                   MainAxisAlignment.center,
@@ -251,8 +247,7 @@ class _MatchesState extends State<Matches> {
                   },
                 ),
                 SliverAppBar(
-
-                  backgroundColor: Colors.white,
+                  
                   pinned: true,
                   title: Text(
                     "Likes",
@@ -264,7 +259,9 @@ class _MatchesState extends State<Matches> {
                   builder: (context, snapshot) {
                     if (!snapshot.hasData) {
                       return SliverToBoxAdapter(
-                        child: Container(),
+                        child: Container(
+                          color: backgroundColor,
+                        ),
                       );
                     }
                     if (snapshot.data.documents != null) {
@@ -417,7 +414,9 @@ class _MatchesState extends State<Matches> {
                                                         }, size.height * 0.04,
                                                             Colors.red),
                                                       ),
-                                                      SizedBox(width: 6,),
+                                                      SizedBox(
+                                                        width: 6,
+                                                      ),
                                                       iconWidget(
                                                           Icons
                                                               .account_circle_outlined,
@@ -428,8 +427,10 @@ class _MatchesState extends State<Matches> {
                                                                 builder:
                                                                     (context) =>
                                                                         UserProfile(
-                                                                          userId: selectedUser.uid,
-                                                                          userRepository: widget.userRepository,
+                                                                          userId:
+                                                                              selectedUser.uid,
+                                                                          userRepository:
+                                                                              widget.userRepository,
                                                                         )));
                                                       }, size.height * 0.06,
                                                           Colors.white)

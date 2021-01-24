@@ -102,7 +102,7 @@ class _MessageWidgetState extends State<MessageWidget> {
                                         ? Colors.white
                                         : Colors.white),
                                 linkStyle: TextStyle(
-                                    fontSize: 20, color: Colors.yellow),
+                                    fontSize: 20, color: Colors.white),
                               ),
                             ),
                           ),

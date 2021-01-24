@@ -26,11 +26,6 @@ class _EditProileState extends State<EditProile> {
   // ignore: unused_field
   final TextEditingController _biocontroller = TextEditingController();
 
-  // ignore: unused_field
-  final TextEditingController _igusernamecontroller = TextEditingController();
-
-  // ignore: unused_field
-  bool _bioValid = true;
   File photo;
 
   CollectionReference users = Firestore.instance.collection('users');
@@ -57,8 +52,6 @@ class _EditProileState extends State<EditProile> {
 
   @override
   Widget build(BuildContext context) {
-    // ignore: unused_local_variable
-    Size size = MediaQuery.of(context).size;
     CollectionReference users = Firestore.instance.collection('users');
 
     return FutureBuilder<DocumentSnapshot>(
@@ -109,30 +102,23 @@ class _EditProileState extends State<EditProile> {
                         backgroundImage: photo == null
                             ? NetworkImage("${data['photoUrl']}")
                             : FileImage(photo)),
-                    Positioned(
-                      bottom: 20.0,
-                      right: 20.0,
-                      child: InkWell(
-                          onTap: () {
-                            showModalBottomSheet(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.vertical(
-                                      top: Radius.circular(10.0)),
-                                ),
-                                context: context,
-                                builder: ((builder) => socialbottomSheet()));
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              'Update Profile image',
-                              style: TextStyle(
-                                fontSize: 18,
-                                //  fontWeight: FontWeight.bold,
-                                color: Colors.black,
-                              ),
+                    GestureDetector(
+                      onTap: () {
+                        showModalBottomSheet(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.vertical(
+                                  top: Radius.circular(10.0)),
                             ),
-                          )),
+                            context: context,
+                            builder: ((builder) => socialbottomSheet()));
+                      },
+                      child: Text(
+                        "Change profile image",
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.blue,
+                        ),
+                      ),
                     ),
                     SizedBox(
                       height: 10,
@@ -251,7 +237,7 @@ class _EditProileState extends State<EditProile> {
       child: Column(
         children: <Widget>[
           Text(
-            'Chose profile photo',
+            'Chose profile image',
             style: TextStyle(
               fontSize: 20.0,
             ),
@@ -285,8 +271,7 @@ class _EditProileState extends State<EditProile> {
         source: ImageSource.camera,
         maxHeight: 680,
         maxWidth: 970,
-        imageQuality: 40
-        );
+        imageQuality: 40);
     setState(() {
       this.photo = imageFile;
     });
@@ -327,107 +312,106 @@ class _UpdateNameState extends State<UpdateName> {
   Widget build(BuildContext context) {
     CollectionReference users = Firestore.instance.collection('users');
     return FutureBuilder(
-        future: users.document(widget.userId).get(),
-        builder:
-            (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
-          if (snapshot.hasError) {
-            return  Center(
-                child: CircularProgressIndicator(
-                  backgroundColor: Colors.black,
-                ),
-  
-            );
-          }
-          if (snapshot.connectionState == ConnectionState.done) {
-            // ignore: unused_local_variable
-            Map<String, dynamic> data = snapshot.data.data;
+      future: users.document(widget.userId).get(),
+      builder:
+          (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+        if (snapshot.hasError) {
+          return Center(
+            child: CircularProgressIndicator(
+              backgroundColor: Colors.black,
+            ),
+          );
+        }
+        if (snapshot.connectionState == ConnectionState.done) {
+          // ignore: unused_local_variable
+          Map<String, dynamic> data = snapshot.data.data;
 
-            return Scaffold(
-              appBar: AppBar(
-                elevation: 0,
-                backgroundColor: backgroundColor,
-                iconTheme: IconThemeData(color: Colors.black),
-                title: Text(
-                  "Update Name",
-                  style: TextStyle(color: Colors.black),
-                ),
-                centerTitle: true,
+          return Scaffold(
+            appBar: AppBar(
+              elevation: 0,
+              backgroundColor: backgroundColor,
+              iconTheme: IconThemeData(color: Colors.black),
+              title: Text(
+                "Update Name",
+                style: TextStyle(color: Colors.black),
               ),
-              body: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Form(
-                    key: _formKey,
-                    child: TextFormField(
-                      controller: _namecontrolle,
-                      //   initialValue: "${data['name']}",
-                      validator: (val) =>
-                          val.isEmpty ? 'Please Enter name' : null,
-                      autocorrect: false,
-                    ),
+              centerTitle: true,
+            ),
+            body: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Form(
+                  key: _formKey,
+                  child: TextFormField(
+                  
+                    controller: _namecontrolle,
+                    
+                    //   initialValue: "${data['name']}",
+                    validator: (val) =>
+                        val.isEmpty ? 'Please Enter name' : null,
+                    autocorrect: false,
                   ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text("""
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text("""
 Help people discover your account by using the name that
 you're known by: either your full name or nickname.
               """),
-                  ),
-                  RaisedButton(
-                    color: Colors.red,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15.0),
-                        side: BorderSide(color: Colors.red)),
-                    onPressed: () async {
-                      if (_formKey.currentState.validate()) {
-                        await users
-                            .document(widget.userId)
-                            .updateData(({
-                              'name': _namecontrolle.text,
-                            }))
-                            .then((value) => print("User Updated"))
-                            .catchError((e) {
-                          print(e.toString());
-                        });
-                        Navigator.pop(context);
-                      } else {
-                        return Scaffold(
-                          body: Center(
-                            child: CircularProgressIndicator(
-                              backgroundColor: Colors.black,
-                            ),
+                ),
+                RaisedButton(
+                  color: Colors.red,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                      side: BorderSide(color: Colors.red)),
+                  onPressed: () async {
+                    if (_formKey.currentState.validate()) {
+                      await users
+                          .document(widget.userId)
+                          .updateData(({
+                            'name': _namecontrolle.text,
+                          }))
+                          .then((value) => print("User Updated"))
+                          .catchError((e) {
+                        print(e.toString());
+                      });
+                      Navigator.pop(context);
+                    } else {
+                      return Scaffold(
+                        body: Center(
+                          child: CircularProgressIndicator(
+                            backgroundColor: Colors.black,
                           ),
-                        );
-                      }
-                    },
+                        ),
+                      );
+                    }
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          "Submit",
-                          style: TextStyle(
-                            color: Colors.white,
-                          ),
+                      child: Text(
+                        "Submit",
+                        style: TextStyle(
+                          color: Colors.white,
                         ),
                       ),
                     ),
-                  )
-                ],
-              ),
-            );
-          }
-          return  Center(
-              child: CircularProgressIndicator(
-                backgroundColor: Colors.black,
-              ),
-        
+                  ),
+                )
+              ],
+            ),
           );
-        },
-
+        }
+        return Center(
+          child: CircularProgressIndicator(
+            backgroundColor: Colors.black,
+          ),
+        );
+      },
     );
   }
 
@@ -502,7 +486,9 @@ class _UpdateBioState extends State<UpdateBio> {
                     maxLines: 5,
                     controller: _biocontroller,
                     //   initialValue: "${data['name']}",
-                    validator: (val) => val.isEmpty ? 'Please Enter Bio' : null,
+                    validator: (val) => val.isEmpty || val.length > 100
+                        ? 'Bio invalid or to long'
+                        : null,
                     autocorrect: false,
                   ),
                 ),
@@ -512,7 +498,7 @@ class _UpdateBioState extends State<UpdateBio> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text("""
-Help people to know about you by useing Vibeus Bio Feature.
+Help people to know about you by using Vibeus Bio Feature.
 Write about you likes and dislikes
 Your Hobbies  and many more
               """),
