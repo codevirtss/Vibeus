@@ -3,7 +3,7 @@ Vibeus is a free dating app developed to connect our users all around the world 
 The main motive of vibeus is to help users finding their perfect match without any subscription.
 
 
-## Plugins used Connect Vibeus.
+## Plugins used for connect our user on Vibeus.
 ```Pluguns Used in Vibeus
   
   #For iOS
