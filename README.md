@@ -5,33 +5,85 @@ The main motive of vibeus is to help users finding their perfect match without a
 
 ## Plugins used Connect Vibeus.
 ```Pluguns Used in Vibeus
+  
+  #For iOS
   cupertino_icons: ^1.0.0
+  ## Firebase Storage
   firebase_storage: ^3.1.5
+  
+  #Firebase Core
   firebase_core: ^0.4.4+3
+  
+  # Firebase Auth
   firebase_auth: ^0.16.0
+  
+  # Cloud FireStore
   cloud_firestore: ^0.13.5
+  
+  #Flutter bloc method is used in Vbeus
   flutter_bloc: ^3.2.0
+  
+  #Meta package
   meta: ^1.1.8
+  
+  #Equatable packages
   equatable: ^1.1.1
+  
+  #rcdart package
   rxdart: ^0.23.0
+  
+  #File picker used to pick file type image in profile setup screen
   file_picker: ^1.9.0
+  
+  #Font awwesome flutter package
   font_awesome_flutter: ^8.8.1
+  
+  #eva icons flutter
   eva_icons_flutter: ^2.0.0
+  
+  #ectende image
   extended_image: ^1.5.0
+  
+  #time ago package
   timeago: 
+  
+  # UUID id used in image upload page to generate unique posId on our database
   uuid: ^2.0.4
+  
+  #image picker is used to pick images from gallery and camera
   image_picker: ^0.6.7+17
+  
+  #transparent image is used in discover screen
   transparent_image: ^1.0.0
+  
+  #flytter date time picker is used in profile setup screen
   flutter_datetime_picker: ^1.4.0
+  
+  #Material design icon
   material_design_icons_flutter:
+  
+  #Likify is used in bio and chats
   flutter_linkify: ^4.0.2
+  
+  #this also used in bio and chat
   url_launcher: ^5.7.10
+  
+  #onesignal is used for showing notifications
   onesignal_flutter: ^2.6.2
+  
+  #Not used yet
   advance_pdf_viewer: ^1.2.1+2
+  
+  #For geting location 
   geolocator: ^5.3.1
+  
+  #not yet used
   google_maps_flutter: ^1.1.1
+  
+  #Bottoom navgation bar
   google_nav_bar: ^3.0.0
   line_icons: ^0.2.0
+  
   # Emojies
   emoji_picker: ^0.1.0
   carousel_slider: ^1.3.0
