@@ -56,7 +56,7 @@ The main motive of vibeus is to help users finding their perfect match without a
   #transparent image is used in discover screen
   transparent_image: ^1.0.0
   
-  #flytter date time picker is used in profile setup screen
+  #flutter date time picker is used in profile setup screen
   flutter_datetime_picker: ^1.4.0
   
   #Material design icon
