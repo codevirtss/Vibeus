@@ -158,5 +158,7 @@ For help getting started with Flutter, view flutter ducmention
 samples, guidance on mobile development, and a full API reference.
 
 ## [Vibeus Privacy Policy](https://github.com/vibeus-con/vibeusprivacy/blob/main/Privacy.md)
+## [Vibeus Community Guildelines](https://github.com/vibeus-con/vibeus-con/blob/main/CommunityGuidelines.md)
+## [Vibeus Safety tips](https://github.com/vibeus-con/vibeus-con/blob/main/SafetyTips.md)
 
 
