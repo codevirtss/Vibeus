@@ -11,13 +11,13 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
 
   SignUpBloc({@required UserRepository userRepository})
       : assert(userRepository != null),
-        _userRepository = userRepository;
+        _userRepository = userRepository, super(SignUpState.empty());
 
   @override
   SignUpState get initialState => SignUpState.empty();
 
   @override
-  Stream<SignUpState> transformEvents(
+  Stream<SignUpState> transfrmEvents(
     Stream<SignUpEvent> events,
     Stream<SignUpState> Function(SignUpEvent event) next,
   ) {
@@ -29,10 +29,10 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
       return (event is EmailChanged || event is PasswordChanged);
     }).debounceTime(Duration(milliseconds: 300));
 
-    return super.transformEvents(
-      nonDebounceStream.mergeWith([debounceStream]),
-      next,
-    );
+    // return super.transformEvents(
+    //   nonDebounceStream.mergeWith([debounceStream]),
+    //   next,
+    // );
   }
 
   @override

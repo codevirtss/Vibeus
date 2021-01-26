@@ -10,7 +10,7 @@ class MatchesBloc extends Bloc<MatchesEvent, MatchesState> {
 
   MatchesBloc({@required MatchesRepository matchesRepository})
       : assert(matchesRepository != null),
-        _matchesRepository = matchesRepository;
+        _matchesRepository = matchesRepository, super(LoadingState());
 
   @override
   MatchesState get initialState => LoadingState();

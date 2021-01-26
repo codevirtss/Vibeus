@@ -198,7 +198,7 @@ DOB wont be vissible on the screen"""),
                         context,
                         showTitleActions: true,
                         minTime: DateTime(1900, 1, 1),
-                        maxTime: DateTime(DateTime.now().year - 18, 12, 31),
+                        maxTime: DateTime(DateTime.now().year - 19, 12, 31),
                         onConfirm: (date) {
                           setState(() {
                             age = date;

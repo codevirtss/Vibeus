@@ -11,7 +11,7 @@ class MessagingBloc extends Bloc<MessagingEvent, MessagingState> {
 
   MessagingBloc({@required MessagingRepository messagingRepository})
       : assert(messagingRepository != null),
-        _messagingRepository = messagingRepository;
+        _messagingRepository = messagingRepository, super(MessagingInitialState());
 
   @override
   MessagingState get initialState => MessagingInitialState();

@@ -177,7 +177,7 @@ class _MessagingState extends State<Messaging> {
         ],
       ),
       body: BlocBuilder<MessagingBloc, MessagingState>(
-        bloc: _messagingBloc,
+        cubit: _messagingBloc,
         builder: (BuildContext context, MessagingState state) {
           if (state is MessagingInitialState) {
             _messagingBloc.add(

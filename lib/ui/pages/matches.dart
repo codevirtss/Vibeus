@@ -52,7 +52,7 @@ class _MatchesState extends State<Matches> {
     Size size = MediaQuery.of(context).size;
 
     return BlocBuilder<MatchesBloc, MatchesState>(
-      bloc: _matchesBloc,
+      cubit : _matchesBloc,
       builder: (BuildContext context, MatchesState state) {
         if (state is LoadingState) {
           _matchesBloc.add(LoadListsEvent(userId: widget.userId));

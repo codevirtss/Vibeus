@@ -10,7 +10,7 @@ class MessageBloc extends Bloc<MessageEvent, MessageState> {
 
   MessageBloc({@required MessageRepository messageRepository})
       : assert(messageRepository != null),
-        _messageRepository = messageRepository;
+        _messageRepository = messageRepository, super(MessageInitialState());
 
   @override
   MessageState get initialState => MessageInitialState();

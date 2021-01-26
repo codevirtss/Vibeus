@@ -56,7 +56,7 @@ class _SearchState extends State<Search> {
     Size size = MediaQuery.of(context).size;
 
     return BlocBuilder<SearchBloc, SearchState>(
-      bloc: _searchBloc,
+      cubit : _searchBloc,
       builder: (context, state) {
         if (state is InitialSearchState) {
           _searchBloc.add(
