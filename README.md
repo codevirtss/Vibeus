@@ -21,7 +21,7 @@ The main motive of vibeus is to help users finding their perfect match without a
   cloud_firestore: ^0.13.5
   
   #Flutter bloc method is used in Vbeus
-  flutter_bloc: ^3.2.0
+  flutter_bloc: ^6.1.1
   
   #Meta package
   meta: ^1.1.8
