@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_linkify/flutter_linkify.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:vibeus/models/user.dart';
 import 'package:vibeus/repositories/userRepository.dart';
@@ -206,7 +207,7 @@ class _UserProfileState extends State<UserProfile> {
 
                     Container(
                       alignment: Alignment.center,
-                     width: MediaQuery.of(context).size.width,
+                      width: MediaQuery.of(context).size.width,
                       child: Padding(
                         padding: const EdgeInsets.all(4.0),
                         child: Linkify(
@@ -217,12 +218,11 @@ class _UserProfileState extends State<UserProfile> {
                           text: """
 ${data['bio']}""",
                           style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold),
-                      linkStyle: TextStyle(
-                          fontSize: 18,
-                          color: Colors.black,
-                          fontWeight: FontWeight.w500),
+                              color: Colors.black, fontWeight: FontWeight.bold),
+                          linkStyle: TextStyle(
+                              fontSize: 18,
+                              color: Colors.black,
+                              fontWeight: FontWeight.w500),
                         ),
                       ),
                     ),
@@ -238,6 +238,84 @@ ${data['bio']}""",
               child: CircularProgressIndicator(
             backgroundColor: Colors.black,
           ));
+        });
+  }
+
+  Widget profilePostView() {
+    return StreamBuilder<QuerySnapshot>(
+        stream: Firestore.instance
+            .collection('UsersPosts')
+            .document(widget.userId)
+            .collection('UsersPosts')
+            .where("postuserId", isEqualTo: widget.userId)
+            .snapshots(),
+        builder: (BuildContext context, snapshot) {
+          if (snapshot.data == null ||
+              snapshot.data.documents.length == 0 ||
+              snapshot == null) {
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Center(
+                  child: Padding(
+                padding: const EdgeInsets.all(30.0),
+                child: Column(
+                  children: [
+                    Container(
+                      height: 120,
+                      width: 120,
+                      child: Icon(
+                        MdiIcons.cameraOutline,
+                        color: Colors.black,
+                        size: 60,
+                      ),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(100),
+                          border: Border.all(color: Colors.black)),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      "No Vibe Yet",
+                      style: TextStyle(
+                          fontSize: 30,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w500),
+                    ),
+                  ],
+                ),
+              )),
+            );
+          } else {
+            return GridView.builder(
+                shrinkWrap: true,
+                itemCount: snapshot.data.documents.length,
+                scrollDirection: Axis.vertical,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                ),
+                itemBuilder: (contesxt, index) {
+                  return GestureDetector(
+                    onTap: () {
+                      print("view image");
+                    },
+                    child: Card(
+                      elevation: 1,
+                      child: Container(
+                        height: 200,
+                        width: 100,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: NetworkImage(
+                                "${snapshot.data.documents[index]['url']}"),
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                });
+          }
         });
   }
 
@@ -257,12 +335,34 @@ ${data['bio']}""",
               padding: const EdgeInsets.all(8.0),
               child: Center(
                   child: Padding(
-                    padding: const EdgeInsets.all(30.0),
-                    child: Text(
-                "No Vibe Yet",
-                style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-              ),
-                  )),
+                padding: const EdgeInsets.all(30.0),
+                child: Column(
+                  children: [
+                    Container(
+                      height: 120,
+                      width: 120,
+                      child: Icon(
+                        MdiIcons.cameraOutline,
+                        color: Colors.black,
+                        size: 60,
+                      ),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(100),
+                          border: Border.all(color: Colors.black)),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      "No Vibe Yet",
+                      style: TextStyle(
+                          fontSize: 30,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w500),
+                    ),
+                  ],
+                ),
+              )),
             );
           } else {
             return GridView.builder(
@@ -273,16 +373,19 @@ ${data['bio']}""",
                   crossAxisCount: 3,
                 ),
                 itemBuilder: (contesxt, index) {
-                  return Card(
-                    elevation: 1,
-                    child: Container(
-                      height: 200,
-                      width: 100,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: NetworkImage(
-                              "${snapshot.data.documents[index]['url']}"),
+                  return GestureDetector(
+                    onTap: profilePostView,
+                    child: Card(
+                      elevation: 1,
+                      child: Container(
+                        height: 200,
+                        width: 100,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: NetworkImage(
+                                "${snapshot.data.documents[index]['url']}"),
+                          ),
                         ),
                       ),
                     ),
@@ -378,28 +481,28 @@ ${data['bio']}""",
                           ],
                         ),
                       ),
-                    Container(
-                      alignment: Alignment.centerLeft,
-                     width: MediaQuery.of(context).size.width,
-                      child: Padding(
-                        padding: const EdgeInsets.all(4.0),
-                        child: Linkify(
-                          onOpen: (link) async {
-                            await launch(link.url);
-                            print(link);
-                          },
-                          text: """
+                      Container(
+                        alignment: Alignment.centerLeft,
+                        width: MediaQuery.of(context).size.width,
+                        child: Padding(
+                          padding: const EdgeInsets.all(4.0),
+                          child: Linkify(
+                            onOpen: (link) async {
+                              await launch(link.url);
+                              print(link);
+                            },
+                            text: """
 ${data['bio']}""",
-                          style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold),
-                      linkStyle: TextStyle(
-                          fontSize: 18,
-                          color: Colors.black,
-                          fontWeight: FontWeight.w500),
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold),
+                            linkStyle: TextStyle(
+                                fontSize: 18,
+                                color: Colors.black,
+                                fontWeight: FontWeight.w500),
+                          ),
                         ),
                       ),
-                    ),
                       Divider(),
                       displayProfilePost(),
                     ],
