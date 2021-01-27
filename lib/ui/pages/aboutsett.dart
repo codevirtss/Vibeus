@@ -38,7 +38,7 @@ class _AboutState extends State<About> {
                         fontSize: 20),
                   ),
                  
-                  trailing: Text("Vibeus App v1.0.1")
+                  trailing: Text("Vibeus App v1.0.2")
                 ),
               ),
                 Padding(
@@ -52,7 +52,7 @@ class _AboutState extends State<About> {
                         fontSize: 20),
                   ),
                  
-                  trailing: Text("2")
+                  trailing: Text("3")
                 ),
               ),
              

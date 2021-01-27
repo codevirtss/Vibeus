@@ -9,6 +9,7 @@ import 'package:vibeus/models/user.dart';
 import 'package:vibeus/repositories/userRepository.dart';
 import 'package:vibeus/ui/constants.dart';
 import 'package:vibeus/ui/pages/EditProfile.dart';
+import 'package:vibeus/ui/pages/Verification.dart';
 import 'package:vibeus/ui/pages/addposts.dart';
 import 'package:vibeus/ui/pages/settings.dart';
 import 'package:vibeus/ui/widgets/postwidget.dart';
@@ -36,6 +37,8 @@ class _UserProfileState extends State<UserProfile> {
   List postList = [];
 
   bool loading = false;
+
+  bool userverified = false;
 
   createprofile() {
     bool ownProfile = currentUserUid == widget.userId;
@@ -196,14 +199,41 @@ class _UserProfileState extends State<UserProfile> {
                       ),
                     ),
                     // Divider(),
-                    Text(
-                      " ${data['name']}",
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          " ${data['name']}",
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        userverified
+                            ? IconButton(
+                                onPressed: null,
+                                tooltip:
+                                    "${data['name']} you are a verified user",
+                                icon: Icon(
+                                  Icons.verified,
+                                  color: Colors.blue,
+                                ))
+                            : IconButton(
+                                tooltip:
+                                    "${data['name']} you are not a verified user",
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              Verification()));
+                                },
+                                icon: Icon(
+                                  Icons.info_outline,
+                                  color: Colors.grey,
+                                )),
+                      ],
                     ),
-                    Divider(),
 
                     Container(
                       alignment: Alignment.center,
@@ -478,6 +508,19 @@ ${data['bio']}""",
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold),
                             ),
+                            userverified
+                                ? IconButton(
+                                    onPressed: null,
+                                    tooltip: "${data['name']} is verified user",
+                                    icon: Icon(
+                                      Icons.verified,
+                                      color: Colors.blue,
+                                    ))
+                                : IconButton(
+                                    tooltip:
+                                        "${data['name']} is not verified user",
+                                    onPressed: null,
+                                    icon: Icon(Icons.info_outline)),
                           ],
                         ),
                       ),

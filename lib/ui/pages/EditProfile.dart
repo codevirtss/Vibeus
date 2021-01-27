@@ -7,6 +7,7 @@ import 'package:image_picker/image_picker.dart';
 
 import 'package:vibeus/repositories/userRepository.dart';
 import 'package:vibeus/ui/constants.dart';
+import 'package:vibeus/ui/pages/vibeusques.dart';
 import 'package:vibeus/ui/widgets/gender.dart';
 
 class EditProile extends StatefulWidget {
@@ -61,7 +62,7 @@ class _EditProileState extends State<EditProile> {
           if (snapshot.hasError) {
             return Center(
               child: CircularProgressIndicator(
-                backgroundColor: Colors.black,
+                backgroundColor: Colors.blue,
               ),
             );
           }
@@ -82,7 +83,7 @@ class _EditProileState extends State<EditProile> {
                   IconButton(
                       icon: Icon(
                         Icons.done,
-                        size: 25,
+                        size: 30,
                         color: Colors.blue,
                       ),
                       onPressed: () async {
@@ -182,6 +183,30 @@ class _EditProileState extends State<EditProile> {
                       },
                       title: Text(
                         "Update Prefrences",
+                        style: TextStyle(
+                            color: Colors.grey,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20),
+                      ),
+                      trailing: Icon(
+                        Icons.arrow_forward_ios,
+                        color: Colors.grey,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    ListTile(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => VibeusQues(
+                                      userId: widget.userId,
+                                    )));
+                      },
+                      title: Text(
+                        "Vibeus questionnaire",
                         style: TextStyle(
                             color: Colors.grey,
                             fontWeight: FontWeight.bold,
@@ -297,8 +322,7 @@ class UpdateName extends StatefulWidget {
   final String documentId;
   final String userId;
 
-  UpdateName({Key key, this.documentId, this.userId, this.userRepository})
-      : super(key: key);
+  UpdateName({this.documentId, this.userId, this.userRepository});
 
   @override
   _UpdateNameState createState() => _UpdateNameState();
@@ -323,7 +347,6 @@ class _UpdateNameState extends State<UpdateName> {
           );
         }
         if (snapshot.connectionState == ConnectionState.done) {
-          // ignore: unused_local_variable
           Map<String, dynamic> data = snapshot.data.data;
 
           return Scaffold(
@@ -343,10 +366,8 @@ class _UpdateNameState extends State<UpdateName> {
                 Form(
                   key: _formKey,
                   child: TextFormField(
-                  
                     controller: _namecontrolle,
-                    
-                    //   initialValue: "${data['name']}",
+                   // initialValue: "${data['name']}",
                     validator: (val) =>
                         val.isEmpty ? 'Please Enter name' : null,
                     autocorrect: false,

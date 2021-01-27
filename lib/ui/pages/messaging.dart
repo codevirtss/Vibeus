@@ -16,6 +16,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_switch/flutter_switch.dart';
 
 // ignore: must_be_immutable
 class Messaging extends StatefulWidget {
@@ -37,6 +38,7 @@ class _MessagingState extends State<Messaging> {
   bool isValid = false;
   bool showEmojiPicker = false;
   bool isWriting = false;
+  bool isToggled = false;
 
   @override
   void initState() {
@@ -125,56 +127,81 @@ class _MessagingState extends State<Messaging> {
 
     return Scaffold(
       appBar: AppBar(
-        iconTheme: IconThemeData(color: Colors.black),
+        //   iconTheme: IconThemeData(color: Colors.black),
         backgroundColor: backgroundColor,
         elevation: 0,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            ClipOval(
-              child: Container(
-                height: size.height * 0.06,
-                width: size.height * 0.06,
-                child: PhotoWidget(
-                  photoLink: widget.selectedUser.photo,
+
+        // actions: [
+        //   IconButton(
+        //     icon: Icon(
+        //       Icons.location_pin,
+        //       color: Colors.black,
+        //       size: 30,
+        //     ),
+        //     onPressed: () {
+        //       Navigator.push(context,
+        //           MaterialPageRoute(builder: (context) => VibeusDate()));
+        //     },
+        //   )
+        // ],
+        bottom: PreferredSize(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Column(
+                  children: [
+                    Icon(Icons.video_call),
+                    FlutterSwitch(
+                      height: 20.0,
+                      width: 40.0,
+                      padding: 4.0,
+                      toggleSize: 15.0,
+                      borderRadius: 10.0,
+                      activeColor: Colors.red,
+                      value: isToggled,
+                      onToggle: (value) {
+                        setState(() {
+                          isToggled = value;
+
+                        });
+                        // Firestore.instance.collection()
+                      },
+                    ),
+                  ],
                 ),
-              ),
-            ),
-            SizedBox(
-              width: size.width * 0.03,
-            ),
-            Expanded(
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => UserProfile(
-                                userId: widget.selectedUser.uid,
-                                userRepository: widget.userRepository,
-                              )));
-                },
-                child: Text(
-                  widget.selectedUser.name,
-                  style: TextStyle(color: Colors.black),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => UserProfile(
+                                      userId: widget.selectedUser.uid,
+                                      userRepository: widget.userRepository,
+                                    )));
+                      },
+                      child: CircleAvatar(
+                        radius: 20,
+                        backgroundImage:
+                            NetworkImage(widget.selectedUser.photo),
+                      ),
+                    ),
+                    Text(
+                      widget.selectedUser.name,
+                      style: TextStyle(color: Colors.black, fontSize: 15),
+                    ),
+                  ],
                 ),
-              ),
+                Icon(
+                  Icons.more,
+                  size: 30,
+                ),
+              ],
             ),
-          ],
-        ),
-        actions: [
-          IconButton(
-            icon: Icon(
-              Icons.location_pin,
-              color: Colors.black,
-              size: 30,
-            ),
-            onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => VibeusDate()));
-            },
-          )
-        ],
+            preferredSize: Size.fromHeight(20)),
       ),
       body: BlocBuilder<MessagingBloc, MessagingState>(
         cubit: _messagingBloc,
@@ -214,8 +241,6 @@ class _MessagingState extends State<Messaging> {
                           children: <Widget>[
                             Expanded(
                               child: ListView.builder(
-                                reverse: true,
-                                scrollDirection: Axis.vertical,
                                 itemBuilder: (BuildContext context, int index) {
                                   return MessageWidget(
                                     currentUserId: widget.currentUser.uid,
@@ -480,13 +505,7 @@ class _VibeusDateState extends State<VibeusDate> {
                   color: Colors.black,
                 ),
               ),
-              // Tab(
-              //   child: Text('Blogs', style: TextStyle(color: Colors.black)),
-              //   icon: Icon(
-              //     MdiIcons.blogger,
-              //     color: Colors.black,
-              //   ),
-              // ),
+
               Tab(
                 child: Text('Pluts', style: TextStyle(color: Colors.black)),
                 icon: Icon(
@@ -807,6 +826,4 @@ class _VibeusDateState extends State<VibeusDate> {
                   ))),
     );
   }
-
-
 }

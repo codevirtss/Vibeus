@@ -39,7 +39,7 @@ dependencies:
   meta: ^1.1.8
   
   #Equatable packages
-  equatable: ^1.1.1
+  equatable: ^1.2.5
   
   #rcdart package
   rxdart: ^0.23.0
@@ -58,6 +58,9 @@ dependencies:
   
   #time ago package
   timeago: 
+  
+  #Flutter Switch  
+  flutter_switch: ^0.0.2  
   
   # UUID id used in image upload page to generate unique posId on our database
   uuid: ^2.0.4
