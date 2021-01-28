@@ -38,7 +38,7 @@ class _UserProfileState extends State<UserProfile> {
 
   bool loading = false;
 
-  bool userverified = false;
+  // bool userverified = false;
 
   createprofile() {
     bool ownProfile = currentUserUid == widget.userId;
@@ -209,29 +209,29 @@ class _UserProfileState extends State<UserProfile> {
                               fontSize: 18,
                               fontWeight: FontWeight.bold),
                         ),
-                        userverified
-                            ? IconButton(
-                                onPressed: null,
-                                tooltip:
-                                    "${data['name']} you are a verified user",
-                                icon: Icon(
-                                  Icons.verified,
-                                  color: Colors.blue,
-                                ))
-                            : IconButton(
-                                tooltip:
-                                    "${data['name']} you are not a verified user",
-                                onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              Verification()));
-                                },
-                                icon: Icon(
-                                  Icons.info_outline,
-                                  color: Colors.grey,
-                                )),
+                        // userverified
+                        //     ? IconButton(
+                        //         onPressed: null,
+                        //         tooltip:
+                        //             "${data['name']} you are a verified user",
+                        //         icon: Icon(
+                        //           Icons.verified,
+                        //           color: Colors.blue,
+                        //         ))
+                        //     : IconButton(
+                        //         tooltip:
+                        //             "${data['name']} you are not a verified user",
+                        //         onPressed: () {
+                        //           Navigator.push(
+                        //               context,
+                        //               MaterialPageRoute(
+                        //                   builder: (context) =>
+                        //                       Verification()));
+                        //         },
+                        //         icon: Icon(
+                        //           Icons.info_outline,
+                        //           color: Colors.grey,
+                        //         )),
                       ],
                     ),
 
@@ -508,19 +508,19 @@ ${data['bio']}""",
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold),
                             ),
-                            userverified
-                                ? IconButton(
-                                    onPressed: null,
-                                    tooltip: "${data['name']} is verified user",
-                                    icon: Icon(
-                                      Icons.verified,
-                                      color: Colors.blue,
-                                    ))
-                                : IconButton(
-                                    tooltip:
-                                        "${data['name']} is not verified user",
-                                    onPressed: null,
-                                    icon: Icon(Icons.info_outline)),
+                            // userverified
+                            //     ? IconButton(
+                            //         onPressed: null,
+                            //         tooltip: "${data['name']} is verified user",
+                            //         icon: Icon(
+                            //           Icons.verified,
+                            //           color: Colors.blue,
+                            //         ))
+                            //     : IconButton(
+                            //         tooltip:
+                            //             "${data['name']} is not verified user",
+                            //         onPressed: null,
+                            //         icon: Icon(Icons.info_outline)),
                           ],
                         ),
                       ),

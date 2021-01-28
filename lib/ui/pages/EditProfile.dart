@@ -134,7 +134,7 @@ class _EditProileState extends State<EditProile> {
                                     )));
                       },
                       title: Text(
-                        "Update Name",
+                        "${data['name']}",
                         style: TextStyle(
                             color: Colors.grey,
                             fontWeight: FontWeight.bold,
@@ -367,7 +367,7 @@ class _UpdateNameState extends State<UpdateName> {
                   key: _formKey,
                   child: TextFormField(
                     controller: _namecontrolle,
-                   // initialValue: "${data['name']}",
+                    // initialValue: "${data['name']}",
                     validator: (val) =>
                         val.isEmpty ? 'Please Enter name' : null,
                     autocorrect: false,

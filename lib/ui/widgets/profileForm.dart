@@ -34,6 +34,7 @@ class _ProfileFormState extends State<ProfileForm> {
   GeoPoint location;
   ProfileBloc _profileBloc;
 
+
   // ignore: unused_element
   UserRepository get _userRepository => widget._userRepository;
 
@@ -138,6 +139,12 @@ class _ProfileFormState extends State<ProfileForm> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
+                  GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      child: Text("Add profile image*"),
+                    ),
+                  ),
                   Container(
                     width: size.width,
                     child: CircleAvatar(
@@ -178,11 +185,6 @@ class _ProfileFormState extends State<ProfileForm> {
                             ),
                     ),
                   ),
-                    Padding(
-                    padding: const EdgeInsets.all(5.0),
-                    child: Text("""
-This image will be used as your profile image"""),
-                  ),
                   textFieldWidget(
                       _nameController, "Name*", size, 1, "enter your name"),
                   textFieldWidget(_bioController, "Bio*", size, 4,
@@ -204,6 +206,7 @@ DOB wont be vissible on the screen"""),
                             age = date;
                           });
                           print(age);
+                         
                         },
                       );
                     },
@@ -218,9 +221,10 @@ DOB wont be vissible on the screen"""),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
-                          "Enter Birthday*",
-                          style: TextStyle(color: Colors.black, fontSize: 18),
-                        ),
+                                "Enter Birthday*",
+                                style: TextStyle(
+                                    color: Colors.black, fontSize: 18),
+                              ),
                       ),
                     ),
                   ),
@@ -267,13 +271,13 @@ DOB wont be vissible on the screen"""),
                         ],
                       ),
                       SizedBox(
-                        height: size.height * 0.02,
+                        height: 20,
                       ),
                       Padding(
                         padding: EdgeInsets.symmetric(
                             horizontal: size.height * 0.02),
                         child: Text(
-                          "Looking For*",
+                          "My Ideal person*",
                           style: TextStyle(color: Colors.black, fontSize: 20),
                         ),
                       ),

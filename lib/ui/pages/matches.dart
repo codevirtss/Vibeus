@@ -94,11 +94,6 @@ class _MatchesState extends State<Matches> {
               body: CustomScrollView(
                 scrollDirection: Axis.vertical,
                 slivers: <Widget>[
-                  TabBarView(
-                    children: [
-                      
-                    ],
-                  ),
                   SliverAppBar(
                     pinned: true,
                     backgroundColor: Colors.white,
