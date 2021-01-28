@@ -134,7 +134,7 @@ class _EditProileState extends State<EditProile> {
                                     )));
                       },
                       title: Text(
-                        "${data['name']}",
+                        "Update name",
                         style: TextStyle(
                             color: Colors.grey,
                             fontWeight: FontWeight.bold,

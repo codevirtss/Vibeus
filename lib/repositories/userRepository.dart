@@ -54,7 +54,6 @@ class UserRepository {
     return (await _firebaseAuth.currentUser());
   }
 
-
   //profile setup
   Future<void> profileSetup(
       File photo,
