@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:image_picker/image_picker.dart';
 import 'package:vibeus/bloc/authentication/authentication_bloc.dart';
 import 'package:vibeus/bloc/authentication/authentication_event.dart';
 import 'package:vibeus/bloc/profile/bloc.dart';
@@ -33,7 +34,6 @@ class _ProfileFormState extends State<ProfileForm> {
   File photo;
   GeoPoint location;
   ProfileBloc _profileBloc;
-
 
   // ignore: unused_element
   UserRepository get _userRepository => widget._userRepository;
@@ -153,10 +153,19 @@ class _ProfileFormState extends State<ProfileForm> {
                       child: photo == null
                           ? GestureDetector(
                               onTap: () async {
-                                File getPic = await FilePicker.getFile(
-                                  type: FileType.image,
-                                  allowCompression: true,
-                                );
+                                // showModalBottomSheet(
+                                //     shape: RoundedRectangleBorder(
+                                //       borderRadius: BorderRadius.vertical(
+                                //           top: Radius.circular(10.0)),
+                                //     ),
+                                //     context: context,
+                                //     builder: ((builder) =>
+                                //         socialbottomSheet()));
+                                File getPic = await ImagePicker.pickImage(
+                                    source: ImageSource.gallery,
+                                    maxHeight: 680,
+                                    maxWidth: 970,
+                                    imageQuality: 20);
 
                                 if (getPic != null) {
                                   setState(() {
@@ -168,10 +177,11 @@ class _ProfileFormState extends State<ProfileForm> {
                             )
                           : GestureDetector(
                               onTap: () async {
-                                File getPic = await FilePicker.getFile(
-                                  type: FileType.image,
-                                  allowCompression: true,
-                                );
+                                File getPic = await ImagePicker.pickImage(
+                                    source: ImageSource.gallery,
+                                    maxHeight: 680,
+                                    maxWidth: 970,
+                                    imageQuality: 20);
                                 if (getPic != null) {
                                   setState(() {
                                     photo = getPic;
@@ -206,7 +216,6 @@ DOB wont be vissible on the screen"""),
                             age = date;
                           });
                           print(age);
-                         
                         },
                       );
                     },
@@ -221,10 +230,9 @@ DOB wont be vissible on the screen"""),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
-                                "Enter Birthday*",
-                                style: TextStyle(
-                                    color: Colors.black, fontSize: 18),
-                              ),
+                          "Enter Birthday*",
+                          style: TextStyle(color: Colors.black, fontSize: 18),
+                        ),
                       ),
                     ),
                   ),
@@ -349,20 +357,85 @@ DOB wont be vissible on the screen"""),
       ),
     );
   }
-}
 
-Widget textFieldWidget(controller, text, size, lines, hintText) {
-  return Padding(
-    padding: const EdgeInsets.all(8.0),
-    child: TextField(
-      controller: controller,
-      maxLines: lines,
-      decoration: InputDecoration(
-        labelText: text,
-        hintText: hintText,
-        labelStyle:
-            TextStyle(color: Colors.black, fontSize: size.height * 0.03),
+  imagefromcammera() async {
+    Navigator.pop(context);
+    // ignore: deprecated_member_use
+    File imageFile = await ImagePicker.pickImage(
+        source: ImageSource.camera,
+        maxHeight: 680,
+        maxWidth: 970,
+        imageQuality: 40);
+    setState(() {
+      this.photo = imageFile;
+    });
+  }
+
+  imagefromgallery() async {
+    Navigator.pop(context);
+    // ignore: deprecated_member_use
+    File imageFile = await ImagePicker.pickImage(
+      source: ImageSource.gallery,
+      imageQuality: 40,
+      maxHeight: 680,
+      maxWidth: 970,
+    );
+    setState(() {
+      this.photo = imageFile;
+    });
+  }
+
+  Widget socialbottomSheet() {
+    return Container(
+      height: 150.0,
+      //  width: MediaQuery.of(context).size.width,
+      margin: EdgeInsets.symmetric(
+        horizontal: 20,
+        vertical: 20,
       ),
-    ),
-  );
+      child: Column(
+        children: <Widget>[
+          Text(
+            'Chose profile image',
+            style: TextStyle(
+              fontSize: 20.0,
+            ),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              FlatButton.icon(
+                  onPressed: imagefromcammera,
+                  icon: Icon(Icons.camera),
+                  label: Text("Camera")),
+              FlatButton.icon(
+                  onPressed: imagefromgallery,
+                  icon: Icon(Icons.image),
+                  label: Text("Gallery"))
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget textFieldWidget(controller, text, size, lines, hintText) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: TextField(
+        controller: controller,
+        maxLines: lines,
+        decoration: InputDecoration(
+          labelText: text,
+          hintText: hintText,
+          labelStyle:
+              TextStyle(color: Colors.black, fontSize: size.height * 0.03),
+        ),
+      ),
+    );
+  }
 }
