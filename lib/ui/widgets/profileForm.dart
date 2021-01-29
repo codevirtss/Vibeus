@@ -139,28 +139,14 @@ class _ProfileFormState extends State<ProfileForm> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  GestureDetector(
-                    onTap: () {},
-                    child: Container(
-                      child: Text("Add profile image*"),
-                    ),
-                  ),
                   Container(
                     width: size.width,
                     child: CircleAvatar(
-                      radius: 50,
+                      radius: 40,
                       backgroundColor: Colors.transparent,
                       child: photo == null
                           ? GestureDetector(
                               onTap: () async {
-                                // showModalBottomSheet(
-                                //     shape: RoundedRectangleBorder(
-                                //       borderRadius: BorderRadius.vertical(
-                                //           top: Radius.circular(10.0)),
-                                //     ),
-                                //     context: context,
-                                //     builder: ((builder) =>
-                                //         socialbottomSheet()));
                                 File getPic = await ImagePicker.pickImage(
                                     source: ImageSource.gallery,
                                     maxHeight: 680,
@@ -189,7 +175,7 @@ class _ProfileFormState extends State<ProfileForm> {
                                 }
                               },
                               child: CircleAvatar(
-                                radius: 50,
+                                radius: 40,
                                 backgroundImage: FileImage(photo),
                               ),
                             ),
@@ -197,7 +183,7 @@ class _ProfileFormState extends State<ProfileForm> {
                   ),
                   textFieldWidget(
                       _nameController, "Name*", size, 1, "enter your name"),
-                  textFieldWidget(_bioController, "Bio*", size, 4,
+                  textFieldWidget(_bioController, "Self-Summary*", size, 6,
                       "Enter someting about you"),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -279,7 +265,7 @@ DOB wont be vissible on the screen"""),
                         ],
                       ),
                       SizedBox(
-                        height: 20,
+                        height: 10,
                       ),
                       Padding(
                         padding: EdgeInsets.symmetric(
@@ -388,7 +374,6 @@ DOB wont be vissible on the screen"""),
   Widget socialbottomSheet() {
     return Container(
       height: 150.0,
-      //  width: MediaQuery.of(context).size.width,
       margin: EdgeInsets.symmetric(
         horizontal: 20,
         vertical: 20,
@@ -432,8 +417,7 @@ DOB wont be vissible on the screen"""),
         decoration: InputDecoration(
           labelText: text,
           hintText: hintText,
-          labelStyle:
-              TextStyle(color: Colors.black, fontSize: size.height * 0.03),
+          labelStyle: TextStyle(color: Colors.black, fontSize: 18),
         ),
       ),
     );

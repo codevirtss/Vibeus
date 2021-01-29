@@ -3,6 +3,7 @@ import 'package:vibeus/bloc/authentication/authentication_state.dart';
 import 'package:vibeus/repositories/userRepository.dart';
 import 'package:vibeus/ui/pages/profile.dart';
 import 'package:vibeus/ui/pages/splash.dart';
+import 'package:vibeus/ui/pages/walkthrough.dart';
 import 'package:vibeus/ui/widgets/tabs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -37,7 +38,10 @@ class Home extends StatelessWidget {
             );
           }
           if (state is Unauthenticated) {
-            return Login(
+            // return Login(
+            //   userRepository: _userRepository,
+            // );
+            return Intro(
               userRepository: _userRepository,
             );
           } else

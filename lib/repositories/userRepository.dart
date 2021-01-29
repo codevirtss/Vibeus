@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
+
 class UserRepository {
   final FirebaseAuth _firebaseAuth;
   final Firestore _firestore;
@@ -33,6 +34,8 @@ class UserRepository {
     print(_firebaseAuth);
     return await _firebaseAuth.createUserWithEmailAndPassword(
         email: email, password: password);
+
+
   }
 
   Future<void> signOut() async {
