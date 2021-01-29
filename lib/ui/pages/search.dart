@@ -56,7 +56,7 @@ class _SearchState extends State<Search> {
     Size size = MediaQuery.of(context).size;
 
     return BlocBuilder<SearchBloc, SearchState>(
-      cubit : _searchBloc,
+      cubit: _searchBloc,
       builder: (context, state) {
         if (state is InitialSearchState) {
           _searchBloc.add(
@@ -82,13 +82,48 @@ class _SearchState extends State<Search> {
           getDifference(_user.location);
           if (_user.location == null) {
             return Center(
-              //   child: coustom(),
-              child: Text(
-                "No One Here",
-                style: TextStyle(
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black),
+              child: Card(
+                child: Container(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                        fit: BoxFit.contain,
+                        image: NetworkImage(
+                            "https://image.freepik.com/free-vector/love-emoji_53876-25514.jpg")),
+                  ),
+                  height: 400,
+                  width: 300,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          "No One Here",
+                          style: TextStyle(
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black),
+                        ),
+                      ),
+                      RawMaterialButton(
+                        fillColor: Colors.red,
+                        onPressed: null,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                            side: BorderSide(color: Colors.red)),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            "Add or update your prrefrences",
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
               ),
             );
           } else

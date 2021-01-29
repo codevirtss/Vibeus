@@ -35,7 +35,7 @@ class _VibeusQuesState extends State<VibeusQues> {
                 backgroundColor: backgroundColor,
                 iconTheme: IconThemeData(color: Colors.black),
                 title: Text(
-                  "Edit Profile",
+                  "Vibeus Questions",
                   style: TextStyle(color: Colors.black),
                 ),
                 actions: [
@@ -51,8 +51,446 @@ class _VibeusQuesState extends State<VibeusQues> {
                   )
                 ],
               ),
-              body: ListView(
-                children: [],
+              body: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: ListView(
+                  children: [
+                    Card(
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text("You"),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Text(
+                              "Which word describes you better?",
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          ListTile(
+                            title: const Text('carefree'),
+                            leading: Radio(
+                                // value: ,
+                                //  groupValue: _site,
+                                // onChanged: (BestTutorSite value) {
+                                //   setState(() {
+                                //     _site = value;
+                                //   });
+                                // },
+                                ),
+                          ),
+                          ListTile(
+                            title: const Text('intense'),
+                            leading: Radio(
+                                // value: ,
+                                //  groupValue: _site,
+                                // onChanged: (BestTutorSite value) {
+                                //   setState(() {
+                                //     _site = value;
+                                //   });
+                                // },
+                                ),
+                          ),
+                            Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text("My ideal person"),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Text(
+                              "Which word describes you better?",
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          ListTile(
+                            title: const Text('carefree'),
+                            leading: Radio(
+                                // value: ,
+                                //  groupValue: _site,
+                                // onChanged: (BestTutorSite value) {
+                                //   setState(() {
+                                //     _site = value;
+                                //   });
+                                // },
+                                ),
+                          ),
+                          ListTile(
+                            title: const Text('intense'),
+                            leading: Radio(
+                                // value: ,
+                                //  groupValue: _site,
+                                // onChanged: (BestTutorSite value) {
+                                //   setState(() {
+                                //     _site = value;
+                                //   });
+                                // },
+                                ),
+                          ),
+                        ],
+                      ),
+                    ),
+                     Card(
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text("You"),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Text(
+                              "Do you enjoy discussing politics?",
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          ListTile(
+                            title: const Text('yes'),
+                            leading: Radio(
+                                // value: ,
+                                //  groupValue: _site,
+                                // onChanged: (BestTutorSite value) {
+                                //   setState(() {
+                                //     _site = value;
+                                //   });
+                                // },
+                                ),
+                          ),
+                          ListTile(
+                            title: const Text('no'),
+                            leading: Radio(
+                                // value: ,
+                                //  groupValue: _site,
+                                // onChanged: (BestTutorSite value) {
+                                //   setState(() {
+                                //     _site = value;
+                                //   });
+                                // },
+                                ),
+                          ),
+                            Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text("My ideal person"),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Text(
+                              "Do you enjoy discussing politics?",
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          ListTile(
+                            title: const Text('yes '),
+                            leading: Radio(
+                                // value: ,
+                                //  groupValue: _site,
+                                // onChanged: (BestTutorSite value) {
+                                //   setState(() {
+                                //     _site = value;
+                                //   });
+                                // },
+                                ),
+                          ),
+                          ListTile(
+                            title: const Text('no'),
+                            leading: Radio(
+                                // value: ,
+                                //  groupValue: _site,
+                                // onChanged: (BestTutorSite value) {
+                                //   setState(() {
+                                //     _site = value;
+                                //   });
+                                // },
+                                ),
+                          ),
+                        ],
+                      ),
+                    ),
+                     Card(
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text("You"),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Text(
+                             "Is astrological sign at all important in a match?",
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          ListTile(
+                            title: const Text('yes'),
+                            leading: Radio(
+                                // value: ,
+                                //  groupValue: _site,
+                                // onChanged: (BestTutorSite value) {
+                                //   setState(() {
+                                //     _site = value;
+                                //   });
+                                // },
+                                ),
+                          ),
+                          ListTile(
+                            title: const Text('no'),
+                            leading: Radio(
+                                // value: ,
+                                //  groupValue: _site,
+                                // onChanged: (BestTutorSite value) {
+                                //   setState(() {
+                                //     _site = value;
+                                //   });
+                                // },
+                                ),
+                          ),
+                            Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text("My ideal person"),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Text(
+                              "Is astrological sign at all important in a match?",
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          ListTile(
+                            title: const Text('yes'),
+                            leading: Radio(
+                                // value: ,
+                                //  groupValue: _site,
+                                // onChanged: (BestTutorSite value) {
+                                //   setState(() {
+                                //     _site = value;
+                                //   });
+                                // },
+                                ),
+                          ),
+                          ListTile(
+                            title: const Text('no'),
+                            leading: Radio(
+                                // value: ,
+                                //  groupValue: _site,
+                                // onChanged: (BestTutorSite value) {
+                                //   setState(() {
+                                //     _site = value;
+                                //   });
+                                // },
+                                ),
+                          ),
+                        ],
+                      ),
+                    ),
+                     Card(
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text("You"),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Text(
+                              "Should women continue to work full-time after marriage?",
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          ListTile(
+                            title: const Text('yes'),
+                            leading: Radio(
+                                // value: ,
+                                //  groupValue: _site,
+                                // onChanged: (BestTutorSite value) {
+                                //   setState(() {
+                                //     _site = value;
+                                //   });
+                                // },
+                                ),
+                          ),
+                          ListTile(
+                            title: const Text('no'),
+                            leading: Radio(
+                                // value: ,
+                                //  groupValue: _site,
+                                // onChanged: (BestTutorSite value) {
+                                //   setState(() {
+                                //     _site = value;
+                                //   });
+                                // },
+                                ),
+                          ),
+                            ListTile(
+                            title: const Text("either way, it's their choice"),
+                            leading: Radio(
+                                // value: ,
+                                //  groupValue: _site,
+                                // onChanged: (BestTutorSite value) {
+                                //   setState(() {
+                                //     _site = value;
+                                //   });
+                                // },
+                                ),
+                          ),
+                          ListTile(
+                            title: const Text("only if it's necessary"),
+                            leading: Radio(
+                                // value: ,
+                                //  groupValue: _site,
+                                // onChanged: (BestTutorSite value) {
+                                //   setState(() {
+                                //     _site = value;
+                                //   });
+                                // },
+                                ),
+                          ),
+                            Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text("My ideal person"),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Text(
+                              "Which word describes you better?",
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          ListTile(
+                            title: const Text('carefree'),
+                            leading: Radio(
+                                // value: ,
+                                //  groupValue: _site,
+                                // onChanged: (BestTutorSite value) {
+                                //   setState(() {
+                                //     _site = value;
+                                //   });
+                                // },
+                                ),
+                          ),
+                          ListTile(
+                            title: const Text('intense'),
+                            leading: Radio(
+                                // value: ,
+                                //  groupValue: _site,
+                                // onChanged: (BestTutorSite value) {
+                                //   setState(() {
+                                //     _site = value;
+                                //   });
+                                // },
+                                ),
+                          ),
+                        ],
+                      ),
+                    ),
+                     Card(
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text("You"),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Text(
+                              "Which word describes you better?",
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          ListTile(
+                            title: const Text('carefree'),
+                            leading: Radio(
+                                // value: ,
+                                //  groupValue: _site,
+                                // onChanged: (BestTutorSite value) {
+                                //   setState(() {
+                                //     _site = value;
+                                //   });
+                                // },
+                                ),
+                          ),
+                          ListTile(
+                            title: const Text('intense'),
+                            leading: Radio(
+                                // value: ,
+                                //  groupValue: _site,
+                                // onChanged: (BestTutorSite value) {
+                                //   setState(() {
+                                //     _site = value;
+                                //   });
+                                // },
+                                ),
+                          ),
+                            Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text("My ideal person"),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Text(
+                              "Which word describes you better?",
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          ListTile(
+                            title: const Text('carefree'),
+                            leading: Radio(
+                                // value: ,
+                                //  groupValue: _site,
+                                // onChanged: (BestTutorSite value) {
+                                //   setState(() {
+                                //     _site = value;
+                                //   });
+                                // },
+                                ),
+                          ),
+                          ListTile(
+                            title: const Text('intense'),
+                            leading: Radio(
+                                // value: ,
+                                //  groupValue: _site,
+                                // onChanged: (BestTutorSite value) {
+                                //   setState(() {
+                                //     _site = value;
+                                //   });
+                                // },
+                                ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ));
         }
         return Center(
@@ -61,19 +499,6 @@ class _VibeusQuesState extends State<VibeusQues> {
           ),
         );
       },
-    );
-  }
-
-  vibeusquestionsets(text, controller,) {
-    return Card(
-      child: Container(
-        child: Column(
-          children: [
-            Text(text),
-
-          ],
-        ),
-      ),
     );
   }
 }
