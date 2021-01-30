@@ -57,7 +57,7 @@ class _MessageWidgetState extends State<MessageWidget> {
                                   timeago.format(
                                     _message.timestamp.toDate(),
                                   ),
-                                  // _message.text),
+                                  
                                 ))
                             : Container(),
                         Padding(

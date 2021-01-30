@@ -317,34 +317,36 @@ ${data['bio']}""",
               )),
             );
           } else {
-            return GridView.builder(
-                shrinkWrap: true,
-                itemCount: snapshot.data.documents.length,
-                scrollDirection: Axis.vertical,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                ),
-                itemBuilder: (contesxt, index) {
-                  return GestureDetector(
-                    onTap: () {
-                      print("view image");
-                    },
-                    child: Card(
-                      elevation: 1,
-                      child: Container(
-                        height: 200,
-                        width: 100,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: NetworkImage(
-                                "${snapshot.data.documents[index]['url']}"),
+            return Container(
+              child: GridView.builder(
+                  shrinkWrap: true,
+                  itemCount: snapshot.data.documents.length,
+                  scrollDirection: Axis.vertical,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                  ),
+                  itemBuilder: (contesxt, index) {
+                    return GestureDetector(
+                      onTap: () {
+                        print("view image");
+                      },
+                      child: Card(
+                        elevation: 1,
+                        child: Container(
+                          height: 200,
+                          width: 100,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: NetworkImage(
+                                  "${snapshot.data.documents[index]['url']}"),
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  );
-                });
+                    );
+                  }),
+            );
           }
         });
   }
@@ -406,9 +408,9 @@ ${data['bio']}""",
                   return GestureDetector(
                     onTap: profilePostView,
                     child: Card(
-                      elevation: 1,
+                      elevation: 0,
                       child: Container(
-                        height: 200,
+                        height: 400,
                         width: 100,
                         decoration: BoxDecoration(
                           image: DecorationImage(

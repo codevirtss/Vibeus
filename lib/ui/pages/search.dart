@@ -81,47 +81,88 @@ class _SearchState extends State<Search> {
 
           getDifference(_user.location);
           if (_user.location == null) {
-            return Center(
-              child: Card(
-                child: Container(
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                        fit: BoxFit.contain,
-                        image: NetworkImage(
-                            "https://image.freepik.com/free-vector/love-emoji_53876-25514.jpg")),
-                  ),
-                  height: 400,
-                  width: 300,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          "No One Here",
-                          style: TextStyle(
-                              fontSize: 20.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black),
-                        ),
-                      ),
-                      RawMaterialButton(
-                        fillColor: Colors.red,
-                        onPressed: null,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(18.0),
-                            side: BorderSide(color: Colors.red)),
-                        child: Padding(
+            return Scaffold(
+              backgroundColor: backgroundColor,
+                 appBar: AppBar(
+            iconTheme: IconThemeData(color: Colors.black),
+            leading: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Addposts(
+                                user: widget.user,
+                                userId: widget.userId,
+                              )));
+                },
+                child: Icon(Icons.add_box_outlined)),
+            elevation: 0,
+            backgroundColor: backgroundColor,
+            centerTitle: true,
+            title: Text(
+              "Vibeus",
+              style: TextStyle(
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black),
+            ),
+            actions: <Widget>[
+              IconButton(
+                  icon: Icon(Icons.settings),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Settings()));
+                  }),
+            ],
+          ),
+              body: Center(
+                child: Card(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                          fit: BoxFit.contain,
+                          image: NetworkImage(
+                              "https://image.freepik.com/free-vector/love-emoji_53876-25514.jpg")),
+                    ),
+                    height: 400,
+                    width: 300,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                           
+                        Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
-                            "Add or update your prrefrences",
+                            "No One Here",
                             style: TextStyle(
-                              color: Colors.white,
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                          ),
+                        ),
+                        RawMaterialButton(
+                          elevation: 10,
+                          fillColor: Colors.red,
+                          onPressed: null,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(18.0),
+                              side: BorderSide(color: Colors.red)),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              "Add or update your prrefrences",
+                              style: TextStyle(
+                                color: Colors.white,
+                              ),
                             ),
                           ),
                         ),
-                      )
-                    ],
+                        SizedBox(
+                          height: 30,
+                        ),
+
+                      ],
+                    ),
                   ),
                 ),
               ),

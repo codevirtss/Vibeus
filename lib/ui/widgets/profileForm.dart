@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:vibeus/bloc/authentication/authentication_bloc.dart';
 import 'package:vibeus/bloc/authentication/authentication_event.dart';
 import 'package:vibeus/bloc/profile/bloc.dart';
@@ -34,6 +35,8 @@ class _ProfileFormState extends State<ProfileForm> {
   File photo;
   GeoPoint location;
   ProfileBloc _profileBloc;
+  bool dateentered = false;
+  bool pchecked = false;
 
   // ignore: unused_element
   UserRepository get _userRepository => widget._userRepository;
@@ -44,6 +47,7 @@ class _ProfileFormState extends State<ProfileForm> {
       gender != null &&
       interestedIn != null &&
       photo != null &&
+      pchecked &&
       age != null;
 
   bool isButtonEnabled(ProfileState state) {
@@ -67,7 +71,8 @@ class _ProfileFormState extends State<ProfileForm> {
           location: location,
           gender: gender,
           interestedIn: interestedIn,
-          photo: photo),
+          photo: photo,
+          isprivacyChecked: pchecked),
     );
   }
 
@@ -183,7 +188,7 @@ class _ProfileFormState extends State<ProfileForm> {
                   ),
                   textFieldWidget(
                       _nameController, "Name*", size, 1, "enter your name"),
-                  textFieldWidget(_bioController, "Self-Summary*", size, 6,
+                  textFieldWidget(_bioController, "Self-Summary*", size, null,
                       "Enter someting about you"),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -228,10 +233,22 @@ DOB wont be vissible on the screen"""),
                       Padding(
                         padding: EdgeInsets.symmetric(
                             horizontal: size.height * 0.02),
-                        child: Text(
-                          "You Are*",
-                          style: TextStyle(color: Colors.black, fontSize: 18),
+                        child: RichText(
+                          text: TextSpan(children: [
+                            TextSpan(
+                              text: "You Are",
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 18),
+                            ),
+                            TextSpan(
+                              text: "*",
+                              style: TextStyle(color: Colors.red, fontSize: 18),
+                            )
+                          ]),
                         ),
+                      ),
+                      SizedBox(
+                        height: 10,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -270,10 +287,22 @@ DOB wont be vissible on the screen"""),
                       Padding(
                         padding: EdgeInsets.symmetric(
                             horizontal: size.height * 0.02),
-                        child: Text(
-                          "My Ideal person*",
-                          style: TextStyle(color: Colors.black, fontSize: 20),
+                        child: RichText(
+                          text: TextSpan(children: [
+                            TextSpan(
+                              text: "My Ideal person",
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 18),
+                            ),
+                            TextSpan(
+                              text: "*",
+                              style: TextStyle(color: Colors.red, fontSize: 18),
+                            )
+                          ]),
                         ),
+                      ),
+                      SizedBox(
+                        height: 10,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -307,6 +336,31 @@ DOB wont be vissible on the screen"""),
                         ],
                       ),
                     ],
+                  ),
+                  Container(
+                    child: Row(
+                      children: <Widget>[
+                        new Checkbox(
+                          value: pchecked,
+                          onChanged: (value) {
+                            setState(() {
+                              pchecked = value;
+                            });
+                          },
+                        ),
+                        Text(
+                          'I agree to your ',
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        InkWell(
+                            child: new Text(
+                              'Privacy Policy',
+                              style: TextStyle(color: Colors.blue),
+                            ),
+                            onTap: () => launch(
+                                'https://github.com/vibeus-con/vibeusprivacy/blob/main/Privacy.md')),
+                      ],
+                    ),
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: size.height * 0.02),

@@ -63,6 +63,7 @@ class _MatchesState extends State<Matches> {
           return DefaultTabController(
             length: 2,
             child: Scaffold(
+              backgroundColor: backgroundColor,
               appBar: AppBar(
                 elevation: 0,
                 backgroundColor: backgroundColor,

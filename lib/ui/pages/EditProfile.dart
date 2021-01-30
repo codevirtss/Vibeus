@@ -158,7 +158,7 @@ class _EditProileState extends State<EditProile> {
                                     )));
                       },
                       title: Text(
-                        "Update Bio",
+                        "Update Self-Summary",
                         style: TextStyle(
                             color: Colors.grey,
                             fontWeight: FontWeight.bold,
@@ -196,27 +196,27 @@ class _EditProileState extends State<EditProile> {
                     SizedBox(
                       height: 10,
                     ),
-                    ListTile(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => VibeusQues(
-                                      userId: widget.userId,
-                                    )));
-                      },
-                      title: Text(
-                        "Vibeus questionnaire",
-                        style: TextStyle(
-                            color: Colors.grey,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20),
-                      ),
-                      trailing: Icon(
-                        Icons.arrow_forward_ios,
-                        color: Colors.grey,
-                      ),
-                    ),
+                    // ListTile(
+                    //   onTap: () {
+                    //     // Navigator.push(
+                    //     //     context,
+                    //     //     MaterialPageRoute(
+                    //     //         builder: (context) => VibeusQues(
+                    //     //               userId: widget.userId,
+                    //     //             )));
+                    //   },
+                    //   title: Text(
+                    //     "Vibeus questionnaire",
+                    //     style: TextStyle(
+                    //         color: Colors.grey,
+                    //         fontWeight: FontWeight.bold,
+                    //         fontSize: 20),
+                    //   ),
+                    //   trailing: Icon(
+                    //     Icons.arrow_forward_ios,
+                    //     color: Colors.grey,
+                    //   ),
+                    // ),
                   ],
                 ),
               ),

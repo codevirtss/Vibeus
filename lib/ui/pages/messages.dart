@@ -55,6 +55,7 @@ class _MessagesState extends State<Messages> {
                   );
                 } else {
                   return Scaffold(
+                    backgroundColor: backgroundColor,
                     appBar: AppBar(
                       elevation: 0,
                       backgroundColor: backgroundColor,

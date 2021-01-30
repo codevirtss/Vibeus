@@ -1,3 +1,4 @@
+
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
@@ -76,7 +77,9 @@ class Submitted extends ProfileEvent {
   final String name, bio, gender, interestedIn;
   final DateTime age;
   final GeoPoint location;
+  final bool isprivacyChecked;
   final File photo;
+  
 
   Submitted(
       {@required this.name,
@@ -84,10 +87,11 @@ class Submitted extends ProfileEvent {
       @required this.gender,
       @required this.interestedIn,
       @required this.age,
+      @required this.isprivacyChecked,
       @required this.location,
       @required this.photo});
 
   @override
   List<Object> get props =>
-      [location, name, bio, age, gender, interestedIn, photo];
+      [location, name, bio, age, gender, isprivacyChecked, interestedIn, photo];
 }

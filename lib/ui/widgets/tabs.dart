@@ -107,6 +107,7 @@ class _TabsState extends State<Tabs> {
         accentColor: Colors.white,
       ),
       child: Scaffold(
+        backgroundColor: backgroundColor,
         body: PageView.builder(
             itemCount: 4,
             controller: controller,
