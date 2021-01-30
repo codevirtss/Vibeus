@@ -354,11 +354,19 @@ DOB wont be vissible on the screen"""),
                         ),
                         InkWell(
                             child: new Text(
-                              'Privacy Policy',
+                              'Privacy Policy & ',
                               style: TextStyle(color: Colors.blue),
                             ),
                             onTap: () => launch(
                                 'https://github.com/vibeus-con/vibeusprivacy/blob/main/Privacy.md')),
+                                  InkWell(
+                            child: new Text(
+                              'Safety Tips',
+                              style: TextStyle(color: Colors.blue),
+                            ),
+                            onTap: () => launch(
+                                'https://github.com/vibeus-con/vibeus-con/blob/main/SafetyTips.md')),
+                               
                       ],
                     ),
                   ),

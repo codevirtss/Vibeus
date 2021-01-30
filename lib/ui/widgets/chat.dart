@@ -163,8 +163,8 @@ class _ChatWidgetState extends State<ChatWidget> {
                             ),
                             chat.lastMessage != null
                                 ? Text(
-                                    "There is some message",
-                                    //  chat.lastMessage,
+                                    //"There is some message",
+                                      chat.lastMessage,
                                     overflow: TextOverflow.fade,
                                     style: TextStyle(
                                         fontSize: 15, color: Colors.grey),
