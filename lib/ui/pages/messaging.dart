@@ -11,7 +11,7 @@ import 'package:vibeus/repositories/userRepository.dart';
 import 'package:vibeus/ui/constants.dart';
 import 'package:vibeus/ui/pages/userprofile.dart';
 import 'package:vibeus/ui/widgets/message.dart';
-import 'package:vibeus/ui/widgets/photo.dart';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
@@ -127,48 +127,21 @@ class _MessagingState extends State<Messaging> {
 
     return Scaffold(
       appBar: AppBar(
-        //   iconTheme: IconThemeData(color: Colors.black),
+        // leading:  IconButton(
+        //           onPressed: () {
+        //             Navigator.of(context);
+        //           },
+        //           icon: Icon(Icons.clear,
+        //           color: ,
+        //           ),
+        //         ),
         backgroundColor: backgroundColor,
         elevation: 0,
-
-        // actions: [
-        //   IconButton(
-        //     icon: Icon(
-        //       Icons.location_pin,
-        //       color: Colors.black,
-        //       size: 30,
-        //     ),
-        //     onPressed: () {
-        //       Navigator.push(context,
-        //           MaterialPageRoute(builder: (context) => VibeusDate()));
-        //     },
-        //   )
-        // ],
         bottom: PreferredSize(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Column(
-                  children: [
-                    Icon(Icons.video_call),
-                    FlutterSwitch(
-                      height: 20.0,
-                      width: 40.0,
-                      padding: 4.0,
-                      toggleSize: 15.0,
-                      borderRadius: 10.0,
-                      activeColor: Colors.red,
-                      value: isToggled,
-                      onToggle: (value) {
-                        setState(() {
-                          isToggled = value;
-
-                        });
-                        // Firestore.instance.collection()
-                      },
-                    ),
-                  ],
-                ),
+                Text(""),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -196,7 +169,7 @@ class _MessagingState extends State<Messaging> {
                   ],
                 ),
                 Icon(
-                  Icons.more,
+                  Icons.more_vert,
                   size: 30,
                 ),
               ],
@@ -227,11 +200,13 @@ class _MessagingState extends State<Messaging> {
                   stream: messageStream,
                   builder: (context, snapshot) {
                     if (!snapshot.hasData) {
-                      return Center(
-                        child: Text(
-                          "Start the conversation?",
-                          style: TextStyle(
-                              fontSize: 16.0, fontWeight: FontWeight.bold),
+                      return Card(
+                        child: Center(
+                          child: Text(
+                            "Start the conversation?",
+                            style: TextStyle(
+                                fontSize: 16.0, fontWeight: FontWeight.bold),
+                          ),
                         ),
                       );
                     }
@@ -260,13 +235,29 @@ class _MessagingState extends State<Messaging> {
                     } else {
                       return Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
-                          Center(
-                            child: Text(
-                              "Start the conversation ?",
-                              style: TextStyle(
-                                  fontSize: 16.0, fontWeight: FontWeight.bold),
+                          Card(
+                            color: backgroundColor,
+                            child: Center(
+                              child: Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      """
+Your chats on vibeus are end-to-end encrypted.
+No one out side of the chat,
+not even vibeus can read or listen to them.
+      """,
+                                      style: TextStyle(
+                                          color: Colors.orange[200],
+                                          fontSize: 10.0,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
+                                ),
+                              ),
                             ),
                           ),
                         ],
@@ -482,9 +473,7 @@ class _VibeusDateState extends State<VibeusDate> {
                   ),
                   onPressed: () {})
             ],
-            bottom: TabBar(
-              controller: controller,
-               isScrollable: true, tabs: [
+            bottom: TabBar(controller: controller, isScrollable: true, tabs: [
               Tab(
                 child: Text('Posts', style: TextStyle(color: Colors.black)),
                 icon: Icon(

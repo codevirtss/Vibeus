@@ -78,7 +78,7 @@ class _MatchesState extends State<Matches> {
                 ),
                 bottom: TabBar(
                   controller: controller,
-                  isScrollable: true,
+                  //  isScrollable: true,
                   indicatorColor: Colors.red,
                   tabs: [
                     Tab(
@@ -128,12 +128,11 @@ class _MatchesState extends State<Matches> {
                                   builder: (BuildContext context) => Dialog(
                                     backgroundColor: Colors.transparent,
                                     child: profileWidget(
-                                      padding: size.height * 0.035,
                                       photo: selectedUser.photo,
                                       photoHeight: size.height * 0.81,
+                                      padding: size.height * 0.01,
                                       photoWidth: size.width * 0.95,
-                                    
-                                      clipRadius: size.height * 0.02,
+                                      clipRadius: size.height * 0.01,
                                       containerHeight: size.height * 0.3,
                                       containerWidth: size.width * 0.95,
                                       child: Padding(
@@ -378,47 +377,6 @@ class _MatchesState extends State<Matches> {
                                       ),
                                     ],
                                   ),
-
-                                  // onPressed: () async {
-                                  //     User selectedUser =
-                                  //           await matchesRepository
-                                  //               .getUserDetails(
-                                  //                   user[index].documentID);
-                                  //     User currentUser =
-                                  //           await matchesRepository
-                                  //               .getUserDetails(
-                                  //                   widget.userId);
-                                  //     _matchesBloc.add(
-                                  //       DeleteUserEvent(
-                                  //             currentUser: currentUser.uid,
-                                  //             selectedUser:
-                                  //                 selectedUser.uid),
-                                  //     );
-                                  //   }
-                                  // child: profileWidget(
-                                  //   padding: size.height * 0.01,
-                                  //   photo: user[index].data['photoUrl'],
-                                  //   photoWidth: size.width * 0.5,
-                                  //   photoHeight: size.height * 0.3,
-                                  //   clipRadius: size.height * 0.01,
-                                  //   containerHeight: size.height * 0.03,
-                                  //   containerWidth: size.width * 0.5,
-                                  //   child: Column(
-                                  //     children: [
-                                  // Text(
-                                  //   "  " + user[index].data['name'],
-                                  //   style: TextStyle(color: Colors.white),
-                                  // ),
-                                  //             Row(
-                                  //   mainAxisAlignment:
-                                  //       MainAxisAlignment.spaceEvenly,
-                                  //   children: [
-
-                                  //   ],
-                                  // )
-                                  //     ],
-                                  //   ),
-                                  // ),
                                 ),
                               ),
                             );
@@ -572,22 +530,103 @@ class _MatchesState extends State<Matches> {
                                   ),
                                 );
                               },
-                              child: Padding(
-                                padding: const EdgeInsets.all(20.0),
-                                child: Card(
-                                  elevation: 10,
-                                  child: profileWidget(
-                                    padding: size.height * 0.01,
-                                    photo: user[index].data['photoUrl'],
-                                    photoWidth: size.width * 0.5,
-                                    photoHeight: size.height * 0.3,
-                                    clipRadius: size.height * 0.01,
-                                    containerHeight: size.height * 0.03,
-                                    containerWidth: size.width * 0.5,
-                                    child: Text(
-                                      "  " + user[index].data['name'],
-                                      style: TextStyle(color: Colors.white),
-                                    ),
+                              child: Card(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15.0),
+                                ),
+                                elevation: 10,
+                                child: Container(
+                                  height: 708,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(15),
+                                      image: DecorationImage(
+                                          fit: BoxFit.cover,
+                                          image: NetworkImage(
+                                              "${user[index].data['photoUrl']}"))),
+                                  child: Stack(
+                                    children: [
+                                      Positioned(
+                                        top: 250,
+                                        child: Row(
+                                          children: [
+                                            Text(
+                                              "  " + user[index].data['name'],
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 25),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      Positioned(
+                                        top: 300,
+                                        left: 120,
+                                        child: FloatingActionButton(
+                                            elevation: 0,
+                                            backgroundColor: backgroundColor,
+                                            child: Icon(
+                                              Icons.chat,
+                                              color: Colors.black,
+                                              size: 35,
+                                            ),
+                                            onPressed: () async {
+                                              User selectedUser =
+                                                  await matchesRepository
+                                                      .getUserDetails(
+                                                          user[index]
+                                                              .documentID);
+                                              User currentUser =
+                                                  await matchesRepository
+                                                      .getUserDetails(
+                                                          widget.userId);
+                                              _matchesBloc.add(
+                                                OpenChatEvent(
+                                                    currentUser: widget.userId,
+                                                    selectedUser:
+                                                        selectedUser.uid),
+                                              );
+                                              pageTurn(
+                                                  Messaging(
+                                                      currentUser: currentUser,
+                                                      selectedUser:
+                                                          selectedUser),
+                                                  context);
+                                            }),
+                                      ),
+                                      
+                                      Positioned(
+                                        top: 300,
+                                        right: 130,
+                                        child: FloatingActionButton(
+                                          elevation: 0,
+                                          onPressed: () async {
+                                            User selectedUser =
+                                                await matchesRepository
+                                                    .getUserDetails(
+                                                        user[index].documentID);
+                                            User currentUser =
+                                                await matchesRepository
+                                                    .getUserDetails(
+                                                        widget.userId);
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        UserProfile(
+                                                          userId:
+                                                              selectedUser.uid,
+                                                          userRepository: widget
+                                                              .userRepository,
+                                                        )));
+                                          },
+                                          child: Icon(
+                                            Icons.person,
+                                            color: Colors.black,
+                                            size: 45,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ),
@@ -596,7 +635,7 @@ class _MatchesState extends State<Matches> {
                           itemCount: user.length,
                           gridDelegate:
                               SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 3,
+                            crossAxisCount: 1,
                           ),
                         );
                       } else {
