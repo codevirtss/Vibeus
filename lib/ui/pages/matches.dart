@@ -240,17 +240,20 @@ class _MatchesState extends State<Matches> {
                                     ),
                                   );
                                 },
-                                child: profileWidget(
-                                  padding: size.height * 0.01,
-                                  photo: user[index].data['photoUrl'],
-                                  photoWidth: size.width * 0.5,
-                                  photoHeight: size.height * 0.3,
-                                  clipRadius: size.height * 0.01,
-                                  containerHeight: size.height * 0.03,
-                                  containerWidth: size.width * 0.5,
-                                  child: Text(
-                                    "  " + user[index].data['name'],
-                                    style: TextStyle(color: Colors.white),
+                                child:Card(
+                                  elevation: 10,
+                                  child: profileWidget(
+                                    padding: size.height * 0.01,
+                                    photo: user[index].data['photoUrl'],
+                                    photoWidth: size.width * 0.5,
+                                    photoHeight: size.height * 0.3,
+                                    clipRadius: size.height * 0.01,
+                                    containerHeight: size.height * 0.03,
+                                    containerWidth: size.width * 0.5,
+                                    child: Text(
+                                      "  " + user[index].data['name'],
+                                      style: TextStyle(color: Colors.white),
+                                    ),
                                   ),
                                 ),
                               );
@@ -259,7 +262,7 @@ class _MatchesState extends State<Matches> {
                           ),
                           gridDelegate:
                               SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 4,
+                            crossAxisCount: 3,
                           ),
                         );
                       } else {

@@ -1,0 +1,7 @@
+"filename", "language", "Swift", "C++", "XML", "JSON", "comment", "blank", "total"
+"/Users/mohammedrazakhan/Vibeus-Con/Vibeus/ios/Runner/AppDelegate.swift", "Swift", 12, 0, 0, 0, 0, 2, 14
+"/Users/mohammedrazakhan/Vibeus-Con/Vibeus/ios/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json", "JSON", 0, 0, 0, 1, 0, 0, 1
+"/Users/mohammedrazakhan/Vibeus-Con/Vibeus/ios/Runner/Base.lproj/LaunchScreen.storyboard", "XML", 0, 0, 36, 0, 1, 1, 38
+"/Users/mohammedrazakhan/Vibeus-Con/Vibeus/ios/Runner/Base.lproj/Main.storyboard", "XML", 0, 0, 25, 0, 1, 1, 27
+"/Users/mohammedrazakhan/Vibeus-Con/Vibeus/ios/Runner/Runner-Bridging-Header.h", "C++", 0, 1, 0, 0, 0, 1, 2
+"Total", "-", 12, 1, 61, 1, 2, 5, 82
