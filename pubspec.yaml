@@ -20,8 +20,12 @@ dependencies:
   
   #For iOS
   cupertino_icons: ^1.0.0
+  
   ## Firebase Storage
   firebase_storage: ^3.1.5
+  
+  ##Chat bubble 
+  flutter_chat_bubble: ^1.0.2
   
   #Firebase Core
   firebase_core: ^0.4.4+3
@@ -97,11 +101,14 @@ dependencies:
   
   #Bottoom navgation bar
   google_nav_bar: ^3.0.0
+  
   line_icons: ^0.2.0
   
   # Emojies
   emoji_picker: ^0.1.0
+  
   carousel_slider: ^1.3.0
+  
   walkthrough: ^0.0.3
 
 
