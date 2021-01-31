@@ -482,7 +482,9 @@ class _VibeusDateState extends State<VibeusDate> {
                   ),
                   onPressed: () {})
             ],
-            bottom: TabBar(controller: controller, isScrollable: true, tabs: [
+            bottom: TabBar(
+              controller: controller,
+               isScrollable: true, tabs: [
               Tab(
                 child: Text('Posts', style: TextStyle(color: Colors.black)),
                 icon: Icon(
