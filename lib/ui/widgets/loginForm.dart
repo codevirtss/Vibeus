@@ -1,13 +1,17 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:vibeus/bloc/authentication/authentication_bloc.dart';
 import 'package:vibeus/bloc/authentication/authentication_event.dart';
 import 'package:vibeus/bloc/login/bloc.dart';
 import 'package:vibeus/repositories/userRepository.dart';
 import 'package:vibeus/ui/constants.dart';
+import 'package:vibeus/ui/pages/ProfileVerification.dart';
 import 'package:vibeus/ui/pages/signUp.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vibeus/ui/pages/splash.dart';
+import 'package:email_validator/email_validator.dart';
 
 class LoginForm extends StatefulWidget {
   final UserRepository _userRepository;
@@ -147,7 +151,6 @@ class _LoginFormState extends State<LoginForm> {
                             fit: BoxFit.cover,
                           ),
                         ),
-                    
                       ),
                       Container(
                         margin: EdgeInsets.all(5.0),
@@ -158,7 +161,6 @@ class _LoginFormState extends State<LoginForm> {
                             fit: BoxFit.fitHeight,
                           ),
                         ),
-                    
                       ),
                       Container(
                         margin: EdgeInsets.all(5.0),
@@ -169,22 +171,22 @@ class _LoginFormState extends State<LoginForm> {
                             fit: BoxFit.fitWidth,
                           ),
                         ),
-                        
                       ),
-                          Container(
-                            margin: EdgeInsets.all(5.0),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10.0),
-                              image: DecorationImage(
-                                image: AssetImage('images/chat.png'),
-                                fit: BoxFit.fitWidth,
-                              ),
-                            ),
-                       
+                      Container(
+                        margin: EdgeInsets.all(5.0),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10.0),
+                          image: DecorationImage(
+                            image: AssetImage('images/chat.png'),
+                            fit: BoxFit.fitWidth,
                           ),
+                        ),
+                      ),
                     ],
                   ),
-                  SizedBox(height: 30,),
+                  SizedBox(
+                    height: 30,
+                  ),
                   Center(
                     child: Text(
                       "Vibeus",
@@ -210,8 +212,7 @@ class _LoginFormState extends State<LoginForm> {
                       decoration: InputDecoration(
                         labelText: "Email",
                         labelStyle: TextStyle(
-                            color: Colors.black,
-                            fontSize: size.height * 0.03),
+                            color: Colors.black, fontSize: size.height * 0.03),
                         focusedBorder: OutlineInputBorder(
                           borderSide:
                               BorderSide(color: Colors.black, width: 1.0),
@@ -239,8 +240,7 @@ class _LoginFormState extends State<LoginForm> {
                       decoration: InputDecoration(
                         labelText: "Password",
                         labelStyle: TextStyle(
-                            color: Colors.black,
-                            fontSize: size.height * 0.03),
+                            color: Colors.black, fontSize: size.height * 0.03),
                         focusedBorder: OutlineInputBorder(
                           borderSide:
                               BorderSide(color: Colors.black, width: 1.0),
@@ -251,6 +251,26 @@ class _LoginFormState extends State<LoginForm> {
                         ),
                       ),
                     ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 15, 25, 0),
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ResetPassword()));
+                          },
+                          child: Text(
+                            "Forget password",
+                            style: TextStyle(fontSize: 18, color: color1),
+                          ),
+                        ),
+                      )
+                    ],
                   ),
                   SizedBox(
                     height: 20,
@@ -280,9 +300,6 @@ class _LoginFormState extends State<LoginForm> {
                                     fontWeight: FontWeight.bold)),
                           ),
                         ),
-
-         
-
                         SizedBox(
                           height: size.height * 0.02,
                         ),
@@ -332,3 +349,95 @@ class _LoginFormState extends State<LoginForm> {
     );
   }
 }
+
+class ResetPassword extends StatefulWidget {
+  @override
+  _ResetPasswordState createState() => _ResetPasswordState();
+}
+
+class _ResetPasswordState extends State<ResetPassword> {
+  final TextEditingController _emailController = TextEditingController();
+  Color color1 = HexColor("#eb4b44");
+
+  @override
+  Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    return Scaffold(
+      appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.black),
+        elevation: 0,
+        backgroundColor: backgroundColor,
+        title: Text(
+          "Password Reset",
+          style: TextStyle(color: Colors.black),
+        ),
+      ),
+      body: Center(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Padding(
+              padding: EdgeInsets.all(size.height * 0.02),
+              child: Text("""
+In order to implement a proper user management system, systems integrate a Forgot Password service that allows the user to request a password reset
+              """),
+            ),
+            Padding(
+              padding: EdgeInsets.all(size.height * 0.02),
+              child: TextFormField(
+                controller: _emailController,
+                // ignore: deprecated_member_use
+                autovalidate: true,
+                validator: (input) {
+                  final bool isValid = EmailValidator.validate(input);
+                  return isValid ? null : "Invalid email";
+                },
+                decoration: InputDecoration(
+                  labelText: "Email",
+                  labelStyle: TextStyle(
+                      color: Colors.black, fontSize: size.height * 0.03),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.black, width: 1.0),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.black, width: 1.0),
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.all(size.height * 0.05),
+              child: Material(
+                elevation: 5.0,
+                borderRadius: BorderRadius.circular(30.0),
+                color: color1,
+                child: MaterialButton(
+                  minWidth: MediaQuery.of(context).size.width,
+                  padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+                  onPressed: (){
+                    sendresetlink(_emailController.text);
+                  },
+                  child: Text("Reset Password",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.bold)),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Future sendresetlink(String email) {
+    return FirebaseAuth.instance.sendPasswordResetEmail(
+      email: email,
+    ).catchError((onError) => print('Error sending email verification $onError'))
+    .then((value) => print('Successfully sent email verification'));
+  }
+}
+
+

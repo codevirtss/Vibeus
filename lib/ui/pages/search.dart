@@ -83,38 +83,40 @@ class _SearchState extends State<Search> {
           if (_user.location == null) {
             return Scaffold(
               backgroundColor: backgroundColor,
-                 appBar: AppBar(
-            iconTheme: IconThemeData(color: Colors.black),
-            leading: GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => Addposts(
-                                user: widget.user,
-                                userId: widget.userId,
-                              )));
-                },
-                child: Icon(Icons.add_box_outlined)),
-            elevation: 0,
-            backgroundColor: backgroundColor,
-            centerTitle: true,
-            title: Text(
-              "Vibeus",
-              style: TextStyle(
-                  fontSize: 20.0,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black),
-            ),
-            actions: <Widget>[
-              IconButton(
-                  icon: Icon(Icons.settings),
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Settings()));
-                  }),
-            ],
-          ),
+              appBar: AppBar(
+                iconTheme: IconThemeData(color: Colors.black),
+                leading: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Addposts(
+                                    user: widget.user,
+                                    userId: widget.userId,
+                                  )));
+                    },
+                    child: Icon(Icons.add_box_outlined)),
+                elevation: 0,
+                backgroundColor: backgroundColor,
+                centerTitle: true,
+                title: Text(
+                  "Vibeus",
+                  style: TextStyle(
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black),
+                ),
+                actions: <Widget>[
+                  IconButton(
+                      icon: Icon(Icons.settings),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Settings()));
+                      }),
+                ],
+              ),
               body: Center(
                 child: Card(
                   child: Container(
@@ -129,7 +131,6 @@ class _SearchState extends State<Search> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                           
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
@@ -160,7 +161,6 @@ class _SearchState extends State<Search> {
                         SizedBox(
                           height: 30,
                         ),
-
                       ],
                     ),
                   ),
@@ -350,6 +350,7 @@ class CustomDialogBox extends StatefulWidget {
 }
 
 class _CustomDialogBoxState extends State<CustomDialogBox> {
+  TextEditingController controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     // ignore: unused_local_variable
@@ -393,6 +394,7 @@ class _CustomDialogBoxState extends State<CustomDialogBox> {
               SizedBox(
                 height: 15,
               ),
+            
               Text(
                 widget.descriptions,
                 style: TextStyle(fontSize: 14),

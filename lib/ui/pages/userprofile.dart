@@ -206,29 +206,6 @@ class _UserProfileState extends State<UserProfile> {
                               fontSize: 18,
                               fontWeight: FontWeight.bold),
                         ),
-                        // userverified
-                        //     ? IconButton(
-                        //         onPressed: null,
-                        //         tooltip:
-                        //             "${data['name']} you are a verified user",
-                        //         icon: Icon(
-                        //           Icons.verified,
-                        //           color: Colors.blue,
-                        //         ))
-                        //     : IconButton(
-                        //         tooltip:
-                        //             "${data['name']} you are not a verified user",
-                        //         onPressed: () {
-                        //           Navigator.push(
-                        //               context,
-                        //               MaterialPageRoute(
-                        //                   builder: (context) =>
-                        //                       Verification()));
-                        //         },
-                        //         icon: Icon(
-                        //           Icons.info_outline,
-                        //           color: Colors.grey,
-                        //         )),
                       ],
                     ),
 
@@ -400,6 +377,8 @@ ${data['bio']}""",
                 scrollDirection: Axis.vertical,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 3,
+                  // mainAxisSpacing: 4,
+                  crossAxisSpacing: 4,
                 ),
                 itemBuilder: (contesxt, index) {
                   return GestureDetector(
@@ -410,6 +389,7 @@ ${data['bio']}""",
                         height: 400,
                         width: 100,
                         decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
                           image: DecorationImage(
                             fit: BoxFit.cover,
                             image: NetworkImage(
@@ -470,13 +450,16 @@ ${data['bio']}""",
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Stack(children: [
-                        Container(
-                          height: MediaQuery.of(context).size.height * 0.48,
-                          width: MediaQuery.of(context).size.width,
-                          decoration: BoxDecoration(
-                              image: DecorationImage(
-                                  image: NetworkImage("${data['photoUrl']}"),
-                                  fit: BoxFit.cover)),
+                        GestureDetector(
+                          onTap: null,
+                          child: Container(
+                            height: MediaQuery.of(context).size.height * 0.48,
+                            width: MediaQuery.of(context).size.width,
+                            decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image: NetworkImage("${data['photoUrl']}"),
+                                    fit: BoxFit.cover)),
+                          ),
                         ),
                         Positioned(
                             left: MediaQuery.of(context).size.width * 0.01,
@@ -507,19 +490,17 @@ ${data['bio']}""",
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold),
                             ),
-                          
                           ],
                         ),
                       ),
-
-                   
                       Padding(
                         padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
-                        child: Text("My self-summary",
-                        style: TextStyle(color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20
-                        ),
+                        child: Text(
+                          "My self-summary",
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20),
                         ),
                       ),
                       Container(
