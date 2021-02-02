@@ -1,12 +1,10 @@
-
 import 'package:vibeus/bloc/authentication/authentication_bloc.dart';
 import 'package:vibeus/bloc/authentication/authentication_event.dart';
 import 'package:vibeus/bloc/signup/bloc.dart';
 import 'package:vibeus/repositories/userRepository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-
+import 'package:vibeus/ui/pages/splash.dart';
 
 class SignUpForm extends StatefulWidget {
   // ignore: unused_field
@@ -21,6 +19,9 @@ class SignUpForm extends StatefulWidget {
 }
 
 class _SignUpFormState extends State<SignUpForm> {
+
+
+ Color color1 = HexColor("#eb4b44");
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
@@ -109,8 +110,7 @@ class _SignUpFormState extends State<SignUpForm> {
                     Center(
                       child: Text(
                         "Vibeus",
-                        style: TextStyle(
-                            fontSize: 35, color: Colors.black),
+                        style: TextStyle(fontSize: 35, color: Colors.black),
                       ),
                     ),
                     Container(
@@ -132,7 +132,8 @@ class _SignUpFormState extends State<SignUpForm> {
                         decoration: InputDecoration(
                           labelText: "Email",
                           labelStyle: TextStyle(
-                              color: Colors.black, fontSize: size.height * 0.03),
+                              color: Colors.black,
+                              fontSize: size.height * 0.03),
                           focusedBorder: OutlineInputBorder(
                             borderSide:
                                 BorderSide(color: Colors.black, width: 1.0),
@@ -155,12 +156,13 @@ class _SignUpFormState extends State<SignUpForm> {
                         validator: (_) {
                           return !state.isPasswordValid
                               ? "Invalid Password"
-                             : null;
+                              : null;
                         },
                         decoration: InputDecoration(
                           labelText: "Password",
                           labelStyle: TextStyle(
-                              color: Colors.black, fontSize: size.height * 0.03),
+                              color: Colors.black,
+                              fontSize: size.height * 0.03),
                           focusedBorder: OutlineInputBorder(
                             borderSide:
                                 BorderSide(color: Colors.black, width: 1.0),
@@ -176,32 +178,28 @@ class _SignUpFormState extends State<SignUpForm> {
                       height: 20,
                     ),
                     Padding(
-                      padding: EdgeInsets.all(size.height * 0.02),
-                      child: GestureDetector(
-                        onTap: isSignUpButtonEnabled(state)
-                            ? _onFormSubmitted
-                            : null,
-                        child: Container(
-                          width: size.width * 0.8,
-                          height: size.height * 0.06,
-                          decoration: BoxDecoration(
-                            color: isSignUpButtonEnabled(state)
-                                ? Colors.red
-                                : Colors.grey,
-                            borderRadius:
-                                BorderRadius.circular(size.height * 0.05),
-                          ),
-                          child: Center(
-                            child: Text(
-                              "Sign Up",
+                       padding: EdgeInsets.all(size.height * 0.02),
+                      child: Material(
+                        elevation: 5.0,
+                        borderRadius: BorderRadius.circular(30.0),
+                        color: isSignUpButtonEnabled(state)
+                            ? color1
+                            : Colors.grey,
+                        child: MaterialButton(
+                          minWidth: MediaQuery.of(context).size.width,
+                          padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+                          onPressed: isSignUpButtonEnabled(state)
+                              ? _onFormSubmitted
+                              : null,
+                          child: Text("SignUp",
+                              textAlign: TextAlign.center,
                               style: TextStyle(
-                                  fontSize: size.height * 0.025,
-                                  color: Colors.white),
-                            ),
-                          ),
+                                  color: Colors.white,
+                                  fontSize: 20.0,
+                                  fontWeight: FontWeight.bold)),
                         ),
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),

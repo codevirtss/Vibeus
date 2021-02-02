@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:vibeus/ui/constants.dart';
+import 'package:vibeus/ui/pages/splash.dart';
 
 Widget genderWidget(icon, text, size, selected, onTap) {
+  Color color1 = HexColor("#eb4b44");
   return Column(
     crossAxisAlignment: CrossAxisAlignment.center,
     children: <Widget>[
@@ -11,7 +13,7 @@ Widget genderWidget(icon, text, size, selected, onTap) {
         child: Icon(
           icon,
           size: 30,
-          color: selected == text ? Colors.blue : Colors.black54,
+          color: selected == text ? color1 : Colors.black54,
         ),
       ),
       SizedBox(
@@ -20,7 +22,7 @@ Widget genderWidget(icon, text, size, selected, onTap) {
       Text(
         text,
         style: TextStyle(
-          color: selected == text ? Colors.black : Colors.black,
+          color: selected == text ? color1 : Colors.black,
         ),
       )
     ],

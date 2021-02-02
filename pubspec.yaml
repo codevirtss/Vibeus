@@ -126,6 +126,10 @@ flutter:
   assets:
       - images/profile.png
       - images/vibeuslogo.jpeg
+      - images/chat.png
+      - images/privacy.png
+      - images/likes.jpg
+      - images/chater.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

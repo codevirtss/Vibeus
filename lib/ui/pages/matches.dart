@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:vibeus/bloc/matches/bloc.dart';
 import 'package:vibeus/models/user.dart';
 import 'package:vibeus/repositories/matchesRepository.dart';
@@ -15,7 +14,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:geolocator/geolocator.dart';
-
 import 'messaging.dart';
 
 // ignore: must_be_immutable
@@ -314,6 +312,7 @@ class _MatchesState extends State<Matches> {
                                                   color: Colors.white,
                                                   fontSize: 25),
                                             ),
+                                            
                                           ],
                                         ),
                                       ),
@@ -593,7 +592,6 @@ class _MatchesState extends State<Matches> {
                                                   context);
                                             }),
                                       ),
-                                      
                                       Positioned(
                                         top: 300,
                                         right: 130,

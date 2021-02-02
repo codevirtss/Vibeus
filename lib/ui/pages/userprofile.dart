@@ -9,7 +9,6 @@ import 'package:vibeus/models/user.dart';
 import 'package:vibeus/repositories/userRepository.dart';
 import 'package:vibeus/ui/constants.dart';
 import 'package:vibeus/ui/pages/EditProfile.dart';
-import 'package:vibeus/ui/pages/Verification.dart';
 import 'package:vibeus/ui/pages/addposts.dart';
 import 'package:vibeus/ui/pages/settings.dart';
 import 'package:vibeus/ui/widgets/postwidget.dart';
@@ -37,8 +36,6 @@ class _UserProfileState extends State<UserProfile> {
   List postList = [];
 
   bool loading = false;
-
-  // bool userverified = false;
 
   createprofile() {
     bool ownProfile = currentUserUid == widget.userId;
@@ -504,47 +501,54 @@ ${data['bio']}""",
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Text(
-                              "${data['name']},",
+                              "${data['name']}, ${(DateTime.now().year - data['age'].toDate().year).toString()}",
                               style: TextStyle(
                                   color: Colors.black,
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold),
                             ),
-                            // userverified
-                            //     ? IconButton(
-                            //         onPressed: null,
-                            //         tooltip: "${data['name']} is verified user",
-                            //         icon: Icon(
-                            //           Icons.verified,
-                            //           color: Colors.blue,
-                            //         ))
-                            //     : IconButton(
-                            //         tooltip:
-                            //             "${data['name']} is not verified user",
-                            //         onPressed: null,
-                            //         icon: Icon(Icons.info_outline)),
+                          
                           ],
+                        ),
+                      ),
+
+                      // (DateTime.now().year -
+                      //                     _user.age.toDate().year)
+                      //                 .toString(),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
+                        child: Text("My self-summary",
+                        style: TextStyle(color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20
+                        ),
                         ),
                       ),
                       Container(
                         alignment: Alignment.centerLeft,
                         width: MediaQuery.of(context).size.width,
                         child: Padding(
-                          padding: const EdgeInsets.all(4.0),
-                          child: Linkify(
-                            onOpen: (link) async {
-                              await launch(link.url);
-                              print(link);
-                            },
-                            text: """
+                          padding: const EdgeInsets.all(10.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Linkify(
+                                onOpen: (link) async {
+                                  await launch(link.url);
+                                  print(link);
+                                },
+                                text: """
 ${data['bio']}""",
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold),
-                            linkStyle: TextStyle(
-                                fontSize: 18,
-                                color: Colors.black,
-                                fontWeight: FontWeight.w500),
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w400),
+                                linkStyle: TextStyle(
+                                    fontSize: 18,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w500),
+                              ),
+                            ],
                           ),
                         ),
                       ),

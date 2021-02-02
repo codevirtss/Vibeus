@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:vibeus/bloc/authentication/authentication_bloc.dart';
 import 'package:vibeus/bloc/authentication/authentication_event.dart';
 import 'package:vibeus/bloc/login/bloc.dart';
@@ -6,6 +7,7 @@ import 'package:vibeus/ui/constants.dart';
 import 'package:vibeus/ui/pages/signUp.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:vibeus/ui/pages/splash.dart';
 
 class LoginForm extends StatefulWidget {
   final UserRepository _userRepository;
@@ -19,6 +21,7 @@ class LoginForm extends StatefulWidget {
 }
 
 class _LoginFormState extends State<LoginForm> {
+  Color color1 = HexColor("#eb4b44");
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   LoginBloc _loginBloc;
@@ -116,154 +119,211 @@ class _LoginFormState extends State<LoginForm> {
       child: BlocBuilder<LoginBloc, LoginState>(
         builder: (context, state) {
           return SingleChildScrollView(
-            child: Center(
-              child: Container(
-                color: backgroundColor,
-                width: 500,
-                height: MediaQuery.of(context).size.height,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    Center(
-                      child: Text(
-                        "Vibeus",
-                        style: TextStyle(
-                            fontSize: 35, color: Colors.black),
-                      ),
-                    ),
-                    Container(
-                      width: size.width * 0.8,
-                      child: Divider(
-                        height: size.height * 0.05,
-                        color: Colors.black,
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(size.height * 0.02),
-                      child: TextFormField(
-                        controller: _emailController,
-                        // ignore: deprecated_member_use
-                        autovalidate: true,
-                        validator: (_) {
-                          return !state.isEmailValid ? "Invalid Email" : null;
-                        },
-                        decoration: InputDecoration(
-                          labelText: "Email",
-                          labelStyle: TextStyle(
-                              color: Colors.black, fontSize: size.height * 0.03),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(color: Colors.black, width: 1.0),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(color: Colors.black, width: 1.0),
+            child: Container(
+              color: backgroundColor,
+              width: 500,
+              height: MediaQuery.of(context).size.height,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  CarouselSlider(
+                    height: 180.0,
+                    enlargeCenterPage: true,
+                    autoPlay: true,
+                    aspectRatio: 16 / 9,
+                    autoPlayCurve: Curves.fastOutSlowIn,
+                    enableInfiniteScroll: true,
+                    autoPlayAnimationDuration: Duration(milliseconds: 200),
+                    viewportFraction: 0.8,
+                    pauseAutoPlayOnTouch: Duration(seconds: 2),
+                    items: [
+                      Container(
+                        margin: EdgeInsets.all(5.0),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10.0),
+                          image: DecorationImage(
+                            image: AssetImage('images/privacy.png'),
+                            fit: BoxFit.cover,
                           ),
                         ),
+                    
                       ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(size.height * 0.02),
-                      child: TextFormField(
-                        controller: _passwordController,
-                        autocorrect: false,
-                        obscureText: true,
-                        // ignore: deprecated_member_use
-                        autovalidate: true,
-                        validator: (_) {
-                          return !state.isPasswordValid
-                              ? "Invalid Password"
-                              : null;
-                        },
-                        decoration: InputDecoration(
-                          labelText: "Password",
-                          labelStyle: TextStyle(
-                              color: Colors.black, fontSize: size.height * 0.03),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(color: Colors.black, width: 1.0),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(color: Colors.black, width: 1.0),
+                      Container(
+                        margin: EdgeInsets.all(5.0),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10.0),
+                          image: DecorationImage(
+                            image: AssetImage('images/likes.jpg'),
+                            fit: BoxFit.fitHeight,
                           ),
                         ),
+                    
                       ),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(size.height * 0.02),
-                      child: Column(
-                        children: <Widget>[
-                          GestureDetector(
-                            onTap: isLoginButtonEnabled(state)
-                                ? _onFormSubmitted
-                                : null,
-                            child: Container(
-                              width: size.width * 0.8,
-                              height: size.height * 0.06,
-                              decoration: BoxDecoration(
-                                color: isLoginButtonEnabled(state)
-                                    ? Colors.red
-                                    : Colors.grey,
-                                borderRadius:
-                                    BorderRadius.circular(size.height * 0.05),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  "Login",
-                                  style: TextStyle(
-                                      fontSize: size.height * 0.025,
-                                      color: Colors.white),
-                                ),
+                      Container(
+                        margin: EdgeInsets.all(5.0),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10.0),
+                          image: DecorationImage(
+                            image: AssetImage('images/chater.png'),
+                            fit: BoxFit.fitWidth,
+                          ),
+                        ),
+                        
+                      ),
+                          Container(
+                            margin: EdgeInsets.all(5.0),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10.0),
+                              image: DecorationImage(
+                                image: AssetImage('images/chat.png'),
+                                fit: BoxFit.fitWidth,
                               ),
                             ),
+                       
                           ),
-                          SizedBox(
-                            height: size.height * 0.02,
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (context) {
-                                    return SignUp(
-                                      userRepository: _userRepository,
-                                    );
-                                  },
-                                ),
-                              );
-                            },
-                            child:  RichText(
-                    text: TextSpan(children: [
-                  TextSpan(
-                    text: 'Don\'t have an Account?',
-                    style: TextStyle(
+                    ],
+                  ),
+                  SizedBox(height: 30,),
+                  Center(
+                    child: Text(
+                      "Vibeus",
+                      style: TextStyle(fontSize: 35, color: Colors.black),
+                    ),
+                  ),
+                  Container(
+                    width: size.width * 0.8,
+                    child: Divider(
+                      height: size.height * 0.005,
                       color: Colors.black,
-                      fontSize: 18.0,
-                      //     fontFamily: "Satisfy",
-                      fontWeight: FontWeight.w400,
                     ),
                   ),
-                  TextSpan(
-                    text: 'Create Account',
-                    style: TextStyle(
-                      color: Colors.red,
-                      fontSize: 18.0,
-                      //     fontFamily: "Satisfy",
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ])),
-                          )
-                        ],
+                  Padding(
+                    padding: EdgeInsets.all(size.height * 0.02),
+                    child: TextFormField(
+                      controller: _emailController,
+                      // ignore: deprecated_member_use
+                      autovalidate: true,
+                      validator: (_) {
+                        return !state.isEmailValid ? "Invalid Email" : null;
+                      },
+                      decoration: InputDecoration(
+                        labelText: "Email",
+                        labelStyle: TextStyle(
+                            color: Colors.black,
+                            fontSize: size.height * 0.03),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide:
+                              BorderSide(color: Colors.black, width: 1.0),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide:
+                              BorderSide(color: Colors.black, width: 1.0),
+                        ),
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(size.height * 0.02),
+                    child: TextFormField(
+                      controller: _passwordController,
+                      autocorrect: false,
+                      obscureText: true,
+                      // ignore: deprecated_member_use
+                      autovalidate: true,
+                      validator: (_) {
+                        return !state.isPasswordValid
+                            ? "Invalid Password"
+                            : null;
+                      },
+                      decoration: InputDecoration(
+                        labelText: "Password",
+                        labelStyle: TextStyle(
+                            color: Colors.black,
+                            fontSize: size.height * 0.03),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide:
+                              BorderSide(color: Colors.black, width: 1.0),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide:
+                              BorderSide(color: Colors.black, width: 1.0),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(size.height * 0.02),
+                    child: Column(
+                      children: <Widget>[
+                        Material(
+                          elevation: 5.0,
+                          borderRadius: BorderRadius.circular(30.0),
+                          color: isLoginButtonEnabled(state)
+                              ? color1
+                              : Colors.grey,
+                          child: MaterialButton(
+                            minWidth: MediaQuery.of(context).size.width,
+                            padding:
+                                EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+                            onPressed: isLoginButtonEnabled(state)
+                                ? _onFormSubmitted
+                                : null,
+                            child: Text("Login",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20.0,
+                                    fontWeight: FontWeight.bold)),
+                          ),
+                        ),
+
+         
+
+                        SizedBox(
+                          height: size.height * 0.02,
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return SignUp(
+                                    userRepository: _userRepository,
+                                  );
+                                },
+                              ),
+                            );
+                          },
+                          child: RichText(
+                              text: TextSpan(children: [
+                            TextSpan(
+                              text: 'Don\'t have an Account?',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 18.0,
+                                //     fontFamily: "Satisfy",
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                            TextSpan(
+                              text: 'Create Account',
+                              style: TextStyle(
+                                color: color1,
+                                fontSize: 18.0,
+                                //     fontFamily: "Satisfy",
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ])),
+                        )
+                      ],
+                    ),
+                  ),
+                ],
               ),
             ),
           );

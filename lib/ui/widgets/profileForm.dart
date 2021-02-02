@@ -6,6 +6,7 @@ import 'package:vibeus/bloc/authentication/authentication_event.dart';
 import 'package:vibeus/bloc/profile/bloc.dart';
 import 'package:vibeus/repositories/userRepository.dart';
 import 'package:vibeus/ui/constants.dart';
+import 'package:vibeus/ui/pages/splash.dart';
 import 'package:vibeus/ui/widgets/gender.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:file_picker/file_picker.dart';
@@ -27,6 +28,7 @@ class ProfileForm extends StatefulWidget {
 }
 
 class _ProfileFormState extends State<ProfileForm> {
+  Color color1 = HexColor("#eb4b44");
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _bioController = TextEditingController();
 
@@ -220,9 +222,18 @@ DOB wont be vissible on the screen"""),
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          "Enter Birthday*",
-                          style: TextStyle(color: Colors.black, fontSize: 18),
+                        child: RichText(
+                          text: TextSpan(children: [
+                            TextSpan(
+                              text: "Enter Your Date of Birth",
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 18),
+                            ),
+                            TextSpan(
+                              text: "*",
+                              style: TextStyle(color: Colors.red, fontSize: 18),
+                            )
+                          ]),
                         ),
                       ),
                     ),
@@ -341,6 +352,7 @@ DOB wont be vissible on the screen"""),
                     child: Row(
                       children: <Widget>[
                         new Checkbox(
+                          activeColor: color1,
                           value: pchecked,
                           onChanged: (value) {
                             setState(() {
@@ -349,51 +361,65 @@ DOB wont be vissible on the screen"""),
                           },
                         ),
                         Text(
-                          'I agree to your ',
+                          'I agree Vibeus ',
                           overflow: TextOverflow.ellipsis,
                         ),
                         InkWell(
                             child: new Text(
-                              'Privacy Policy & ',
-                              style: TextStyle(color: Colors.blue),
+                              'Privacy Policy',
+                              style: TextStyle(color: color1),
                             ),
                             onTap: () => launch(
                                 'https://github.com/vibeus-con/vibeusprivacy/blob/main/Privacy.md')),
-                                  InkWell(
+                        Text(" & "),
+                        InkWell(
                             child: new Text(
                               'Safety Tips',
-                              style: TextStyle(color: Colors.blue),
+                              style: TextStyle(color: color1),
                             ),
                             onTap: () => launch(
                                 'https://github.com/vibeus-con/vibeus-con/blob/main/SafetyTips.md')),
-                               
                       ],
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(vertical: size.height * 0.02),
-                    child: GestureDetector(
-                      onTap: () {
-                        if (isButtonEnabled(state)) {
-                          _onSubmitted();
-                        } else {}
-                      },
-                      child: Container(
-                        width: size.width * 0.8,
-                        height: size.height * 0.06,
-                        decoration: BoxDecoration(
-                          color:
-                              isButtonEnabled(state) ? Colors.red : Colors.grey,
-                          borderRadius:
-                              BorderRadius.circular(size.height * 0.05),
-                        ),
-                        child: Center(
-                            child: Text(
-                          "Save",
-                          style: TextStyle(
-                              fontSize: size.height * 0.025,
-                              color: Colors.white),
-                        )),
+                    padding: EdgeInsets.all(size.height * 0.02),
+                    child: Material(
+                      elevation: 5.0,
+                      borderRadius: BorderRadius.circular(30.0),
+                      color: isButtonEnabled(state) ? color1 : Colors.grey,
+                      child: MaterialButton(
+                        minWidth: MediaQuery.of(context).size.width,
+                        padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+                        onPressed: () {
+                          if (isButtonEnabled(state)) {
+                            _onSubmitted();
+                          } else {
+                            return Scaffold.of(context)
+                              ..hideCurrentSnackBar()
+                              ..showSnackBar(
+                                SnackBar(
+                                  content: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: <Widget>[
+                                      Icon(Icons.error),
+                                      Text(
+                                        'Sorry! Some Fields are empty',
+                                        style: TextStyle(fontSize: 18),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              );
+                          }
+                        },
+                        child: Text("Save & Continue",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.bold)),
                       ),
                     ),
                   )

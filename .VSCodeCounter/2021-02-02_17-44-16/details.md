@@ -1,10 +1,10 @@
 # Details
 
-Date : 2021-01-31 15:10:03
+Date : 2021-02-02 17:44:16
 
 Directory /Users/mohammedrazakhan/Vibeus-Con/Vibeus/lib
 
-Total : 81 files,  8398 codes, 688 comments, 923 blanks, all 10009 lines
+Total : 81 files,  8631 codes, 673 comments, 933 blanks, all 10237 lines
 
 [summary](results.md)
 
@@ -55,7 +55,7 @@ Total : 81 files,  8398 codes, 688 comments, 923 blanks, all 10009 lines
 | [lib/repositories/searchRepository.dart](/lib/repositories/searchRepository.dart) | Dart | 107 | 1 | 15 | 123 |
 | [lib/repositories/userRepository.dart](/lib/repositories/userRepository.dart) | Dart | 83 | 3 | 17 | 103 |
 | [lib/repositories/userprofilerepository.dart](/lib/repositories/userprofilerepository.dart) | Dart | 34 | 1 | 11 | 46 |
-| [lib/ui/constants.dart](/lib/ui/constants.dart) | Dart | 2 | 0 | 1 | 3 |
+| [lib/ui/constants.dart](/lib/ui/constants.dart) | Dart | 2 | 0 | 4 | 6 |
 | [lib/ui/pages/EditProfile.dart](/lib/ui/pages/EditProfile.dart) | Dart | 688 | 30 | 38 | 756 |
 | [lib/ui/pages/ProfileVerification.dart](/lib/ui/pages/ProfileVerification.dart) | Dart | 277 | 6 | 18 | 301 |
 | [lib/ui/pages/Verification.dart](/lib/ui/pages/Verification.dart) | Dart | 11 | 0 | 3 | 14 |
@@ -65,31 +65,31 @@ Total : 81 files,  8398 codes, 688 comments, 923 blanks, all 10009 lines
 | [lib/ui/pages/help.dart](/lib/ui/pages/help.dart) | Dart | 0 | 0 | 1 | 1 |
 | [lib/ui/pages/home.dart](/lib/ui/pages/home.dart) | Dart | 46 | 3 | 4 | 53 |
 | [lib/ui/pages/login.dart](/lib/ui/pages/login.dart) | Dart | 36 | 0 | 5 | 41 |
-| [lib/ui/pages/matches.dart](/lib/ui/pages/matches.dart) | Dart | 496 | 2 | 14 | 512 |
+| [lib/ui/pages/matches.dart](/lib/ui/pages/matches.dart) | Dart | 635 | 5 | 16 | 656 |
 | [lib/ui/pages/messages.dart](/lib/ui/pages/messages.dart) | Dart | 92 | 0 | 9 | 101 |
-| [lib/ui/pages/messaging.dart](/lib/ui/pages/messaging.dart) | Dart | 767 | 24 | 39 | 830 |
+| [lib/ui/pages/messaging.dart](/lib/ui/pages/messaging.dart) | Dart | 766 | 17 | 38 | 821 |
 | [lib/ui/pages/notificationssett.dart](/lib/ui/pages/notificationssett.dart) | Dart | 78 | 0 | 3 | 81 |
 | [lib/ui/pages/profile.dart](/lib/ui/pages/profile.dart) | Dart | 34 | 0 | 4 | 38 |
 | [lib/ui/pages/search.dart](/lib/ui/pages/search.dart) | Dart | 416 | 2 | 23 | 441 |
 | [lib/ui/pages/settings.dart](/lib/ui/pages/settings.dart) | Dart | 678 | 0 | 118 | 796 |
 | [lib/ui/pages/signUp.dart](/lib/ui/pages/signUp.dart) | Dart | 39 | 0 | 4 | 43 |
 | [lib/ui/pages/splash.dart](/lib/ui/pages/splash.dart) | Dart | 27 | 1 | 10 | 38 |
-| [lib/ui/pages/userprofile.dart](/lib/ui/pages/userprofile.dart) | Dart | 497 | 39 | 33 | 569 |
+| [lib/ui/pages/userprofile.dart](/lib/ui/pages/userprofile.dart) | Dart | 511 | 28 | 34 | 573 |
 | [lib/ui/pages/vibeusques.dart](/lib/ui/pages/vibeusques.dart) | Dart | 0 | 501 | 4 | 505 |
 | [lib/ui/pages/viewProfile.dart](/lib/ui/pages/viewProfile.dart) | Dart | 154 | 23 | 13 | 190 |
 | [lib/ui/pages/walkthrough.dart](/lib/ui/pages/walkthrough.dart) | Dart | 51 | 4 | 4 | 59 |
 | [lib/ui/validators.dart](/lib/ui/validators.dart) | Dart | 14 | 0 | 3 | 17 |
 | [lib/ui/widgets/chat.dart](/lib/ui/widgets/chat.dart) | Dart | 197 | 1 | 12 | 210 |
-| [lib/ui/widgets/gender.dart](/lib/ui/widgets/gender.dart) | Dart | 27 | 0 | 2 | 29 |
+| [lib/ui/widgets/gender.dart](/lib/ui/widgets/gender.dart) | Dart | 29 | 0 | 2 | 31 |
 | [lib/ui/widgets/iconWidget.dart](/lib/ui/widgets/iconWidget.dart) | Dart | 12 | 0 | 3 | 15 |
-| [lib/ui/widgets/loginForm.dart](/lib/ui/widgets/loginForm.dart) | Dart | 251 | 4 | 20 | 275 |
+| [lib/ui/widgets/loginForm.dart](/lib/ui/widgets/loginForm.dart) | Dart | 304 | 4 | 27 | 335 |
 | [lib/ui/widgets/message.dart](/lib/ui/widgets/message.dart) | Dart | 160 | 0 | 11 | 171 |
 | [lib/ui/widgets/pageTurn.dart](/lib/ui/widgets/pageTurn.dart) | Dart | 11 | 0 | 2 | 13 |
 | [lib/ui/widgets/photo.dart](/lib/ui/widgets/photo.dart) | Dart | 39 | 0 | 4 | 43 |
 | [lib/ui/widgets/postwidget.dart](/lib/ui/widgets/postwidget.dart) | Dart | 143 | 5 | 17 | 165 |
 | [lib/ui/widgets/profile.dart](/lib/ui/widgets/profile.dart) | Dart | 63 | 2 | 2 | 67 |
-| [lib/ui/widgets/profileForm.dart](/lib/ui/widgets/profileForm.dart) | Dart | 461 | 5 | 22 | 488 |
-| [lib/ui/widgets/signUpForm.dart](/lib/ui/widgets/signUpForm.dart) | Dart | 210 | 4 | 21 | 235 |
+| [lib/ui/widgets/profileForm.dart](/lib/ui/widgets/profileForm.dart) | Dart | 488 | 5 | 21 | 514 |
+| [lib/ui/widgets/signUpForm.dart](/lib/ui/widgets/signUpForm.dart) | Dart | 209 | 4 | 20 | 233 |
 | [lib/ui/widgets/tabs.dart](/lib/ui/widgets/tabs.dart) | Dart | 219 | 8 | 18 | 245 |
 | [lib/ui/widgets/userGender.dart](/lib/ui/widgets/userGender.dart) | Dart | 27 | 0 | 2 | 29 |
 

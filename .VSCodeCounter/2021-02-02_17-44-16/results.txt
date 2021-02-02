@@ -1,19 +1,19 @@
-Date : 2021-01-31 15:10:03
+Date : 2021-02-02 17:44:16
 Directory : /Users/mohammedrazakhan/Vibeus-Con/Vibeus/lib
-Total : 81 files,  8398 codes, 688 comments, 923 blanks, all 10009 lines
+Total : 81 files,  8631 codes, 673 comments, 933 blanks, all 10237 lines
 
 Languages
 +----------+------------+------------+------------+------------+------------+
 | language | files      | code       | comment    | blank      | total      |
 +----------+------------+------------+------------+------------+------------+
-| Dart     |         81 |      8,398 |        688 |        923 |     10,009 |
+| Dart     |         81 |      8,631 |        673 |        933 |     10,237 |
 +----------+------------+------------+------------+------------+------------+
 
 Directories
 +---------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
 | path                                                                                        | files      | code       | comment    | blank      | total      |
 +---------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
-| .                                                                                           |         81 |      8,398 |        688 |        923 |     10,009 |
+| .                                                                                           |         81 |      8,631 |        673 |        933 |     10,237 |
 | bloc                                                                                        |         33 |      1,188 |         10 |        289 |      1,487 |
 | bloc/authentication                                                                         |          4 |         92 |          0 |         30 |        122 |
 | bloc/login                                                                                  |          4 |        180 |          5 |         41 |        226 |
@@ -25,9 +25,9 @@ Directories
 | bloc/signup                                                                                 |          4 |        180 |          5 |         41 |        226 |
 | models                                                                                      |          4 |         63 |          0 |         12 |         75 |
 | repositories                                                                                |          6 |        492 |          5 |         89 |        586 |
-| ui                                                                                          |         37 |      6,634 |        673 |        526 |      7,833 |
-| ui/pages                                                                                    |         22 |      4,798 |        644 |        386 |      5,828 |
-| ui/widgets                                                                                  |         13 |      1,820 |         29 |        136 |      1,985 |
+| ui                                                                                          |         37 |      6,867 |        658 |        536 |      8,061 |
+| ui/pages                                                                                    |         22 |      4,950 |        629 |        388 |      5,967 |
+| ui/widgets                                                                                  |         13 |      1,901 |         29 |        141 |      2,071 |
 +---------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
 
 Files
@@ -78,7 +78,7 @@ Files
 | /Users/mohammedrazakhan/Vibeus-Con/Vibeus/lib/repositories/searchRepository.dart            | Dart     |        107 |          1 |         15 |        123 |
 | /Users/mohammedrazakhan/Vibeus-Con/Vibeus/lib/repositories/userRepository.dart              | Dart     |         83 |          3 |         17 |        103 |
 | /Users/mohammedrazakhan/Vibeus-Con/Vibeus/lib/repositories/userprofilerepository.dart       | Dart     |         34 |          1 |         11 |         46 |
-| /Users/mohammedrazakhan/Vibeus-Con/Vibeus/lib/ui/constants.dart                             | Dart     |          2 |          0 |          1 |          3 |
+| /Users/mohammedrazakhan/Vibeus-Con/Vibeus/lib/ui/constants.dart                             | Dart     |          2 |          0 |          4 |          6 |
 | /Users/mohammedrazakhan/Vibeus-Con/Vibeus/lib/ui/pages/EditProfile.dart                     | Dart     |        688 |         30 |         38 |        756 |
 | /Users/mohammedrazakhan/Vibeus-Con/Vibeus/lib/ui/pages/ProfileVerification.dart             | Dart     |        277 |          6 |         18 |        301 |
 | /Users/mohammedrazakhan/Vibeus-Con/Vibeus/lib/ui/pages/Verification.dart                    | Dart     |         11 |          0 |          3 |         14 |
@@ -88,32 +88,32 @@ Files
 | /Users/mohammedrazakhan/Vibeus-Con/Vibeus/lib/ui/pages/help.dart                            | Dart     |          0 |          0 |          1 |          1 |
 | /Users/mohammedrazakhan/Vibeus-Con/Vibeus/lib/ui/pages/home.dart                            | Dart     |         46 |          3 |          4 |         53 |
 | /Users/mohammedrazakhan/Vibeus-Con/Vibeus/lib/ui/pages/login.dart                           | Dart     |         36 |          0 |          5 |         41 |
-| /Users/mohammedrazakhan/Vibeus-Con/Vibeus/lib/ui/pages/matches.dart                         | Dart     |        496 |          2 |         14 |        512 |
+| /Users/mohammedrazakhan/Vibeus-Con/Vibeus/lib/ui/pages/matches.dart                         | Dart     |        635 |          5 |         16 |        656 |
 | /Users/mohammedrazakhan/Vibeus-Con/Vibeus/lib/ui/pages/messages.dart                        | Dart     |         92 |          0 |          9 |        101 |
-| /Users/mohammedrazakhan/Vibeus-Con/Vibeus/lib/ui/pages/messaging.dart                       | Dart     |        767 |         24 |         39 |        830 |
+| /Users/mohammedrazakhan/Vibeus-Con/Vibeus/lib/ui/pages/messaging.dart                       | Dart     |        766 |         17 |         38 |        821 |
 | /Users/mohammedrazakhan/Vibeus-Con/Vibeus/lib/ui/pages/notificationssett.dart               | Dart     |         78 |          0 |          3 |         81 |
 | /Users/mohammedrazakhan/Vibeus-Con/Vibeus/lib/ui/pages/profile.dart                         | Dart     |         34 |          0 |          4 |         38 |
 | /Users/mohammedrazakhan/Vibeus-Con/Vibeus/lib/ui/pages/search.dart                          | Dart     |        416 |          2 |         23 |        441 |
 | /Users/mohammedrazakhan/Vibeus-Con/Vibeus/lib/ui/pages/settings.dart                        | Dart     |        678 |          0 |        118 |        796 |
 | /Users/mohammedrazakhan/Vibeus-Con/Vibeus/lib/ui/pages/signUp.dart                          | Dart     |         39 |          0 |          4 |         43 |
 | /Users/mohammedrazakhan/Vibeus-Con/Vibeus/lib/ui/pages/splash.dart                          | Dart     |         27 |          1 |         10 |         38 |
-| /Users/mohammedrazakhan/Vibeus-Con/Vibeus/lib/ui/pages/userprofile.dart                     | Dart     |        497 |         39 |         33 |        569 |
+| /Users/mohammedrazakhan/Vibeus-Con/Vibeus/lib/ui/pages/userprofile.dart                     | Dart     |        511 |         28 |         34 |        573 |
 | /Users/mohammedrazakhan/Vibeus-Con/Vibeus/lib/ui/pages/vibeusques.dart                      | Dart     |          0 |        501 |          4 |        505 |
 | /Users/mohammedrazakhan/Vibeus-Con/Vibeus/lib/ui/pages/viewProfile.dart                     | Dart     |        154 |         23 |         13 |        190 |
 | /Users/mohammedrazakhan/Vibeus-Con/Vibeus/lib/ui/pages/walkthrough.dart                     | Dart     |         51 |          4 |          4 |         59 |
 | /Users/mohammedrazakhan/Vibeus-Con/Vibeus/lib/ui/validators.dart                            | Dart     |         14 |          0 |          3 |         17 |
 | /Users/mohammedrazakhan/Vibeus-Con/Vibeus/lib/ui/widgets/chat.dart                          | Dart     |        197 |          1 |         12 |        210 |
-| /Users/mohammedrazakhan/Vibeus-Con/Vibeus/lib/ui/widgets/gender.dart                        | Dart     |         27 |          0 |          2 |         29 |
+| /Users/mohammedrazakhan/Vibeus-Con/Vibeus/lib/ui/widgets/gender.dart                        | Dart     |         29 |          0 |          2 |         31 |
 | /Users/mohammedrazakhan/Vibeus-Con/Vibeus/lib/ui/widgets/iconWidget.dart                    | Dart     |         12 |          0 |          3 |         15 |
-| /Users/mohammedrazakhan/Vibeus-Con/Vibeus/lib/ui/widgets/loginForm.dart                     | Dart     |        251 |          4 |         20 |        275 |
+| /Users/mohammedrazakhan/Vibeus-Con/Vibeus/lib/ui/widgets/loginForm.dart                     | Dart     |        304 |          4 |         27 |        335 |
 | /Users/mohammedrazakhan/Vibeus-Con/Vibeus/lib/ui/widgets/message.dart                       | Dart     |        160 |          0 |         11 |        171 |
 | /Users/mohammedrazakhan/Vibeus-Con/Vibeus/lib/ui/widgets/pageTurn.dart                      | Dart     |         11 |          0 |          2 |         13 |
 | /Users/mohammedrazakhan/Vibeus-Con/Vibeus/lib/ui/widgets/photo.dart                         | Dart     |         39 |          0 |          4 |         43 |
 | /Users/mohammedrazakhan/Vibeus-Con/Vibeus/lib/ui/widgets/postwidget.dart                    | Dart     |        143 |          5 |         17 |        165 |
 | /Users/mohammedrazakhan/Vibeus-Con/Vibeus/lib/ui/widgets/profile.dart                       | Dart     |         63 |          2 |          2 |         67 |
-| /Users/mohammedrazakhan/Vibeus-Con/Vibeus/lib/ui/widgets/profileForm.dart                   | Dart     |        461 |          5 |         22 |        488 |
-| /Users/mohammedrazakhan/Vibeus-Con/Vibeus/lib/ui/widgets/signUpForm.dart                    | Dart     |        210 |          4 |         21 |        235 |
+| /Users/mohammedrazakhan/Vibeus-Con/Vibeus/lib/ui/widgets/profileForm.dart                   | Dart     |        488 |          5 |         21 |        514 |
+| /Users/mohammedrazakhan/Vibeus-Con/Vibeus/lib/ui/widgets/signUpForm.dart                    | Dart     |        209 |          4 |         20 |        233 |
 | /Users/mohammedrazakhan/Vibeus-Con/Vibeus/lib/ui/widgets/tabs.dart                          | Dart     |        219 |          8 |         18 |        245 |
 | /Users/mohammedrazakhan/Vibeus-Con/Vibeus/lib/ui/widgets/userGender.dart                    | Dart     |         27 |          0 |          2 |         29 |
-| Total                                                                                       |          |      8,398 |        688 |        923 |     10,009 |
+| Total                                                                                       |          |      8,631 |        673 |        933 |     10,237 |
 +---------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
