@@ -512,9 +512,7 @@ ${data['bio']}""",
                         ),
                       ),
 
-                      // (DateTime.now().year -
-                      //                     _user.age.toDate().year)
-                      //                 .toString(),
+                   
                       Padding(
                         padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
                         child: Text("My self-summary",
