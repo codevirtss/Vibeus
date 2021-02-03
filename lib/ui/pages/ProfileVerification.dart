@@ -1,4 +1,3 @@
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:vibeus/ui/constants.dart';
@@ -77,7 +76,7 @@ class _ProfileSettingsState extends State<ProfileSettings> {
                   padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
                   child: RaisedButton(
                     onPressed: otp,
-                     color: Colors.red,
+                    color: Colors.red,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15.0),
                         side: BorderSide(color: Colors.red)),
@@ -154,10 +153,10 @@ class _ProfileSettingsState extends State<ProfileSettings> {
             contentPadding: EdgeInsets.all(10),
             actions: [
               FlatButton(
-                  color: Colors.red,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15.0),
-                        side: BorderSide(color: Colors.red)),
+                color: Colors.red,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                    side: BorderSide(color: Colors.red)),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
@@ -169,7 +168,6 @@ class _ProfileSettingsState extends State<ProfileSettings> {
                   FirebaseAuth.instance.currentUser().then((user) {
                     if (user != null) {
                       showFlashDialog(context: context);
-                   
                     } else {
                       Navigator.of(context).pop();
                     }
@@ -189,8 +187,7 @@ class _ProfileSettingsState extends State<ProfileSettings> {
         builder: (BuildContext context) {
           return CustomDialogBox(
             title: "VibeusVrification mode",
-            descriptions:
-                "VibeusVerification mode hels you to verify",
+            descriptions: "VibeusVerification mode hels you to verify",
             text: "Thanks",
           );
         });
@@ -282,10 +279,9 @@ class _CustomDialogBoxState extends State<CustomDialogBox> {
             backgroundColor: Colors.transparent,
             radius: Constants.avatarRadius,
             child: ClipRRect(
-                borderRadius:
-                    BorderRadius.all(Radius.circular(Constants.avatarRadius)),
-                child: iconWidget(
-                    Icons.verified, () {}, size.height * 0.08, Colors.blue[800])),
+              borderRadius:
+                  BorderRadius.all(Radius.circular(Constants.avatarRadius)),
+            ),
           ),
         ),
       ],

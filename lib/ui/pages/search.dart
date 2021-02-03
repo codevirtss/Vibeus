@@ -5,6 +5,7 @@ import 'package:vibeus/repositories/userRepository.dart';
 import 'package:vibeus/ui/constants.dart';
 import 'package:vibeus/ui/pages/addposts.dart';
 import 'package:vibeus/ui/pages/settings.dart';
+import 'package:vibeus/ui/pages/splash.dart';
 import 'package:vibeus/ui/pages/userprofile.dart';
 import 'package:vibeus/ui/widgets/iconWidget.dart';
 import 'package:vibeus/ui/widgets/profile.dart';
@@ -29,6 +30,8 @@ class Search extends StatefulWidget {
 }
 
 class _SearchState extends State<Search> {
+
+   Color color1 = HexColor("#eb4b44");
   final SearchRepository _searchRepository = SearchRepository();
   SearchBloc _searchBloc;
   User _user, _currentUser;
@@ -102,7 +105,7 @@ class _SearchState extends State<Search> {
                 title: Text(
                   "Vibeus",
                   style: TextStyle(
-                      fontSize: 20.0,
+                      fontSize: 30.0,
                       fontWeight: FontWeight.bold,
                       color: Colors.black),
                 ),
@@ -141,23 +144,27 @@ class _SearchState extends State<Search> {
                                 color: Colors.black),
                           ),
                         ),
-                        RawMaterialButton(
-                          elevation: 10,
-                          fillColor: Colors.red,
-                          onPressed: null,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(18.0),
-                              side: BorderSide(color: Colors.red)),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              "Add or update your prrefrences",
-                              style: TextStyle(
-                                color: Colors.white,
-                              ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Material(
+                            elevation: 5.0,
+                            borderRadius: BorderRadius.circular(30.0),
+                            color: color1,
+                             
+                            child: MaterialButton(
+                              minWidth: MediaQuery.of(context).size.width,
+                              padding:
+                                  EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+                              onPressed: (){},
+                              child: Text("Update prefrences",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 20.0,
+                                      fontWeight: FontWeight.bold)),
                             ),
                           ),
-                        ),
+                      ),
                         SizedBox(
                           height: 30,
                         ),
@@ -253,49 +260,36 @@ class _SearchState extends State<Search> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: <Widget>[
-                          CircleAvatar(
-                            backgroundColor: backgroundColor,
-                            child: flashactivated
-                                ? iconWidget(EvaIcons.flash, () {},
-                                    size.height * 0.04, Colors.grey)
-                                : iconWidget(EvaIcons.flash, () {
-                                    showFlashDialog(context: context);
-                                    Navigator.of(context);
-                                  }, size.height * 0.04, Colors.yellow),
-                          ),
-                          CircleAvatar(
-                            backgroundColor: backgroundColor,
-                            child: iconWidget(Icons.clear, () {
-                              _searchBloc
-                                  .add(PassUserEvent(widget.userId, _user.uid));
-                            }, size.height * 0.04, Colors.blue),
-                          ),
-                          CircleAvatar(
-                            backgroundColor: backgroundColor,
-                            child: iconWidget(FontAwesomeIcons.solidHeart, () {
-                              _searchBloc.add(
-                                SelectUserEvent(
-                                    name: _currentUser.name,
-                                    photoUrl: _currentUser.photo,
-                                    currentUserId: widget.userId,
-                                    selectedUserId: _user.uid),
-                              );
-                            }, size.height * 0.04, Colors.red),
-                          ),
-                          CircleAvatar(
-                            backgroundColor: backgroundColor,
-                            child:
-                                iconWidget(Icons.account_circle_outlined, () {
+                          flashactivated
+                              ? iconWidget(EvaIcons.flash, () {},
+                                  size.height * 0.04, Colors.grey)
+                              : iconWidget(EvaIcons.flash, () {
+                                  showFlashDialog(context: context);
+                                  Navigator.of(context);
+                                }, size.height * 0.04, Colors.yellow),
+                          iconWidget(Icons.clear, () {
+                            _searchBloc
+                                .add(PassUserEvent(widget.userId, _user.uid));
+                          }, size.height * 0.04, Colors.blue),
+                          iconWidget(FontAwesomeIcons.solidHeart, () {
+                            _searchBloc.add(
+                              SelectUserEvent(
+                                  name: _currentUser.name,
+                                  photoUrl: _currentUser.photo,
+                                  currentUserId: widget.userId,
+                                  selectedUserId: _user.uid),
+                            );
+                          }, size.height * 0.04, Colors.red),
+                          iconWidget(Icons.account_circle_outlined, () {
                               Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => UserProfile(
-                                            userId: _user.uid,
-                                            userRepository:
-                                                widget.userRepository,
-                                          )));
-                            }, size.height * 0.04, Colors.blueGrey),
-                          )
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => UserProfile(
+                                      userId: _user.uid,
+                                      userRepository:
+                                          widget.userRepository,
+                                    )));
+                            }, size.height * 0.04, Colors.blueGrey)
                         ],
                       )
                     ],

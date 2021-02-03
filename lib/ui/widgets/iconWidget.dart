@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 
 
 Widget iconWidget(icon, onTap, size, color) {
-  return GestureDetector(
-    onTap: onTap,
+  return FloatingActionButton(
+    mini: true,
+    onPressed: onTap,
     child: Icon(
       icon,
       size: size,
@@ -12,3 +13,5 @@ Widget iconWidget(icon, onTap, size, color) {
     ),
   );
 }
+
+

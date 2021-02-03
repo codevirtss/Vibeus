@@ -103,6 +103,11 @@ class _MatchesState extends State<Matches> {
                         return Center(
                           child: Container(
                             color: backgroundColor,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [],
+                            ),
                           ),
                         );
                       }
@@ -199,64 +204,57 @@ class _MatchesState extends State<Matches> {
                                                         MainAxisAlignment
                                                             .center,
                                                     children: <Widget>[
-                                                      CircleAvatar(
-                                                        backgroundColor:
-                                                            backgroundColor,
-                                                        child: iconWidget(
-                                                            Icons.clear, () {
-                                                          _matchesBloc.add(
-                                                            DeleteUserEvent(
-                                                                currentUser:
-                                                                    currentUser
-                                                                        .uid,
-                                                                selectedUser:
-                                                                    selectedUser
-                                                                        .uid),
-                                                          );
-                                                          Navigator.of(context)
-                                                              .pop();
-                                                        }, size.height * 0.04,
-                                                            Colors.blue),
-                                                      ),
+                                                      iconWidget(
+                                                          Icons.clear, () {
+                                                        _matchesBloc.add(
+                                                          DeleteUserEvent(
+                                                              currentUser:
+                                                                  currentUser
+                                                                      .uid,
+                                                              selectedUser:
+                                                                  selectedUser
+                                                                      .uid),
+                                                        );
+                                                        Navigator.of(context)
+                                                            .pop();
+                                                      }, size.height * 0.04,
+                                                          Colors.blue),
                                                       SizedBox(
                                                         width:
                                                             size.width * 0.05,
                                                       ),
-                                                      CircleAvatar(
-                                                        backgroundColor:
-                                                            backgroundColor,
-                                                        child: iconWidget(
-                                                            FontAwesomeIcons
-                                                                .solidHeart,
-                                                            () {
-                                                          _matchesBloc.add(
-                                                            AcceptUserEvent(
-                                                                selectedUser:
-                                                                    selectedUser
-                                                                        .uid,
-                                                                currentUser:
-                                                                    currentUser
-                                                                        .uid,
-                                                                currentUserPhotoUrl:
-                                                                    currentUser
-                                                                        .photo,
-                                                                currentUserName:
-                                                                    currentUser
-                                                                        .name,
-                                                                selectedUserPhotoUrl:
-                                                                    selectedUser
-                                                                        .photo,
-                                                                selectedUserName:
-                                                                    selectedUser
-                                                                        .name),
-                                                          );
-                                                          Navigator.of(context)
-                                                              .pop();
-                                                        }, size.height * 0.04,
-                                                            Colors.red),
-                                                      ),
-                                                      SizedBox(
-                                                        width: 6,
+                                                      iconWidget(
+                                                          FontAwesomeIcons
+                                                              .solidHeart,
+                                                          () {
+                                                        _matchesBloc.add(
+                                                          AcceptUserEvent(
+                                                              selectedUser:
+                                                                  selectedUser
+                                                                      .uid,
+                                                              currentUser:
+                                                                  currentUser
+                                                                      .uid,
+                                                              currentUserPhotoUrl:
+                                                                  currentUser
+                                                                      .photo,
+                                                              currentUserName:
+                                                                  currentUser
+                                                                      .name,
+                                                              selectedUserPhotoUrl:
+                                                                  selectedUser
+                                                                      .photo,
+                                                              selectedUserName:
+                                                                  selectedUser
+                                                                      .name),
+                                                        );
+                                                        Navigator.of(context)
+                                                            .pop();
+                                                      }, size.height * 0.04,
+                                                          Colors.red),
+                                                    SizedBox(
+                                                        width:
+                                                            size.width * 0.05,
                                                       ),
                                                       iconWidget(
                                                           Icons
@@ -273,8 +271,8 @@ class _MatchesState extends State<Matches> {
                                                                           userRepository:
                                                                               widget.userRepository,
                                                                         )));
-                                                      }, size.height * 0.06,
-                                                          Colors.white)
+                                                      }, size.height * 0.04,
+                                                          Colors.blueGrey)
                                                     ],
                                                   ),
                                                 ],
@@ -303,29 +301,29 @@ class _MatchesState extends State<Matches> {
                                   child: Stack(
                                     children: [
                                       Positioned(
-                                        top: 250,
+                                        top: 90,
                                         child: Row(
                                           children: [
                                             Text(
                                               "  " + user[index].data['name'],
                                               style: TextStyle(
                                                   color: Colors.white,
-                                                  fontSize: 25),
+                                                  fontSize: 18),
                                             ),
-                                            
                                           ],
                                         ),
                                       ),
                                       Positioned(
-                                        top: 300,
-                                        left: 120,
+                                        top: 120,
+                                        left: 40,
                                         child: FloatingActionButton(
+                                            mini: true,
                                             elevation: 0,
                                             backgroundColor: backgroundColor,
                                             child: Icon(
                                               Icons.clear,
                                               color: Colors.blue,
-                                              size: 35,
+                                              size: 20,
                                             ),
                                             onPressed: () async {
                                               User selectedUser =
@@ -347,9 +345,10 @@ class _MatchesState extends State<Matches> {
                                             }),
                                       ),
                                       Positioned(
-                                        top: 300,
-                                        right: 130,
+                                        top: 120,
+                                        right: 40,
                                         child: FloatingActionButton(
+                                          mini: true,
                                           elevation: 0,
                                           onPressed: () async {
                                             User selectedUser =
@@ -361,16 +360,24 @@ class _MatchesState extends State<Matches> {
                                                     .getUserDetails(
                                                         widget.userId);
                                             _matchesBloc.add(
-                                              DeleteUserEvent(
-                                                  currentUser: currentUser.uid,
+                                              AcceptUserEvent(
                                                   selectedUser:
-                                                      selectedUser.uid),
+                                                      selectedUser.uid,
+                                                  currentUser: currentUser.uid,
+                                                  currentUserPhotoUrl:
+                                                      currentUser.photo,
+                                                  currentUserName:
+                                                      currentUser.name,
+                                                  selectedUserPhotoUrl:
+                                                      selectedUser.photo,
+                                                  selectedUserName:
+                                                      selectedUser.name),
                                             );
                                           },
                                           child: Icon(
                                             Icons.favorite,
                                             color: Colors.red,
-                                            size: 45,
+                                            size: 20,
                                           ),
                                         ),
                                       ),
@@ -383,7 +390,7 @@ class _MatchesState extends State<Matches> {
                           itemCount: user.length,
                           gridDelegate:
                               SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 1,
+                            crossAxisCount: 2,
                           ),
                         );
                       } else
@@ -477,49 +484,41 @@ class _MatchesState extends State<Matches> {
                                               mainAxisAlignment:
                                                   MainAxisAlignment.center,
                                               children: <Widget>[
-                                                Padding(
-                                                  padding: EdgeInsets.all(
-                                                      size.height * 0.02),
-                                                  child: iconWidget(
-                                                      Icons.message, () {
-                                                    _matchesBloc.add(
-                                                      OpenChatEvent(
+                                                iconWidget(
+                                                    Icons.message, () {
+                                                  _matchesBloc.add(
+                                                    OpenChatEvent(
+                                                        currentUser:
+                                                            widget.userId,
+                                                        selectedUser:
+                                                            selectedUser.uid),
+                                                  );
+                                                  pageTurn(
+                                                      Messaging(
                                                           currentUser:
-                                                              widget.userId,
+                                                              currentUser,
                                                           selectedUser:
-                                                              selectedUser.uid),
-                                                    );
-                                                    pageTurn(
-                                                        Messaging(
-                                                            currentUser:
-                                                                currentUser,
-                                                            selectedUser:
-                                                                selectedUser),
-                                                        context);
-                                                  }, size.height * 0.04,
-                                                      Colors.white),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsets.all(
-                                                      size.height * 0.04),
-                                                  child: iconWidget(
-                                                      Icons.account_circle, () {
-                                                    Navigator.push(
-                                                        context,
-                                                        MaterialPageRoute(
-                                                            builder:
-                                                                (context) =>
-                                                                    UserProfile(
-                                                                      userId:
-                                                                          selectedUser
-                                                                              .uid,
-                                                                      userRepository:
-                                                                          widget
-                                                                              .userRepository,
-                                                                    )));
-                                                  }, size.height * 0.04,
-                                                      Colors.white),
-                                                )
+                                                              selectedUser),
+                                                      context);
+                                                }, size.height * 0.04,
+                                                    Colors.black38,),
+                                                iconWidget(
+                                                    Icons.account_circle, () {
+                                                  Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                          builder:
+                                                              (context) =>
+                                                                  UserProfile(
+                                                                    userId:
+                                                                        selectedUser
+                                                                            .uid,
+                                                                    userRepository:
+                                                                        widget
+                                                                            .userRepository,
+                                                                  )));
+                                                }, size.height * 0.04,
+                                                    Colors.black38,)
                                               ],
                                             )
                                           ],
@@ -545,28 +544,29 @@ class _MatchesState extends State<Matches> {
                                   child: Stack(
                                     children: [
                                       Positioned(
-                                        top: 250,
+                                        top: 90,
                                         child: Row(
                                           children: [
                                             Text(
                                               "  " + user[index].data['name'],
                                               style: TextStyle(
                                                   color: Colors.white,
-                                                  fontSize: 25),
+                                                  fontSize: 18),
                                             ),
                                           ],
                                         ),
                                       ),
                                       Positioned(
-                                        top: 300,
-                                        left: 120,
+                                        top: 120,
+                                        left: 40,
                                         child: FloatingActionButton(
+                                            mini: true,
                                             elevation: 0,
                                             backgroundColor: backgroundColor,
                                             child: Icon(
                                               Icons.chat,
-                                              color: Colors.black,
-                                              size: 35,
+                                              color:Colors.black38,
+                                              size: 20,
                                             ),
                                             onPressed: () async {
                                               User selectedUser =
@@ -593,9 +593,10 @@ class _MatchesState extends State<Matches> {
                                             }),
                                       ),
                                       Positioned(
-                                        top: 300,
-                                        right: 130,
+                                        top: 120,
+                                        right: 40,
                                         child: FloatingActionButton(
+                                          mini: true,
                                           elevation: 0,
                                           onPressed: () async {
                                             User selectedUser =
@@ -619,8 +620,8 @@ class _MatchesState extends State<Matches> {
                                           },
                                           child: Icon(
                                             Icons.person,
-                                            color: Colors.black,
-                                            size: 45,
+                                            color: Colors.black38,
+                                            size: 20,
                                           ),
                                         ),
                                       ),
@@ -633,7 +634,7 @@ class _MatchesState extends State<Matches> {
                           itemCount: user.length,
                           gridDelegate:
                               SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 1,
+                            crossAxisCount: 2,
                           ),
                         );
                       } else {

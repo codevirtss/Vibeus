@@ -414,7 +414,7 @@ In order to implement a proper user management system, systems integrate a Forgo
                 child: MaterialButton(
                   minWidth: MediaQuery.of(context).size.width,
                   padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-                  onPressed: (){
+                  onPressed: () {
                     sendresetlink(_emailController.text);
                   },
                   child: Text("Reset Password",
@@ -433,11 +433,32 @@ In order to implement a proper user management system, systems integrate a Forgo
   }
 
   Future sendresetlink(String email) {
-    return FirebaseAuth.instance.sendPasswordResetEmail(
-      email: email,
-    ).catchError((onError) => print('Error sending email verification $onError'))
-    .then((value) => print('Successfully sent email verification'));
+    return FirebaseAuth.instance
+        .sendPasswordResetEmail(
+          email: email,
+        )
+        .catchError(
+            (onError) => print('Error sending email verification $onError'))
+        .then((value) => {
+              showemialsentDialog(
+                context: context,
+              ),
+              Navigator.of(context),
+            });
+  }
+
+  showemialsentDialog(
+      {BuildContext context,
+      CustomDialogBox Function(BuildContext context) builder}) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return CustomDialogBox(
+            title: "Vibeus Password Reset",
+            descriptions:
+                "Passowrd reset link has been successfully sent to your email address",
+            text: "Thanks",
+          );
+        });
   }
 }
-
-
