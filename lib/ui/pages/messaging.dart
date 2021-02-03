@@ -16,7 +16,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_switch/flutter_switch.dart';
 
 // ignore: must_be_immutable
 class Messaging extends StatefulWidget {
@@ -121,60 +120,61 @@ class _MessagingState extends State<Messaging> {
     );
   }
 
+  void choiceAction(String choice) {
+    print("Working");
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
       appBar: AppBar(
-        // leading:  IconButton(
-        //           onPressed: () {
-        //             Navigator.of(context);
-        //           },
-        //           icon: Icon(Icons.clear,
-        //           color: ,
-        //           ),
-        //         ),
+        iconTheme: IconThemeData(color: Colors.black),
         backgroundColor: backgroundColor,
         elevation: 0,
-        bottom: PreferredSize(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Text(""),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => UserProfile(
-                                      userId: widget.selectedUser.uid,
-                                      userRepository: widget.userRepository,
-                                    )));
-                      },
-                      child: CircleAvatar(
-                        radius: 20,
-                        backgroundImage:
-                            NetworkImage(widget.selectedUser.photo),
-                      ),
-                    ),
-                    Text(
-                      widget.selectedUser.name,
-                      style: TextStyle(color: Colors.black, fontSize: 15),
-                    ),
-                  ],
-                ),
-                Icon(
-                  Icons.more_vert,
-                  size: 30,
-                ),
-              ],
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => UserProfile(
+                              userId: widget.selectedUser.uid,
+                              userRepository: widget.userRepository,
+                            )));
+              },
+              child: CircleAvatar(
+                radius: 20,
+                backgroundImage: NetworkImage(widget.selectedUser.photo),
+              ),
             ),
-            preferredSize: Size.fromHeight(20)),
+            Text(
+              widget.selectedUser.name,
+              style: TextStyle(color: Colors.black, fontSize: 12),
+            ),
+          ],
+        ),
+        actions: [
+          PopupMenuButton<String>(
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Icon(Icons.more_vert, color: Colors.black,),
+            ),
+            onSelected: choiceAction,
+            itemBuilder: (BuildContext context) {
+              return Constants.choices.map((String choice) {
+                return PopupMenuItem<String>(
+                  value: choice,
+                  child: Text(choice),
+                );
+              }).toList();
+            },
+          )
+        ],
       ),
       body: BlocBuilder<MessagingBloc, MessagingState>(
         cubit: _messagingBloc,
@@ -421,6 +421,56 @@ not even vibeus can read or listen to them.
     setState(() {
       isWriting = val;
     });
+  }
+
+  myPopMenu() {
+    return PopupMenuButton(
+        // onSelected: (value) {
+        //   Fluttertoast.showToast(
+        //       msg: "You have selected " + value.toString(),
+        //       toastLength: Toast.LENGTH_SHORT,
+        //       gravity: ToastGravity.BOTTOM,
+        //       timeInSecForIosWeb: 1,
+        //       backgroundColor: Colors.black,
+        //       textColor: Colors.white,
+        //       fontSize: 16.0
+        //   );
+        // },
+        itemBuilder: (context) => [
+              PopupMenuItem(
+                  value: 1,
+                  child: Row(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(2, 2, 8, 2),
+                        child: Icon(Icons.print),
+                      ),
+                      Text('Print')
+                    ],
+                  )),
+              PopupMenuItem(
+                  value: 2,
+                  child: Row(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(2, 2, 8, 2),
+                        child: Icon(Icons.share),
+                      ),
+                      Text('Share')
+                    ],
+                  )),
+              PopupMenuItem(
+                  value: 3,
+                  child: Row(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(2, 2, 8, 2),
+                        child: Icon(Icons.add_circle),
+                      ),
+                      Text('Add')
+                    ],
+                  )),
+            ]);
   }
 }
 
