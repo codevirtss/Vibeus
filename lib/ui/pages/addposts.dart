@@ -263,10 +263,6 @@ class _AddpostsState extends State<Addposts> {
                     child: Column(
                       children: [
                         ListTile(
-                          // leading: CircleAvatar(
-                          //   radius: 30,
-                          //   backgroundImage: NetworkImage("${snapshot.data.data['photoUrl']}"),
-                          // ),
                           title: Container(
                               width: 250,
                               child: TextField(
