@@ -196,27 +196,7 @@ class _EditProileState extends State<EditProile> {
                     SizedBox(
                       height: 10,
                     ),
-                    // ListTile(
-                    //   onTap: () {
-                    //     // Navigator.push(
-                    //     //     context,
-                    //     //     MaterialPageRoute(
-                    //     //         builder: (context) => VibeusQues(
-                    //     //               userId: widget.userId,
-                    //     //             )));
-                    //   },
-                    //   title: Text(
-                    //     "Vibeus questionnaire",
-                    //     style: TextStyle(
-                    //         color: Colors.grey,
-                    //         fontWeight: FontWeight.bold,
-                    //         fontSize: 20),
-                    //   ),
-                    //   trailing: Icon(
-                    //     Icons.arrow_forward_ios,
-                    //     color: Colors.grey,
-                    //   ),
-                    // ),
+                   
                   ],
                 ),
               ),
@@ -272,7 +252,7 @@ class _EditProileState extends State<EditProile> {
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+           
             children: <Widget>[
               FlatButton.icon(
                   onPressed: imagefromcammera,
@@ -367,7 +347,7 @@ class _UpdateNameState extends State<UpdateName> {
                   key: _formKey,
                   child: TextFormField(
                     controller: _namecontrolle,
-                    // initialValue: "${data['name']}",
+                    initialValue: "${data['name']}",
                     validator: (val) =>
                         val.isEmpty ? 'Please Enter name' : null,
                     autocorrect: false,
@@ -468,6 +448,7 @@ class UpdateBio extends StatefulWidget {
 
 class _UpdateBioState extends State<UpdateBio> {
   final TextEditingController _biocontroller = TextEditingController();
+  final TextEditingController _citycontroller = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -493,7 +474,7 @@ class _UpdateBioState extends State<UpdateBio> {
               backgroundColor: backgroundColor,
               iconTheme: IconThemeData(color: Colors.black),
               title: Text(
-                "Update Bio",
+                "Update self-summary",
                 style: TextStyle(color: Colors.black),
               ),
               centerTitle: true,
@@ -503,26 +484,59 @@ class _UpdateBioState extends State<UpdateBio> {
               children: [
                 Form(
                   key: _formKey,
-                  child: TextFormField(
-                    maxLines: 5,
-                    controller: _biocontroller,
-                    //   initialValue: "${data['name']}",
-                    validator: (val) => val.isEmpty || val.length > 100
-                        ? 'Bio invalid or to long'
-                        : null,
-                    autocorrect: false,
-                  ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text("""
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: TextFormField(
+                          maxLines: 5,
+                          controller: _biocontroller,
+                          decoration: InputDecoration(
+                            labelText:"Self-summary"
+                          ),
+                          //   initialValue: "${data['name']}",
+                          validator: (val) => val.isEmpty 
+                              ? 'Bio invalid or to long'
+                              : null,
+                          autocorrect: false,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text("""
 Help people to know about you by using Vibeus Bio Feature.
 Write about you likes and dislikes
 Your Hobbies  and many more
               """),
+                      ),
+
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: TextFormField(
+                          maxLines: 1,
+                           decoration: InputDecoration(
+                             labelText: "City name"
+                           ),
+                          controller: _citycontroller,
+                          //   initialValue: "${data['name']}",
+                          validator: (val) => val.isEmpty || val.length > 100
+                              ? 'Field is empty'
+                              : null,
+                          autocorrect: false,
+                        ),
+                      ),
+                            Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text("""
+Enter your city name so that the user engaging with you will know more about where are you from and may more things.
+              """),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
                 ),
                 RaisedButton(
                   color: Colors.red,
@@ -535,6 +549,7 @@ Your Hobbies  and many more
                           .document(widget.userId)
                           .updateData(({
                             'bio': _biocontroller.text,
+                            'cityname' : _citycontroller.text 
                           }))
                           .then((value) => print("User Updated"))
                           .catchError((e) {

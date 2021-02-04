@@ -162,7 +162,10 @@ class _MessagingState extends State<Messaging> {
           PopupMenuButton<String>(
             child: Padding(
               padding: const EdgeInsets.all(10.0),
-              child: Icon(Icons.more_vert, color: Colors.black,),
+              child: Icon(
+                Icons.more_vert,
+                color: Colors.black,
+              ),
             ),
             onSelected: choiceAction,
             itemBuilder: (BuildContext context) {

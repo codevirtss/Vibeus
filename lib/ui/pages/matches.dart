@@ -289,7 +289,7 @@ class _MatchesState extends State<Matches> {
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(15.0),
                                 ),
-                                elevation: 10,
+                                elevation: 5,
                                 child: Container(
                                   height: 708,
                                   decoration: BoxDecoration(
@@ -532,7 +532,7 @@ class _MatchesState extends State<Matches> {
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(15.0),
                                 ),
-                                elevation: 10,
+                                elevation: 5,
                                 child: Container(
                                   height: 708,
                                   decoration: BoxDecoration(

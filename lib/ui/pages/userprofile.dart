@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:rxdart/rxdart.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:vibeus/models/user.dart';
 import 'package:vibeus/repositories/userRepository.dart';
@@ -214,19 +215,30 @@ class _UserProfileState extends State<UserProfile> {
                       width: MediaQuery.of(context).size.width,
                       child: Padding(
                         padding: const EdgeInsets.all(4.0),
-                        child: Linkify(
-                          onOpen: (link) async {
-                            await launch(link.url);
-                            print(link);
-                          },
-                          text: """
+                        child: Column(
+                          children: [
+                            Text("${data['cityname']}",
+                              style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w300),
+                           
+                          ),
+                            Linkify(
+                              onOpen: (link) async {
+                                await launch(link.url);
+                                print(link);
+                              },
+                              text: """
 ${data['bio']}""",
-                          style: TextStyle(
-                              color: Colors.black, fontWeight: FontWeight.bold),
-                          linkStyle: TextStyle(
-                              fontSize: 18,
-                              color: Colors.black,
-                              fontWeight: FontWeight.w500),
+                              style: TextStyle(
+                                  color: Colors.black, fontWeight: FontWeight.bold),
+                              linkStyle: TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ],
                         ),
                       ),
                     ),
@@ -490,9 +502,22 @@ ${data['bio']}""",
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold),
                             ),
+                       
+                          
+                    
                           ],
                         ),
+
                       ),
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                            child: Text("${data['cityname']}",
+                              style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w300),
+                             ),
+                          ),
                       Padding(
                         padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
                         child: Text(
@@ -521,7 +546,7 @@ ${data['bio']}""",
                                 style: TextStyle(
                                     color: Colors.black,
                                     fontSize: 20,
-                                    fontWeight: FontWeight.w400),
+                                    fontWeight: FontWeight.w300),
                                 linkStyle: TextStyle(
                                     fontSize: 18,
                                     color: Colors.black,
