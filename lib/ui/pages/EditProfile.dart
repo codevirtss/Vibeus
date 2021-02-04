@@ -497,7 +497,7 @@ class _UpdateBioState extends State<UpdateBio> {
                           ),
                           //   initialValue: "${data['name']}",
                           validator: (val) => val.isEmpty 
-                              ? 'Bio invalid or to long'
+                              ? 'Field io empty'
                               : null,
                           autocorrect: false,
                         ),
@@ -511,27 +511,27 @@ Your Hobbies  and many more
               """),
                       ),
 
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: TextFormField(
-                          maxLines: 1,
-                           decoration: InputDecoration(
-                             labelText: "City name"
-                           ),
-                          controller: _citycontroller,
-                          //   initialValue: "${data['name']}",
-                          validator: (val) => val.isEmpty || val.length > 100
-                              ? 'Field is empty'
-                              : null,
-                          autocorrect: false,
-                        ),
-                      ),
-                            Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text("""
-Enter your city name so that the user engaging with you will know more about where are you from and may more things.
-              """),
-                      ),
+//                       Padding(
+//                         padding: const EdgeInsets.all(8.0),
+//                         child: TextFormField(
+//                           maxLines: 1,
+//                            decoration: InputDecoration(
+//                              labelText: "City name"
+//                            ),
+//                           controller: _citycontroller,
+//                           //   initialValue: "${data['name']}",
+//                           validator: (val) => val.isEmpty || val.length > 100
+//                               ? 'Field is empty'
+//                               : null,
+//                           autocorrect: false,
+//                         ),
+//                       ),
+//                             Padding(
+//                         padding: const EdgeInsets.all(8.0),
+//                         child: Text("""
+// Enter your city name so that the user engaging with you will know more about where are you from and may more things.
+//               """),
+//                       ),
                     ],
                   ),
                 ),
@@ -549,7 +549,7 @@ Enter your city name so that the user engaging with you will know more about whe
                           .document(widget.userId)
                           .updateData(({
                             'bio': _biocontroller.text,
-                            'cityname' : _citycontroller.text 
+                            // 'cityname' : _citycontroller.text 
                           }))
                           .then((value) => print("User Updated"))
                           .catchError((e) {

@@ -133,9 +133,10 @@ class _MessagingState extends State<Messaging> {
         iconTheme: IconThemeData(color: Colors.black),
         backgroundColor: backgroundColor,
         elevation: 0,
+        centerTitle: true,
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             GestureDetector(
               onTap: () {
@@ -159,24 +160,24 @@ class _MessagingState extends State<Messaging> {
           ],
         ),
         actions: [
-          PopupMenuButton<String>(
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Icon(
-                Icons.more_vert,
-                color: Colors.black,
-              ),
-            ),
-            onSelected: choiceAction,
-            itemBuilder: (BuildContext context) {
-              return Constants.choices.map((String choice) {
-                return PopupMenuItem<String>(
-                  value: choice,
-                  child: Text(choice),
-                );
-              }).toList();
-            },
-          )
+          // PopupMenuButton<String>(
+          //   child: Padding(
+          //     padding: const EdgeInsets.all(10.0),
+          //     child: Icon(
+          //       Icons.more_vert,
+          //       color: Colors.black,
+          //     ),
+          //   ),
+          //   onSelected: choiceAction,
+          //   itemBuilder: (BuildContext context) {
+          //     return Constants.choices.map((String choice) {
+          //       return PopupMenuItem<String>(
+          //         value: choice,
+          //         child: Text(choice),
+          //       );
+          //     }).toList();
+          //   },
+          // )
         ],
       ),
       body: BlocBuilder<MessagingBloc, MessagingState>(

@@ -144,27 +144,27 @@ class _SearchState extends State<Search> {
                                 color: Colors.black),
                           ),
                         ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Material(
-                            elevation: 5.0,
-                            borderRadius: BorderRadius.circular(30.0),
-                            color: color1,
+                      // Padding(
+                      //   padding: const EdgeInsets.all(8.0),
+                      //   child: Material(
+                      //       elevation: 5.0,
+                      //       borderRadius: BorderRadius.circular(30.0),
+                      //       color: color1,
                              
-                            child: MaterialButton(
-                              minWidth: MediaQuery.of(context).size.width,
-                              padding:
-                                  EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-                              onPressed: (){},
-                              child: Text("Update prefrences",
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 20.0,
-                                      fontWeight: FontWeight.bold)),
-                            ),
-                          ),
-                      ),
+                      //       child: MaterialButton(
+                      //         minWidth: MediaQuery.of(context).size.width,
+                      //         padding:
+                      //             EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+                      //         onPressed: (){},
+                      //         child: Text("Update prefrences",
+                      //             textAlign: TextAlign.center,
+                      //             style: TextStyle(
+                      //                 color: Colors.white,
+                      //                 fontSize: 20.0,
+                      //                 fontWeight: FontWeight.bold)),
+                      //       ),
+                      //     ),
+                      // ),
                         SizedBox(
                           height: 30,
                         ),
