@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:vibeus/models/user.dart';
+import 'package:vibeus/repositories/Notificationservices.dart';
 import 'package:vibeus/repositories/userRepository.dart';
 import 'package:vibeus/ui/pages/matches.dart';
 import 'package:vibeus/ui/pages/messages.dart';
@@ -34,7 +35,10 @@ class _TabsState extends State<Tabs> {
   String _debugLabelString = "";
   int _page = 0;
 
+ 
+
   Future<void> notifiyer() async {
+    
     OneSignal.shared.init('e4eeddce-b510-494b-b57d-54cf930e16a1');
     //Remove this method to stop OneSignal Debugging
     OneSignal.shared.setLogLevel(OSLogLevel.verbose, OSLogLevel.none);

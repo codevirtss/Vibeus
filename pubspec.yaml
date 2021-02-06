@@ -23,6 +23,9 @@ dependencies:
   
   ## Firebase Storage
   firebase_storage: ^3.1.5
+
+  ## Firebase messaging for sending notifications
+  firebase_messaging: ^7.0.3
   
   ##Chat bubble 
   flutter_chat_bubble: ^1.0.2
