@@ -8,10 +8,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'bloc/authentication/authentication_event.dart';
 
 void main() {
-    SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-    DeviceOrientation.portraitDown
-  ]);
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   WidgetsFlutterBinding.ensureInitialized();
   final UserRepository _userRepository = UserRepository();
 
@@ -21,7 +19,4 @@ void main() {
       create: (context) => AuthenticationBloc(userRepository: _userRepository)
         ..add(AppStarted()),
       child: Home(userRepository: _userRepository)));
-
 }
-
-

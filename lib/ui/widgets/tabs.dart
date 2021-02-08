@@ -35,10 +35,7 @@ class _TabsState extends State<Tabs> {
   String _debugLabelString = "";
   int _page = 0;
 
- 
-
   Future<void> notifiyer() async {
-    
     OneSignal.shared.init('e4eeddce-b510-494b-b57d-54cf930e16a1');
     //Remove this method to stop OneSignal Debugging
     OneSignal.shared.setLogLevel(OSLogLevel.verbose, OSLogLevel.none);
