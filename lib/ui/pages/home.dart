@@ -1,5 +1,6 @@
 import 'package:vibeus/bloc/authentication/authentication_bloc.dart';
 import 'package:vibeus/bloc/authentication/authentication_state.dart';
+import 'package:vibeus/repositories/Notificationservices.dart';
 import 'package:vibeus/repositories/userRepository.dart';
 import 'package:vibeus/ui/pages/profile.dart';
 import 'package:vibeus/ui/pages/splash.dart';
@@ -15,12 +16,15 @@ class Home extends StatelessWidget {
       : assert(userRepository != null),
         _userRepository = userRepository;
 
+  PushNotification _pushNotification = PushNotification();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: BlocBuilder<AuthenticationBloc, AuthenticationState>(
         builder: (context, state) {
+          _pushNotification.initialize();
           if (state is Uninitialized) {
             return Splash();
           }
@@ -40,7 +44,6 @@ class Home extends StatelessWidget {
             return Login(
               userRepository: _userRepository,
             );
-         
           } else
             return Container();
         },
