@@ -111,6 +111,7 @@ dependencies:
   #Used for introduction streen
   walkthrough: ^0.0.3
 
+  #Used for email validation in forget password screen 
   email_validator: ^1.0.6
 
 
