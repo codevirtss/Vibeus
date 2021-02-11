@@ -114,6 +114,10 @@ dependencies:
   #Used for email validation in forget password screen 
   email_validator: ^1.0.6
 
+  #Ad in flutter using Native ads
+
+  flutter_native_admob:
+
 
 
 
