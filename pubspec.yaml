@@ -13,6 +13,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  
+    
   #For iOS
   cupertino_icons: ^1.0.0
   
@@ -89,7 +91,7 @@ dependencies:
   onesignal_flutter: ^2.6.2
   
   #Not used yet
-  advance_pdf_viewer: ^1.2.1+2
+  advance_pdf_viewer: 
   
   #For geting location 
   geolocator: ^5.3.1
@@ -100,6 +102,7 @@ dependencies:
   #Bottoom navgation bar
   google_nav_bar: ^3.0.0
   
+  #line icon package 
   line_icons: ^0.2.0
   
   # Emojies
