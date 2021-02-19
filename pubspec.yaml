@@ -91,7 +91,7 @@ dependencies:
   onesignal_flutter: ^2.6.2
   
   #Not used yet
-  advance_pdf_viewer: 
+  advance_pdf_viewer: ^1.2.1+2
   
   #For geting location 
   geolocator: ^5.3.1
